@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Kelola Akun Pegawai</h1>
+                    <h1>Register Proyek</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Kelola Akun Pegawai</li>
+                        <li class="breadcrumb-item active">Register Proyek</li>
                     </ol>
                 </div>
             </div>
@@ -42,11 +42,14 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Nomor HP</th>
-                                <th>Jabatan</th>
-                                <th>Actions</th>
+                                <th>Nama Proyek</th>
+                                <th>Document Title</th>
+                                <th>Kategori Document</th>
+                                <th>Document</th>
+                                <th>Departmen</th>
+                                <th>Tipe</th>
+                                <th>Industri</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
