@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Kelola Data Proyek</p>
             </a>

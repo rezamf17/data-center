@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Register Proyek</h1>
+                    <h1>Kelola Data Proyek</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Register Proyek</li>
+                        <li class="breadcrumb-item active">Kelola Data Proyek</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Register Proyek</h3>
+                    <h3 class="card-title">Kelola Data Proyek</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -37,7 +37,6 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary mb-3">Tambah</a>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -62,7 +61,10 @@
                                 <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
-                                <td>-</td>
+                                <td>
+                                    <a href="#" class="btn btn-success">Edit</a>
+                                    <a href="#" class="btn btn-danger">Hapus</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
