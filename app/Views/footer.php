@@ -50,5 +50,6 @@
 <!-- <script src="<?php echo base_url('dist/js/demo.js'); ?>"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url('dist/js/pages/dashboard.js'); ?>"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
