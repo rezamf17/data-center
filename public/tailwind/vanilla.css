@@ -3,3 +3,9 @@
   background-size: 100%;
   height: 40em;
 }
+.background-tamansari-skyhive{
+  background-image: url('../img/TAMANSARI_SKYHIVE1.jpg');
+  background-size: 100%;
+  height: 40em;
+  margin-top : -5em;
+}
