@@ -42,7 +42,7 @@
         <h4>Jakarta, Indonesia</h4>
       </div>
     </div> -->
-<div class="opacity-10 w-5/12">
+<div class="w-5/12">
   <div class="px-6 py-4 h-screen bg-black" style="background: linear-gradient(to left, rgba(169,208,113,0),rgba(0,0,0,9)); ">
   <div class="py-20 px-10">
       <h1 class="text-white font-bold text-xl">Taman Sari SkyHive</h1>
@@ -60,6 +60,7 @@
     width:100%;
     height:100px;
 ">
+  <p class="text-7xl mb-5 text-center">WIKA Great Leader Class</p>
     <div class="grid grid-rows-3 grid-flow-col gap-4">
       <div class="row-span-3">
         <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
@@ -67,22 +68,22 @@
         Director of Human Capital and Development
       </div>
       <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
+      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Adityo-Kusumo-large-removebg-preview.png'); ?>">
           Adityo Kusumo
           Director of Finance and Risk Management
       </div>
       <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
+      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/agung-budi-Waskito-large-removebg-preview.png'); ?>">
         Agung Budi Waskito
         President Director
       </div>
       <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
+      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hananto-aji-large-removebg-preview.png'); ?>">
           Hananto Aji
           Director of Operation I
       </div>
       <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
+      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/APR_3557-1-large-removebg-preview.png'); ?>">
       Ayu Widya Kiswari
 Director of Quality, Health, Safety and Environment
       </div>
