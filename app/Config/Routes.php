@@ -16,6 +16,7 @@ $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->get('/dashboard', 'DashboardController::index');
+$routes->post('/loginProcess', 'AuthController::loginProcess');
 $routes->get('/akun-pegawai', 'AkunPegawaiController::index');
 $routes->get('/register-proyek', 'RegisterProyekController::index');
 $routes->get('/kelola-data-proyek', 'KelolaDataProyekController::index');
