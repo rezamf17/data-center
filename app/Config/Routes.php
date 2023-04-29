@@ -18,9 +18,9 @@ $routes->set404Override();
 $routes->get('/dashboard', 'DashboardController::index', ['filter' => 'authGuard']);
 $routes->post('/loginProcess', 'AuthController::loginProcess');
 $routes->post('/doLogout', 'AuthController::doLogout');
-$routes->get('/akun-pegawai', 'AkunPegawaiController::index');
-$routes->get('/register-proyek', 'RegisterProyekController::index');
-$routes->get('/kelola-data-proyek', 'KelolaDataProyekController::index');
+$routes->get('/akun-pegawai', 'AkunPegawaiController::index', ['filter' => 'authGuard']);
+$routes->get('/register-proyek', 'RegisterProyekController::index', ['filter' => 'authGuard']);
+$routes->get('/kelola-data-proyek', 'KelolaDataProyekController::index', ['filter' => 'authGuard']);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
