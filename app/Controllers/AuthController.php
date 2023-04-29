@@ -11,7 +11,6 @@ class AuthController extends BaseController
         $userModel = new UserModel();
         $nip = $this->request->getVar('nip');
         $password = $this->request->getVar('password');
-        print_r('123');exit();
         $data = $userModel->where('nip', $nip)->first();
         
         if($data){
@@ -25,15 +24,28 @@ class AuthController extends BaseController
                     'isLoggedIn' => TRUE
                 ];
                 $session->set($ses_data);
-                return redirect()->to('/profile');
+                return redirect()->to('/dashboard');
             
             }else{
-                $session->setFlashdata('msg', 'Password is incorrect.');
-                return redirect()->to('/signin');
+                $session->setFlashdata('msg', 'NIP atau password salah!');
+                return redirect()->to('/');
             }
         }else{
-            $session->setFlashdata('msg', 'Email does not exist.');
-            return redirect()->to('/signin');
+            $session->setFlashdata('msg', 'NIP atau password salah!');
+            return redirect()->to('/');
         }
+    }
+
+    public function profileSession ()
+    {
+        $session = session();
+        echo "Hello : ".$session->get('name');
+    }
+
+    public function doLogout ()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/');
     }
 }

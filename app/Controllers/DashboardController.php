@@ -6,6 +6,9 @@ class DashboardController extends BaseController
 {
     public function index()
     {
-        return view('Dashboard/HomeDashboard');
+        $session = session();
+        // echo "Hello : ".$session->get('name');
+        $data['sessionName'] = $session->get('name');
+        return view('Dashboard/HomeDashboard', $data);
     }
 }

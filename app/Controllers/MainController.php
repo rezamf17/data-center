@@ -6,6 +6,9 @@ class MainController extends BaseController
 {
     public function index()
     {
-        return view('main');
+        $session = session();
+        // echo "Hello : ".$session->get('name');
+        $data['sessionName'] = $session->get('name');
+        return view('main', $data);
     }
 }

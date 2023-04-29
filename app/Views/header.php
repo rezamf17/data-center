@@ -43,7 +43,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            <!-- {{ Auth::user()->name }} -->
+          <?php echo session()->get('name'); ?>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -51,18 +51,19 @@
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
             <!-- {{ __('Logout') }} -->
+            Logout
           </a>
 
-          <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> -->
+          <form id="logout-form" action="<?php echo base_url(); ?>doLogout" method="POST" class="d-none">
             <!-- <button type="submit">Logout</button> -->
-          <!-- </form> -->
+          </form>
         </div>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
-      </li> -->
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -80,10 +81,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo base_url('dist/img/user2-160x160.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo base_url('dist/img/user-icon.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo session()->get('name'); ?></a>
         </div>
       </div>
 
