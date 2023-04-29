@@ -8,4 +8,9 @@ class AkunPegawaiController extends BaseController
     {
         return view('AkunPegawai/HomeAkunPegawai');
     }
+
+    public function tambahPegawai()
+    {
+        return view('AkunPegawai/TambahAkunPegawai');
+    }
 }

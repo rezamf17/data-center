@@ -28,6 +28,10 @@ class User extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
 			],
+			'nomor_hp'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => 100,
+			],
 			'password' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
