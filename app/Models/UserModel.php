@@ -9,8 +9,20 @@ class UserModel extends Model{
         'nip',
         'name',
         'email',
+        'nomor_hp',
         'password',
         'role',
         'status',
     ];
+
+    public function insertData($data)
+    {
+    $this->db->table('user')->insert($data);
+    return $this->db->insertID();
+    }
+
+    public function getAll()
+    {
+        return $this->findAll();
+    }
 }

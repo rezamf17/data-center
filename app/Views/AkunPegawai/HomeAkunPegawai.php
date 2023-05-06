@@ -35,6 +35,11 @@
                         </button>
                     </div>
                 </div>
+                <?php if(isset($validation)):?>
+                <div class="alert alert-warning">
+                   <?= $validation->listErrors() ?>
+                </div>
+                <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="<?php echo base_url(); ?>tambah-akun-pegawai" class="btn btn-primary mb-3">Tambah</a>
@@ -42,24 +47,28 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIP</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
                                 <th>Jabatan</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i = 1; foreach ($users as $user): ?>
                             <tr>
-                                <td>1</td>
-                                <td>Reynaldi</td>
-                                <td>rey@gmail.com</td>
-                                <td>089448324234</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a href="#" class="btn btn-success">Edit</a>
-                                </td>
+                                <td><?= $i++ ?></td>
+                                <td><?= $user['nip'] ?></td>
+                                <td><?= $user['name'] ?></td>
+                                <td><?= $user['email'] ?></td>
+                                <td><?= $user['nomor_hp'] ?></td>
+                                <td><?= $user['role'] ?></td>
+                                <td><?= $user['status'] ?></td>
+                                <td><a href="<?= base_url('edit-akun-pegawai/'.$user['id']) ?>" class="btn btn-success">Edit</a></td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                     <!-- /.row -->
