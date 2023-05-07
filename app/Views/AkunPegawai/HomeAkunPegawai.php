@@ -35,6 +35,11 @@
                         </button>
                     </div>
                 </div>
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
                 <?php if(isset($validation)):?>
                 <div class="alert alert-warning">
                    <?= $validation->listErrors() ?>

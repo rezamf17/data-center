@@ -25,4 +25,9 @@ class UserModel extends Model{
     {
         return $this->findAll();
     }
+
+    public function updateUser($id, $data)
+    {
+        $this->where('id', $id)->set($data)->update();
+    }
 }

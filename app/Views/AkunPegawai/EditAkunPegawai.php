@@ -7,7 +7,7 @@
 <div class="card">
 <div class="card-header">Edit Akun Pegawai</div>
 <div class="card-body">
-  <form action="<?php echo base_url(); ?>post-akun-pegawai" method="POST">
+  <form action="<?php echo base_url('edit-akun-pegawai/'.$user['id']); ?>" method="POST">
   <?=csrf_field()?>
     <div class="form-group">
       <label for="exampleInputEmail1">NIP</label>
@@ -27,12 +27,12 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" placeholder="Password" name="password" required>
+      <input type="password" class="form-control" placeholder="Password" name="password">
       <i>*Kosongkan Password Jika Tidak Diganti</i>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Konfirmasi Password</label>
-      <input type="password" class="form-control" placeholder="Konfirmasi Password" name="confirmpassword" required>
+      <input type="password" class="form-control" placeholder="Konfirmasi Password" name="confirmpassword">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Role</label>
@@ -53,7 +53,7 @@
     </div>
   </div>
   <div class="card-footer">
-    <button type="submit" class="btn btn-outline-primary">Simpan</button>
+    <button type="submit" class="btn btn-outline-success">Edit</button>
     <a href="<?php echo base_url(); ?>akun-pegawai" class="btn btn-outline-secondary float-right">Kembali</a>
   </div>
 </form>
