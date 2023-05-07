@@ -71,7 +71,13 @@
                                 <td><?= $user['nomor_hp'] ?></td>
                                 <td><?= $user['role'] ?></td>
                                 <td><?= $user['status'] ?></td>
-                                <td><a href="<?= base_url('edit-akun-pegawai/'.$user['id']) ?>" class="btn btn-success">Edit</a></td>
+                                <td>
+                                    <a href="<?= base_url('edit-akun-pegawai/'.$user['id']) ?>" class="btn btn-success">Edit</a>
+                                    <form class="btn btn-danger" action="<?php echo base_url('hapus-akun-pegawai/'.$user['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                        <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                        <button type="submit" >Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

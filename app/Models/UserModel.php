@@ -30,4 +30,11 @@ class UserModel extends Model{
     {
         $this->where('id', $id)->set($data)->update();
     }
+
+    public function deleteUser($id)
+    {
+        $builder = $this->db->table('user');
+        $builder->where('id', $id);
+        $builder->delete();
+    }
 }

@@ -104,4 +104,13 @@ class AkunPegawaiController extends BaseController
             echo view('AkunPegawai/HomeAkunPegawai', $data);
         }
     }
+
+    public function postDeletePegawai($id)
+    {
+        $userModel = new UserModel();
+        $user = $userModel->find($id);
+        $userModel->deleteUser($id);
+        session()->setFlashdata('success', 'User berhasil dihapus.');
+        return redirect()->to(base_url('akun-pegawai'));
+    }
 }
