@@ -8,4 +8,9 @@ class RegisterProyekController extends BaseController
     {
         return view('RegisterProyek/HomeRegisterProyek');
     }
+
+    public function tambahRegisterProyek()
+    {
+        return view('RegisterProyek/TambahRegisterProyek');
+    }
 }

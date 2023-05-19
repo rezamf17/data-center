@@ -37,7 +37,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary mb-3">Tambah</a>
+                    <a href="<?php echo base_url(); ?>tambah-register-proyek" class="btn btn-primary mb-3">Tambah</a>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
