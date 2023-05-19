@@ -19,6 +19,11 @@ $routes->get('/dashboard', 'DashboardController::index', ['filter' => 'authGuard
 $routes->post('/loginProcess', 'AuthController::loginProcess');
 $routes->post('/doLogout', 'AuthController::doLogout');
 $routes->get('/akun-pegawai', 'AkunPegawaiController::index', ['filter' => 'authGuard']);
+$routes->get('/tambah-akun-pegawai', 'AkunPegawaiController::tambahPegawai', ['filter' => 'authGuard']);
+$routes->post('/post-akun-pegawai', 'AkunPegawaiController::postTambahPegawai');
+$routes->get('/edit-akun-pegawai/(:num)', 'AkunPegawaiController::editPegawai/$1', ['filter' => 'authGuard']);
+$routes->post('/edit-akun-pegawai/(:num)', 'AkunPegawaiController::postEditPegawai/$1', ['filter' => 'authGuard']);
+$routes->post('/hapus-akun-pegawai/(:num)', 'AkunPegawaiController::postDeletePegawai/$1', ['filter' => 'authGuard']);
 $routes->get('/register-proyek', 'RegisterProyekController::index', ['filter' => 'authGuard']);
 $routes->get('/kelola-data-proyek', 'KelolaDataProyekController::index', ['filter' => 'authGuard']);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps

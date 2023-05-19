@@ -35,31 +35,51 @@
                         </button>
                     </div>
                 </div>
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($validation)):?>
+                <div class="alert alert-warning">
+                   <?= $validation->listErrors() ?>
+                </div>
+                <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary mb-3">Tambah</a>
+                    <a href="<?php echo base_url(); ?>tambah-akun-pegawai" class="btn btn-primary mb-3">Tambah</a>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIP</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
                                 <th>Jabatan</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i = 1; foreach ($users as $user): ?>
                             <tr>
-                                <td>1</td>
-                                <td>Reynaldi</td>
-                                <td>rey@gmail.com</td>
-                                <td>089448324234</td>
-                                <td>Admin</td>
+                                <td><?= $i++ ?></td>
+                                <td><?= $user['nip'] ?></td>
+                                <td><?= $user['name'] ?></td>
+                                <td><?= $user['email'] ?></td>
+                                <td><?= $user['nomor_hp'] ?></td>
+                                <td><?= $user['role'] ?></td>
+                                <td><?= $user['status'] ?></td>
                                 <td>
-                                    <a href="#" class="btn btn-success">Edit</a>
+                                    <a href="<?= base_url('edit-akun-pegawai/'.$user['id']) ?>" class="btn btn-success">Edit</a>
+                                    <form class="btn btn-danger" action="<?php echo base_url('hapus-akun-pegawai/'.$user['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                        <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                        <button type="submit" >Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                     <!-- /.row -->
