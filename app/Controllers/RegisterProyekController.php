@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\ProyekModel;
 
 class RegisterProyekController extends BaseController
 {
     public function index()
     {
-        return view('RegisterProyek/HomeRegisterProyek');
+        $proyekModel = new ProyekModel();
+        $data['proyek'] = $proyekModel->getAll();
+        return view('RegisterProyek/HomeRegisterProyek', $data);
     }
 
     public function tambahRegisterProyek()

@@ -16,5 +16,6 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
             ],
         ];
         $this->db->table('user')->insertBatch($data);
+        $this->db->table('proyek')->insertBatch($dataProyek);
     }
 } 

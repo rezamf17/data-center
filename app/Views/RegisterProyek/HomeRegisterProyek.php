@@ -53,17 +53,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i = 1; foreach ($proyek as $item): ?>
                             <tr>
-                                <td>1</td>
-                                <td>Reynaldi</td>
-                                <td>rey@gmail.com</td>
-                                <td>089448324234</td>
-                                <td>Admin</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td><?= $i++ ?></td>
+                                <td><?= $item['nama_proyek'] ?></td>
+                                <td><?= $item['document_title'] ?></td>
+                                <td><?= $item['kategori_document'] ?></td>
+                                <td><?= $item['document'] ?></td>
+                                <td><?= $item['deparment'] ?></td>
+                                <td><?= $item['tipe'] ?></td>
+                                <td><?= $item['industri'] ?></td>
+                                <td>
+                                    <a href="<?= base_url('edit-akun-pegawai/'.$item['id']) ?>" class="btn btn-success">Edit</a>
+                                    <form class="btn btn-danger" action="<?php echo base_url('hapus-akun-pegawai/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                        <button type="submit" >Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                     <!-- /.row -->
