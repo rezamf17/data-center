@@ -44,25 +44,25 @@ class RegisterProyekController extends BaseController
             $file1 = $document1->getRandomName();
             $file2 = $document2->getRandomName();
             $file3 = $document3->getRandomName();
-
+            $db = db_connect('default');
+            $proyekModel = new ProyekModel();
+            $proyekModel->insertData($data);
             $document = [
                 [
-                    'proyek_id' => 1, 
+                    'proyek_id' => $proyekModel->insertID(), 
                     'nama_file' => $file1
                 ],
                 [
-                    'proyek_id' => 1, 
+                    'proyek_id' => $proyekModel->insertID(), 
                     'nama_file' => $file2
                 ],
                 [
-                    'proyek_id' => 1,
+                    'proyek_id' => $proyekModel->insertID(),
                     'nama_file' => $file3
                 ]
             ];
 
             $fileModel = new FileModel();
-            $proyekModel = new ProyekModel();
-            $proyekModel->insertData($data);
             $fileModel->insertBatch($document);
             $document1->move('Uploads/', $file1);
             if ($document2->isValid()) {
