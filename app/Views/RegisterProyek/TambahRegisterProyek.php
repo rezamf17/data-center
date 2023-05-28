@@ -22,13 +22,34 @@
       <input type="text" class="form-control" placeholder="Masukan Kategori Document" name="kategori_document" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputFile">Dokumen (format : .xls, .pdf, .docx, dan .doc)</label>
+        <label for="exampleInputFile">Dokumen 1 (format : .xls, .pdf, .docx, dan .doc)</label>
         <div class="input-group">
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="document">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="document1" required>
             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
           </div>
         </div>
+        <b>*Diwajibkan</b>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">Dokumen 2 (format : .xls, .pdf, .docx, dan .doc)</label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="document2">
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+        </div>
+        <b>*Opsional</b>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">Dokumen 3 (format : .xls, .pdf, .docx, dan .doc)</label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="document3">
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+        </div>
+        <b>*Opsional</b>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Deparment</label>

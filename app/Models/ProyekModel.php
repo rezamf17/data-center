@@ -4,12 +4,11 @@ use CodeIgniter\Model;
   
 class ProyekModel extends Model{
     protected $table = 'proyek';
-    
+    protected $primaryKey = 'id';
     protected $allowedFields = [
         'nama_proyek',
         'document_title', 
         'kategori_document', 
-        'document',
         'deparment',
         'tipe',
         'industri',

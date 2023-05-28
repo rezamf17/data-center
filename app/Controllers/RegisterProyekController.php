@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\ProyekModel;
+use App\Models\FileModel;
 
 class RegisterProyekController extends BaseController
 {
@@ -24,7 +25,6 @@ class RegisterProyekController extends BaseController
             'nama_proyek'          => 'required',
             'document_title'          => 'required',
             'kategori_document'         => 'required',
-            'document'         => 'required',
             'deparment'      => 'required',
             'tipe'  => 'required',
             'industri'  => 'required'
@@ -34,14 +34,43 @@ class RegisterProyekController extends BaseController
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
                 'document_title'     => $this->request->getVar('document_title'),
                 'kategori_document'    => $this->request->getVar('kategori_document'),
-                'document' => $this->request->getVar('document'),
                 'deparment'    => $this->request->getVar('deparment'),
                 'tipe'    => $this->request->getVar('tipe'),
                 'industri'    => $this->request->getVar('industri'),
             ];
-            // print_r($data);exit();
+            $document1 = $this->request->getFile('document1');
+            $document2 = $this->request->getFile('document2');
+            $document3 = $this->request->getFile('document3');
+            $file1 = $document1->getRandomName();
+            $file2 = $document2->getRandomName();
+            $file3 = $document3->getRandomName();
+
+            $document = [
+                [
+                    'proyek_id' => 1, 
+                    'nama_file' => $file1
+                ],
+                [
+                    'proyek_id' => 1, 
+                    'nama_file' => $file2
+                ],
+                [
+                    'proyek_id' => 1,
+                    'nama_file' => $file3
+                ]
+            ];
+
+            $fileModel = new FileModel();
             $proyekModel = new ProyekModel();
             $proyekModel->insertData($data);
+            $fileModel->insertBatch($document);
+            $document1->move('Uploads/', $file1);
+            if ($document2->isValid()) {
+                $document2->move('Uploads/', $file2);
+            }
+            if ($document3->isValid()) {
+                $document3->move('Uploads/', $file3);
+            }
             session()->setFlashdata('success', 'Proyek berhasil ditambahkan.');
             return redirect()->to('register-proyek');
         }else{

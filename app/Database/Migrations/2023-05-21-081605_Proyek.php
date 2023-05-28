@@ -27,10 +27,6 @@ class Proyek extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
 			],
-			'document'      => [
-				'type'           => 'VARCHAR',
-				'constraint'     => 100,
-			],
 			'deparment' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,

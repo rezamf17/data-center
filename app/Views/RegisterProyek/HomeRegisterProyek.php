@@ -48,14 +48,13 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="<?php echo base_url(); ?>tambah-register-proyek" class="btn btn-primary mb-3">Tambah</a>
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Proyek</th>
                                 <th>Document Title</th>
                                 <th>Kategori Document</th>
-                                <th>Document</th>
                                 <th>Departmen</th>
                                 <th>Tipe</th>
                                 <th>Industri</th>
@@ -69,7 +68,6 @@
                                 <td><?= $item['nama_proyek'] ?></td>
                                 <td><?= $item['document_title'] ?></td>
                                 <td><?= $item['kategori_document'] ?></td>
-                                <td><?= $item['document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
                                 <td><?= $item['tipe'] ?></td>
                                 <td><?= $item['industri'] ?></td>
