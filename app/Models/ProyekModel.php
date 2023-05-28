@@ -17,7 +17,7 @@ class ProyekModel extends Model{
 
     public function insertData($data)
     {
-    $this->db->table('user')->insert($data);
+    $this->db->table('proyek')->insert($data);
     return $this->db->insertID();
     }
 

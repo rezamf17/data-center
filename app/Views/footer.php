@@ -24,6 +24,10 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url('dist/js/adminlte.min.js'); ?>"></script>
+<!-- bs-custom-file-input -->
+<script src="<?php echo base_url('plugins/bs-custom-file-input/bs-custom-file-input.min.js'); ?>"></script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url('plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <!-- ChartJS -->
@@ -51,5 +55,10 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url('dist/js/pages/dashboard.js'); ?>"></script>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 </body>
 </html>

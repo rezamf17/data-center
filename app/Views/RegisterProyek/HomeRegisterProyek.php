@@ -35,6 +35,16 @@
                         </button>
                     </div>
                 </div>
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($validation)):?>
+                <div class="alert alert-warning">
+                   <?= $validation->listErrors() ?>
+                </div>
+                <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="<?php echo base_url(); ?>tambah-register-proyek" class="btn btn-primary mb-3">Tambah</a>
