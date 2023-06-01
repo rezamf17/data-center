@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\ProyekModel;
 
 class KelolaDataProyekController extends BaseController
 {
     public function index()
     {
-        return view('KelolaDataProyek/HomeKelolaDataProyek');
+        $proyekModel = new ProyekModel();
+        $data['proyek'] = $proyekModel->getAll();
+        return view('KelolaDataProyek/HomeKelolaDataProyek', $data);
     }
 }
