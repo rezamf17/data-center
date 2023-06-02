@@ -80,4 +80,12 @@ class RegisterProyekController extends BaseController
             echo view('RegisterProyek/HomeRegisterProyek', $data);
         }
     }
+
+    public function lihatDocument($id)
+    {
+        $fileModel = new FileModel();
+        $data['fileProyek'] = $fileModel->viewDoc($id);
+        // print_r($view);exit();
+        return view('RegisterProyek/LihatDokumen', $data);
+    }
 }

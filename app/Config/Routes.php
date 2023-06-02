@@ -28,6 +28,7 @@ $routes->get('/register-proyek', 'RegisterProyekController::index', ['filter' =>
 $routes->get('/kelola-data-proyek', 'KelolaDataProyekController::index', ['filter' => 'authGuard']);
 $routes->get('/tambah-register-proyek', 'RegisterProyekController::tambahRegisterProyek', ['filter' => 'authGuard']);
 $routes->post('/post-register-proyek', 'RegisterProyekController::postRegisterProyek', ['filter' => 'authGuard']);
+$routes->get('/lihat-dokumen/(:num)', 'RegisterProyekController::lihatDocument/$1', ['filter' => 'authGuard']);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).

@@ -72,11 +72,11 @@
                                 <td><?= $item['tipe'] ?></td>
                                 <td><?= $item['industri'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('edit-akun-pegawai/'.$item['id']) ?>" class="btn btn-success">Edit</a>
-                                    <form class="btn btn-danger" action="<?php echo base_url('hapus-akun-pegawai/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    <a href="<?= base_url('lihat-dokumen/'.$item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>
+                                    <!-- <form class="btn btn-secondary" action="<?php echo base_url('lihat-dokumen'); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" >Hapus</button>
-                                    </form>
+                                        <button type="submit" >Lihat Dokumen</button>
+                                    </form> -->
                                 </td>
                             </tr>
                             <?php endforeach; ?>
