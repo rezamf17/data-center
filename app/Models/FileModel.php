@@ -16,20 +16,13 @@ class FileModel extends Model{
     return $this->db->insertID();
     }
 
-    // public function getAll()
-    // {
-    //     return $this->findAll();
-    // }
-
-    // public function updateUser($id, $data)
-    // {
-    //     $this->where('id', $id)->set($data)->update();
-    // }
-
-    // public function deleteUser($id)
-    // {
-    //     $builder = $this->db->table('user');
-    //     $builder->where('id', $id);
-    //     $builder->delete();
-    // }
+    public function viewDoc($proyekId)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('file');
+        $query->where('proyek_id', $proyekId);
+        
+        $results = $query->get()->getResult();
+        return $results;
+    }
 }
