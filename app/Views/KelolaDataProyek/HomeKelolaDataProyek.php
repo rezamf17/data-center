@@ -35,6 +35,16 @@
                         </button>
                     </div>
                 </div>
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($validation)):?>
+                <div class="alert alert-warning">
+                   <?= $validation->listErrors() ?>
+                </div>
+                <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-striped">
@@ -62,7 +72,7 @@
                                 <td><?= $item['industri'] ?></td>
                                 <td>
                                     <a href="<?= base_url('edit-akun-pegawai/'.$item['id']) ?>" class="btn btn-success">Edit</a>
-                                    <form class="btn btn-danger" action="<?php echo base_url('hapus-akun-pegawai/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit" >Hapus</button>
                                     </form>
