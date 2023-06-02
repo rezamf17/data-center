@@ -16,6 +16,8 @@
                     <a class="btn btn-success" onclick="openTab1()" href="#">Lihat</a>
                 <?php elseif (substr($fileProyek[0]->nama_file, -3) == 'xls' || substr($fileProyek[0]->nama_file, -4) == 'xlsx'): ?>
                     <a class="btn btn-secondary" href="#">Download</a>
+                <?php else: ?>
+                    <p>Format file tidak didukung atau file tidak ada</p>
                 <?php endif; ?>
             </td>
         </tr>
@@ -23,9 +25,11 @@
             <th>Dokumen 2</th>
             <td>
                 <?php if (substr($fileProyek[1]->nama_file, -3) == 'pdf') : ?>
-                    <a onclick="openTab2()">File</a>
+                    <a class="btn btn-success" onclick="openTab2()">Lihat</a>
                 <?php elseif (substr($fileProyek[1]->nama_file, -3) == 'xls' || substr($fileProyek[1]->nama_file, -4) == 'xlsx'): ?>
                     <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[1]->nama_file); ?>">Download</a>
+                <?php else: ?>
+                    <p>Format file tidak didukung atau file tidak ada</p>
                 <?php endif; ?>
             </td>
         </tr>
