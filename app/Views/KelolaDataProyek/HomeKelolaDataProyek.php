@@ -71,7 +71,7 @@
                                 <td><?= $item['tipe'] ?></td>
                                 <td><?= $item['industri'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('edit-akun-pegawai/'.$item['id']) ?>" class="btn btn-success">Edit</a>
+                                    <a href="<?= base_url('edit-kelola-data-proyek/'.$item['id']) ?>" class="btn btn-success">Edit</a>
                                     <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit" >Hapus</button>

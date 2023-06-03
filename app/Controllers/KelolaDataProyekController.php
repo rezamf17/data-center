@@ -12,6 +12,13 @@ class KelolaDataProyekController extends BaseController
         return view('KelolaDataProyek/HomeKelolaDataProyek', $data);
     }
 
+    public function editView($id)
+    {
+        $proyekModel = new ProyekModel();
+        $data['proyek'] = $proyekModel->find($id);
+        return view('KelolaDataProyek/EditKelolaDataProyek', $data);
+    }
+
     public function deleteProyek($id)
     {
         $proyekModel = new ProyekModel();
