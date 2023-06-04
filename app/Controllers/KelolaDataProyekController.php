@@ -19,6 +19,39 @@ class KelolaDataProyekController extends BaseController
         return view('KelolaDataProyek/EditKelolaDataProyek', $data);
     }
 
+    public function editProyek($id)
+    {
+        helper(['form']);
+        $rules = [
+            'nama_proyek'          => 'required',
+            'document_title'          => 'required',
+            'kategori_document'         => 'required',
+            'deparment'      => 'required',
+            'tipe'  => 'required',
+            'industri'  => 'required'
+        ];
+        $password = $this->request->getVar('confirmpassword');
+        if($this->validate($rules)){
+            $data = [
+                'nama_proyek'     => $this->request->getVar('nama_proyek'),
+                'document_title'     => $this->request->getVar('document_title'),
+                'kategori_document'    => $this->request->getVar('kategori_document'),
+                'deparment'    => $this->request->getVar('deparment'),
+                'tipe'    => $this->request->getVar('tipe'),
+                'industri'    => $this->request->getVar('industri'),
+            ];
+            $proyekModel = new ProyekModel();
+            $proyekModel->updateProyek($id, $data);
+            session()->setFlashdata('success', 'Proyek berhasil diupdate.');
+            return redirect()->to('kelola-data-proyek');
+        }else{
+            $data['validation'] = $this->validator;
+            $proyekModel = new ProyekModel();
+            $data['proyek'] = $proyekModel->find($id);
+            echo view('KelolaDataProyek/EditKelolaDataProyek', $data);
+        }
+    }
+
     public function deleteProyek($id)
     {
         $proyekModel = new ProyekModel();

@@ -7,7 +7,7 @@
 <div class="card">
 <div class="card-header">Edit Proyek</div>
 <div class="card-body">
-  <form action="<?php echo base_url(); ?>post-register-proyek" method="POST">
+  <form action="<?php echo base_url('edit-kelola-data-proyek/'.$proyek['id']); ?>" method="POST">
   <?=csrf_field()?>
     <div class="form-group">
       <label for="exampleInputEmail1">Nama Proyek</label>

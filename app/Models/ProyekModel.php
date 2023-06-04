@@ -25,7 +25,7 @@ class ProyekModel extends Model{
         return $this->findAll();
     }
 
-    public function updateUser($id, $data)
+    public function updateProyek($id, $data)
     {
         $this->where('id', $id)->set($data)->update();
     }
