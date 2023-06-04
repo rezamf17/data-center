@@ -16,6 +16,15 @@ class FileModel extends Model{
     return $this->db->insertID();
     }
 
+    public function viewDoc($proyekId)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('file');
+        $query->where('proyek_id', $proyekId);
+        
+        $results = $query->get()->getResult();
+        return $results;
+    }
     // public function getAll()
     // {
     //     return $this->findAll();
