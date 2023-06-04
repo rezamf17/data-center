@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\ProyekModel;
+use App\Models\FileModel;
 
 class KelolaDataProyekController extends BaseController
 {
@@ -50,6 +51,13 @@ class KelolaDataProyekController extends BaseController
             $data['proyek'] = $proyekModel->find($id);
             echo view('KelolaDataProyek/EditKelolaDataProyek', $data);
         }
+    }
+
+    public function editViewDocument($id)
+    {
+        $fileModel = new FileModel();
+        $data['fileProyek'] = $fileModel->find($id);
+        return view('KelolaDataProyek/EditDokumen', $data);
     }
 
     public function deleteProyek($id)

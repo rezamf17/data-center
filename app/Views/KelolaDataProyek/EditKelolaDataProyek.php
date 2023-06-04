@@ -25,7 +25,7 @@
         <label for="exampleInputFile">Dokumen (format : .xls, .pdf, .docx, dan .doc)</label>
         <div class="input-group">
           <div class="custom-file">
-            <a href="#">Lihat Dokumen</a>
+            <a href="<?php echo base_url('edit-dokumen/'.$proyek['id']); ?>" class="btn btn-success">Lihat Dokumen</a>
           </div>
         </div>
     </div>
