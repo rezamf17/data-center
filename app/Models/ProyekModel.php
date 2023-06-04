@@ -25,14 +25,14 @@ class ProyekModel extends Model{
         return $this->findAll();
     }
 
-    public function updateUser($id, $data)
+    public function updateProyek($id, $data)
     {
         $this->where('id', $id)->set($data)->update();
     }
 
-    public function deleteUser($id)
+    public function deleteProyek($id)
     {
-        $builder = $this->db->table('user');
+        $builder = $this->db->table('proyek');
         $builder->where('id', $id);
         $builder->delete();
     }
