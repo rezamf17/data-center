@@ -56,7 +56,7 @@ class KelolaDataProyekController extends BaseController
     public function editViewDocument($id)
     {
         $fileModel = new FileModel();
-        $data['fileProyek'] = $fileModel->find($id);
+        $data['fileProyek'] = $fileModel->viewDoc($id);
         return view('KelolaDataProyek/EditDokumen', $data);
     }
 
