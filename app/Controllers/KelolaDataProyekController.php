@@ -68,4 +68,19 @@ class KelolaDataProyekController extends BaseController
         session()->setFlashdata('success', 'Proyek berhasil dihapus.');
         return redirect()->to(base_url('kelola-data-proyek'));
     }
+
+    public function gantiDokumen1($id)
+    {
+        $fileModel = new FileModel();
+        $document1 = $this->request->getFile('document1');
+        $file1 = $document1->getRandomName();
+        $data = [
+            'nama_file'     => $file1,
+        ];
+        // print_r($id);exit();
+        $document1->move('Uploads/', $file1);
+        $fileModel->changeDocument1($id, $data);
+        session()->setFlashdata('success', 'Dokumen berhasil diedit.');
+        return redirect()->to(base_url('kelola-data-proyek'));
+    }
 }

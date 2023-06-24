@@ -25,10 +25,10 @@ class FileModel extends Model{
         $results = $query->get()->getResult();
         return $results;
     }
-    // public function getAll()
-    // {
-    //     return $this->findAll();
-    // }
+    public function changeDocument1($id, $data)
+    {
+        $this->where('id', $id)->set($data)->update();
+    }
 
     // public function updateUser($id, $data)
     // {

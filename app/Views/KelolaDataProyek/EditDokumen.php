@@ -7,7 +7,6 @@
 <div class="card">
 <div class="card-header">Edit Dokumen</div>
 <div class="card-body">
-    <!-- <?php print_r(substr($fileProyek[0]->nama_file, -3)); ?> -->
     <table class="table">
         <tr>
             <th>Dokumen 1</th>
@@ -21,8 +20,12 @@
                 <?php endif; ?>
             </td>
             <td>
-                <label for="files" class="btn">Ganti File</label>
-                <input id="files" style="visibility:hidden;" type="file">
+                <label>Ganti File</label>
+                <form action="<?php echo base_url('edit-dokumen1/'.$fileProyek[0]->id); ?>" method="post" enctype="multipart/form-data">
+                <?=csrf_field()?>
+                    <input id="files" type="file" name="document1">
+                    <button type="submit" class="btn btn-primary">Ganti</button>
+                </form>
             </td>
         </tr>
         <tr>
@@ -37,8 +40,9 @@
                 <?php endif; ?>
             </td>
             <td>
-                <label for="files" class="btn">Ganti File</label>
-                <input id="files" style="visibility:hidden;" type="file">
+                <label>Ganti File</label>
+                <input id="files" type="file">
+                <button class="btn btn-primary">Ganti</button>
             </td>
         </tr>
         <tr>
@@ -53,8 +57,9 @@
                 <?php endif; ?>
             </td>
             <td>
-                <label for="files" class="btn">Ganti File</label>
-                <input id="files" style="visibility:hidden;" type="file">
+                <label>Ganti File</label>
+                <input id="files" type="file">
+                <button class="btn btn-primary">Ganti</button>
             </td>
         </tr>
     </table>
