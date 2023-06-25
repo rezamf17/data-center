@@ -74,6 +74,7 @@ class KelolaDataProyekController extends BaseController
         $fileModel = new FileModel();
         $document1 = $this->request->getFile('document1');
         $file1 = $document1->getRandomName();
+        $id_proyek = $this->request->getVar('id_proyek');
         $data = [
             'nama_file'     => $file1,
         ];
@@ -81,6 +82,6 @@ class KelolaDataProyekController extends BaseController
         $document1->move('Uploads/', $file1);
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('kelola-data-proyek'));
+        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
     }
 }

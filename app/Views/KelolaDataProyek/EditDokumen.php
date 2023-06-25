@@ -7,6 +7,16 @@
 <div class="card">
 <div class="card-header">Edit Dokumen</div>
 <div class="card-body">
+<?php if (session()->getFlashdata('success')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('success'); ?>
+    </div>
+<?php endif; ?>
+<?php if(isset($validation)):?>
+<div class="alert alert-warning">
+   <?= $validation->listErrors() ?>
+</div>
+<?php endif;?>
     <table class="table">
         <tr>
             <th>Dokumen 1</th>
@@ -24,7 +34,8 @@
                 <form action="<?php echo base_url('edit-dokumen1/'.$fileProyek[0]->id); ?>" method="post" enctype="multipart/form-data">
                 <?=csrf_field()?>
                     <input id="files" type="file" name="document1">
-                    <button type="submit" class="btn btn-primary">Ganti</button>
+                    <input type="hidden" value="<?php echo $fileProyek[0]->proyek_id; ?>" name="id_proyek">
+                    <button type="submit" class="btn btn-outline-primary">Ganti</button>
                 </form>
             </td>
         </tr>
