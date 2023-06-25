@@ -28,6 +28,17 @@
                 <?php else: ?>
                     <p>Format file tidak didukung atau file tidak ada</p>
                 <?php endif; ?>
+                <video controls width="250">
+                    <source src="<?php echo $fileProyek[0]->nama_file; ?>" type="video/webm">
+
+                    <source src="/Uploads/<?php echo $fileProyek[0]->nama_file; ?>" type="video/mp4">
+
+                    Download the
+                    <a href="<?php echo $fileProyek[0]->nama_file; ?>">WEBM</a>
+                    or
+                    <a href="<?php echo $fileProyek[0]->nama_file; ?>">MP4</a>
+                    video.
+                </video>
             </td>
             <td>
                 <label>Ganti File</label>

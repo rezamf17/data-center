@@ -94,7 +94,7 @@ class KelolaDataProyekController extends BaseController
         $data = [
             'nama_file'     => $file2,
         ];
-        // print_r($id);exit();
+        // print_r($file2);exit();
         $document2->move('Uploads/', $file2);
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
