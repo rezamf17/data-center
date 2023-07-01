@@ -24,7 +24,9 @@
                 <?php if (substr($fileProyek[0]->nama_file, -3) == 'pdf') : ?>
                     <a class="btn btn-success" onclick="openTab1()" href="#">Lihat</a>
                 <?php elseif (substr($fileProyek[0]->nama_file, -3) == 'xls' || substr($fileProyek[0]->nama_file, -4) == 'xlsx'): ?>
-                    <a class="btn btn-secondary" href="#">Download</a>
+                    <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[0]->nama_file); ?>">Download</a>
+                <?php elseif (substr($fileProyek[0]->nama_file, -3) == 'doc' || substr($fileProyek[0]->nama_file, -4) == 'docx'): ?>
+                    <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[0]->nama_file); ?>">Download</a>
                 <?php elseif (substr($fileProyek[0]->nama_file, -3) == 'mp4' || substr($fileProyek[0]->nama_file, -3) == 'mkv'): ?>
                     <video controls width="250">
                     <source src="<?php echo $fileProyek[0]->nama_file; ?>" type="video/webm">
@@ -60,6 +62,8 @@
                     <a class="btn btn-success" onclick="openTab2()">Lihat</a>
                 <?php elseif (substr($fileProyek[1]->nama_file, -3) == 'xls' || substr($fileProyek[1]->nama_file, -4) == 'xlsx'): ?>
                     <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[1]->nama_file); ?>">Download</a>
+                <?php elseif (substr($fileProyek[1]->nama_file, -3) == 'doc' || substr($fileProyek[1]->nama_file, -4) == 'docx'): ?>
+                    <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[1]->nama_file); ?>">Download</a>
                 <?php elseif (substr($fileProyek[1]->nama_file, -3) == 'mp4' || substr($fileProyek[1]->nama_file, -3) == 'mkv'): ?>
                     <video controls width="250">
                     <source src="<?php echo $fileProyek[1]->nama_file; ?>" type="video/webm">
@@ -94,6 +98,8 @@
                 <?php if (substr($fileProyek[2]->nama_file, -3) == 'pdf') : ?>
                     <a class="btn btn-success" onclick="openTab2()">Lihat</a>
                 <?php elseif (substr($fileProyek[2]->nama_file, -3) == 'xls' || substr($fileProyek[2]->nama_file, -4) == 'xlsx'): ?>
+                    <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[2]->nama_file); ?>">Download</a>
+                <?php elseif (substr($fileProyek[2]->nama_file, -3) == 'doc' || substr($fileProyek[2]->nama_file, -4) == 'docx'): ?>
                     <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$fileProyek[2]->nama_file); ?>">Download</a>
                 <?php elseif (substr($fileProyek[2]->nama_file, -3) == 'mp4' || substr($fileProyek[2]->nama_file, -3) == 'mkv'): ?>
                     <video controls width="250">
