@@ -70,33 +70,33 @@
     height:100px;
 ">
   <p class="text-7xl mb-5 text-center">WIKA Great Leader Class</p>
-    <div class="grid grid-rows-3 grid-flow-col gap-4">
-      <div class="row-span-3">
-        <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
-        Hadjar Seti Adji
-        Director of Human Capital and Development
-      </div>
-      <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Adityo-Kusumo-large-removebg-preview.png'); ?>">
-          Adityo Kusumo
-          Director of Finance and Risk Management
-      </div>
-      <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/agung-budi-Waskito-large-removebg-preview.png'); ?>">
-        Agung Budi Waskito
-        President Director
-      </div>
-      <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/Hananto-aji-large-removebg-preview.png'); ?>">
-          Hananto Aji
-          Director of Operation I
-      </div>
-      <div class="row-span-3">
-      <img class="object-cover h-45 w-80" src="<?php echo base_url('img/APR_3557-1-large-removebg-preview.png'); ?>">
-      Ayu Widya Kiswari
-Director of Quality, Health, Safety and Environment
-      </div>
-</div>
+  <div class="flex">
+    <div class="flex-initial w-70 text-center">
+      <img class="object-cover" src="<?php echo base_url('img/Hadjar-Seti-Adji-large-removebg-preview.png'); ?>">
+      <p>Hadjar Seti Adji</p>
+      <p>Director of Human Capital and Development</p>
+    </div>
+    <div class="flex-initial w-70 text-center">
+      <img class="object-cover" src="<?php echo base_url('img/Adityo-Kusumo-large-removebg-preview.png'); ?>">
+      <p>Adityo Kusumo</p>
+      <p>Director of Finance and Risk Management</p>
+    </div>
+    <div class="flex-initial w-70 text-center">
+      <img class="object-cover" src="<?php echo base_url('img/agung-budi-Waskito-large-removebg-preview.png'); ?>">
+      <p>Agung Budi Waskito</p>
+      <p>President Director</p>
+    </div>
+    <div class="flex-initial w-70 text-center">
+      <img class="object-cover" src="<?php echo base_url('img/Hananto-aji-large-removebg-preview.png'); ?>">
+      <p>Hananto Aji</p>
+      <p>Director of Operation I</p>
+    </div>
+    <div class="flex-initial w-70 text-center">
+      <img class="object-cover" src="<?php echo base_url('img/APR_3557-1-large-removebg-preview.png'); ?>">
+      <p>Ayu Widya Kiswari</p>
+      <p>Director of Quality, Health, Safety and Environment</p>
+    </div>
+  </div>
   </div>
 </div>
 </body>
