@@ -20,6 +20,7 @@ class AuthController extends BaseController
                 $ses_data = [
                     'id' => $data['id'],
                     'name' => $data['name'],
+                    'role' => $data['role'],
                     'nip' => $data['nip'],
                     'isLoggedIn' => TRUE
                 ];

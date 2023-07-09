@@ -38,7 +38,7 @@ class User extends Migration
 			],
 			'role'      => [
 				'type'           => 'ENUM',
-				'constraint'     => ['Admin', 'Pegawai', 'PJ'],
+				'constraint'     => ['Admin', 'Pegawai', 'PJ', 'SU'],
 				'default'        => 'Admin',
 			],
 			'status'      => [

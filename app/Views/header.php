@@ -82,7 +82,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
       <img src="<?php echo base_url('dist/img/wika-seeklogo.com.png'); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Data Center</span>
     </a>
 
     <!-- Sidebar -->
@@ -93,7 +93,7 @@
           <img src="<?php echo base_url('dist/img/user-icon.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo session()->get('name'); ?></a>
+          <a href="#" class="d-block"><?php echo session()->get('role'); ?></a>
         </div>
       </div>
 
@@ -108,24 +108,47 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Kelola Data Proyek</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Kelola Akun Pegawai</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('register-proyek') ?>" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Register Proyek</p>
-            </a>
-          </li>
+          <?php if (session()->get('role') === 'PJ') : ?>
+            <li class="nav-item">
+              <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Kelola Data Proyek</p>
+              </a>
+            </li>
+          <?php elseif (session()->get('role') === 'Admin'): ?>
+            <li class="nav-item">
+              <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Kelola Akun Pegawai</p>
+              </a>
+            </li>
+          <?php elseif (session()->get('role') === 'Pegawai'): ?>
+            <li class="nav-item">
+              <a href="<?= base_url('register-proyek') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Register Proyek</p>
+              </a>
+            </li>
+          <?php else : ?>
+            <li class="nav-item">
+              <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Kelola Akun Pegawai</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Kelola Akun Pegawai</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('register-proyek') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Register Proyek</p>
+              </a>
+            </li>
+          <?php endif; ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
