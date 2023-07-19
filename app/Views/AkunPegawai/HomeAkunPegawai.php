@@ -63,6 +63,7 @@
                         </thead>
                         <tbody>
                         <?php $i = 1; foreach ($users as $user): ?>
+                            <?php if ($user['role'] != 'SU') : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $user['nip'] ?></td>
@@ -79,6 +80,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            <?php endif; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
