@@ -93,7 +93,7 @@
           <img src="<?php echo base_url('dist/img/user-icon.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo session()->get('role'); ?></a>
+          <a href="#" class="d-block"><?php echo session()->get('name'); ?></a>
         </div>
       </div>
 
