@@ -116,4 +116,42 @@ class KelolaDataProyekController extends BaseController
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
         return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
     }
+
+    public function gantiKeterangan1($id)
+    {
+        $fileModel = new FileModel();
+        $keterangan1 = $this->request->getVar('keterangan1');
+        $id_proyek = $this->request->getVar('id_proyek');
+        $data = [
+            'keterangan'     => $keterangan1,
+        ];
+        $fileModel->changeDocument1($id, $data);
+        session()->setFlashdata('success', 'Dokumen berhasil diedit.');
+        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+    }
+    public function gantiKeterangan2($id)
+    {
+        $fileModel = new FileModel();
+        $keterangan2 = $this->request->getVar('keterangan2');
+        $id_proyek = $this->request->getVar('id_proyek');
+        $data = [
+            'keterangan'     => $keterangan2,
+        ];
+        $fileModel->changeDocument1($id, $data);
+        session()->setFlashdata('success', 'Dokumen berhasil diedit.');
+        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+    }
+
+    public function gantiKeterangan3($id)
+    {
+        $fileModel = new FileModel();
+        $keterangan3 = $this->request->getVar('keterangan3');
+        $id_proyek = $this->request->getVar('id_proyek');
+        $data = [
+            'keterangan'     => $keterangan3,
+        ];
+        $fileModel->changeDocument1($id, $data);
+        session()->setFlashdata('success', 'Dokumen berhasil diedit.');
+        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+    }
 }

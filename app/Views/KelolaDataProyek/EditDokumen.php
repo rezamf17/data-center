@@ -54,6 +54,15 @@
                     <button type="submit" class="btn btn-outline-primary">Ganti</button>
                 </form>
             </td>
+            <td>
+                <label>Keterangan</label>
+                <form action="<?php echo base_url('edit-keterangan1/'.$fileProyek[0]->id); ?>" method="post" enctype="multipart/form-data">
+                <?=csrf_field()?>
+                    <input type="hidden" value="<?php echo $fileProyek[0]->proyek_id; ?>" name="id_proyek" >
+                    <input type="text" class="form-control" name="keterangan1" value="<?php echo $fileProyek[0]->keterangan; ?>">
+                    <button type="submit" class="btn btn-outline-primary">Ganti Keterangan</button>
+                </form>
+            </td>
         </tr>
         <tr>
             <th>Dokumen 2</th>
@@ -91,6 +100,15 @@
                     <button type="submit" class="btn btn-outline-primary">Ganti</button>
             </form>
             </td>
+            <td>
+                <label>Keterangan</label>
+                <form action="<?php echo base_url('edit-keterangan2/'.$fileProyek[1]->id); ?>" method="post" enctype="multipart/form-data">
+                <?=csrf_field()?>
+                    <input type="hidden" value="<?php echo $fileProyek[0]->proyek_id; ?>" name="id_proyek" >
+                    <input type="text" class="form-control" name="keterangan2" value="<?php echo $fileProyek[1]->keterangan; ?>">
+                    <button type="submit" class="btn btn-outline-primary">Ganti Keterangan</button>
+                </form>
+            </td>
         </tr>
         <tr>
             <th>Dokumen 3</th>
@@ -127,6 +145,15 @@
                         <input type="hidden" value="<?php echo $fileProyek[0]->proyek_id; ?>" name="id_proyek" >
                         <button type="submit" class="btn btn-outline-primary">Ganti</button>
                 </form>
+            </td>
+            <td>
+                <form action="<?php echo base_url('edit-keterangan3/'.$fileProyek[2]->id); ?>" method="post" enctype="multipart/form-data">
+                <?=csrf_field()?>
+                <label>Keterangan</label>
+                    <input type="hidden" value="<?php echo $fileProyek[0]->proyek_id; ?>" name="id_proyek" >
+                    <input type="text" class="form-control" name="keterangan3" value="<?php echo $fileProyek[2]->keterangan; ?>">
+                    <button type="submit" class="btn btn-outline-primary">Ganti Keterangan</button>
+                </format>
             </td>
         </tr>
     </table>
