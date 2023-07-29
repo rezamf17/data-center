@@ -16,8 +16,8 @@ class User extends Migration
 				'auto_increment' => true
 			],
 			'nip'       => [
-				'type'           => 'INT',
-				'constraint'     => '16',
+				'type'           => 'VARCHAR',
+				'constraint'     => '20',
 				'unique'            => TRUE
 			],
 			'name'       => [

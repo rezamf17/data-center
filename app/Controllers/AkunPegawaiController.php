@@ -22,7 +22,7 @@ class AkunPegawaiController extends BaseController
     {
         helper(['form']);
         $rules = [
-            'nip'          => 'required|min_length[2]|max_length[50]',
+            'nip'          => 'required|min_length[10]|max_length[13]',
             'name'          => 'required|min_length[2]|max_length[50]',
             'email'         => 'required|min_length[4]|max_length[100]|valid_email',
             'nomor_hp'         => 'required|min_length[4]|max_length[100]',
@@ -63,7 +63,7 @@ class AkunPegawaiController extends BaseController
     {
         helper(['form']);
         $rules = [
-            'nip'          => 'required|min_length[2]|max_length[50]',
+            'nip'          => 'required|min_length[10]|max_length[13]',
             'name'          => 'required|min_length[2]|max_length[50]',
             'email'         => 'required|min_length[4]|max_length[100]|valid_email',
             'nomor_hp'         => 'required|min_length[4]|max_length[100]',
