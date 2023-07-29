@@ -50,15 +50,18 @@ class RegisterProyekController extends BaseController
             $document = [
                 [
                     'proyek_id' => $proyekModel->insertID(), 
-                    'nama_file' => $file1
+                    'nama_file' => $file1,
+                    'keterangan' => $this->request->getVar('keterangan1')
                 ],
                 [
                     'proyek_id' => $proyekModel->insertID(), 
-                    'nama_file' => $file2
+                    'nama_file' => $file2,
+                    'keterangan' => $this->request->getVar('keterangan2')
                 ],
                 [
                     'proyek_id' => $proyekModel->insertID(),
-                    'nama_file' => $file3
+                    'nama_file' => $file3,
+                    'keterangan' => $this->request->getVar('keterangan3')
                 ]
             ];
 

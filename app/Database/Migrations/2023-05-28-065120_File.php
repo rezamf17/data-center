@@ -24,6 +24,10 @@ class File extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
 			],
+			'keterangan'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => 255,
+			],
 		]);
         $this->forge->addKey('id', TRUE);
         $this->forge->addForeignKey('proyek_id', 'proyek', 'id', 'CASCADE', 'CASCADE');
