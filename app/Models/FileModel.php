@@ -7,7 +7,8 @@ class FileModel extends Model{
     
     protected $allowedFields = [
         'proyek_id',
-        'nama_file' 
+        'nama_file',
+        'keterangan' 
     ];
 
     public function insertData($data)

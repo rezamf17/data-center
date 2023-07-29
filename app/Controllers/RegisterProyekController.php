@@ -41,6 +41,9 @@ class RegisterProyekController extends BaseController
             $document1 = $this->request->getFile('document1');
             $document2 = $this->request->getFile('document2');
             $document3 = $this->request->getFile('document3');
+            $keterangan1 = $this->request->getVar('keterangan1');
+            $keterangan2 = $this->request->getVar('keterangan2');
+            $keterangan3 = $this->request->getVar('keterangan3');
             $file1 = $document1->getRandomName();
             $file2 = $document2->getRandomName();
             $file3 = $document3->getRandomName();
@@ -51,17 +54,17 @@ class RegisterProyekController extends BaseController
                 [
                     'proyek_id' => $proyekModel->insertID(), 
                     'nama_file' => $file1,
-                    'keterangan' => $this->request->getVar('keterangan1')
+                    'keterangan' => $keterangan1
                 ],
                 [
                     'proyek_id' => $proyekModel->insertID(), 
                     'nama_file' => $file2,
-                    'keterangan' => $this->request->getVar('keterangan2')
+                    'keterangan' => $keterangan2
                 ],
                 [
                     'proyek_id' => $proyekModel->insertID(),
                     'nama_file' => $file3,
-                    'keterangan' => $this->request->getVar('keterangan3')
+                    'keterangan' => $keterangan3
                 ]
             ];
 

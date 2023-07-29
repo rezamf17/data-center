@@ -36,6 +36,10 @@
                     <p>Format file tidak didukung atau file tidak ada</p>
                 <?php endif; ?>
             </td>
+            <td>
+                <label>Keterangan</label>
+                <?php echo $fileProyek[0]->keterangan; ?>
+            </td>
         </tr>
         <tr>
             <th>Dokumen 2</th>
@@ -64,6 +68,10 @@
                     <p>Format file tidak didukung atau file tidak ada</p>
                 <?php endif; ?>
             </td>
+            <td>
+                <label>Keterangan</label>
+                <?php echo $fileProyek[1]->keterangan; ?>
+            </td>
         </tr>
         <tr>
             <th>Dokumen 3</th>
@@ -91,6 +99,10 @@
                 <?php else: ?>
                     <p>Format file tidak didukung atau file tidak ada</p>
                 <?php endif; ?>
+            </td>
+            <td>
+                <label>Keterangan</label>
+                <?php echo $fileProyek[2]->keterangan; ?>
             </td>
         </tr>
     </table>
