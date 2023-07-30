@@ -47,6 +47,7 @@
                 <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
+                <a href="<?php echo base_url(); ?>tambah-data-proyek" class="btn btn-primary mb-3">Tambah</a>
                     <table id="example2" class="table table-bordered table-striped">
                     <thead>
                             <tr>
