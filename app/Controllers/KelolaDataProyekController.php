@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\ProyekModel;
 use App\Models\FileModel;
+use DateTime;
+use DateTimeZone;
 
 class KelolaDataProyekController extends BaseController
 {
@@ -45,12 +47,15 @@ class KelolaDataProyekController extends BaseController
         //validasi jika semua lolos validasi
         if($this->validate($rules)){
             //variabel array berisi data yg di inputkan dari halaman tambah data proyek
+            $tz = 'Asia/Jakarta';
+            $dt = new DateTime("now", new DateTimeZone($tz));
+            $timestamp = $dt->format('Y-m-d G:i:s');
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
                 'document_title'     => $this->request->getVar('document_title'),
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
-                'created'    => date("Y-m-d H:i:s"),
+                'created'    => $timestamp,
                 'industri'    => $this->request->getVar('industri'),
             ];
             $document1 = $this->request->getFile('document1');
@@ -117,7 +122,6 @@ class KelolaDataProyekController extends BaseController
             'document_title'          => 'required',
             'kategori_document'         => 'required',
             'deparment'      => 'required',
-            'tipe'  => 'required',
             'industri'  => 'required'
         ];
         $password = $this->request->getVar('confirmpassword');
@@ -128,7 +132,6 @@ class KelolaDataProyekController extends BaseController
                 'document_title'     => $this->request->getVar('document_title'),
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
-                'tipe'    => $this->request->getVar('tipe'),
                 'industri'    => $this->request->getVar('industri'),
             ];
             $proyekModel = new ProyekModel();

@@ -31,15 +31,23 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Department</label>
-      <input type="text" class="form-control" placeholder="Masukan Deparment" name="deparment" value="<?php echo $proyek['deparment']; ?>" required>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Tipe</label>
-      <input type="text" class="form-control" placeholder="Masukan Tipe" name="tipe" value="<?php echo $proyek['tipe']; ?>" required>
+      <select name="deparment" class="form-control" required>
+        <option value="">Pilih Deparment</option>
+        <option value="Building" <?php if($proyek['deparment'] == "Building") echo "selected"; ?>>Building</option>
+        <option value="Bim dan Riset" <?php if($proyek['deparment'] == "Bim dan Riset") echo "selected"; ?>>Bim dan Riset</option>
+        <option value="Infrastruktur" <?php if($proyek['deparment'] == "Infrastruktur") echo "selected"; ?>>Infrastruktur</option>
+        <option value="EPCC" <?php if($proyek['deparment'] == "EPCC") echo "selected"; ?>>EPCC</option>
+        <option value="Knowledge Management" <?php if($proyek['deparment'] == "Knowledge Management") echo "selected"; ?>>Knowledge Management</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Industri</label>
-      <input type="text" class="form-control" placeholder="Masukan Industri" name="industri" value="<?php echo $proyek['industri']; ?>" required>
+      <select name="industri" class="form-control" required>
+        <option value="">Pilih Industri</option>
+        <option value="On-Going" <?php if($proyek['industri'] == "On-Going") echo "selected"; ?>>On-Going</option>
+        <option value="Hold" <?php if($proyek['industri'] == "Hold") echo "selected"; ?>>Hold</option>
+        <option value="Finish" <?php if($proyek['industri'] == "Finish") echo "selected"; ?>>Finish</option>
+      </select>
     </div>
   </div>
   <div class="card-footer">

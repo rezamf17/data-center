@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\ProyekModel;
 use App\Models\FileModel;
+use DateTime;
+use DateTimeZone;
 
 class RegisterProyekController extends BaseController
 {
@@ -29,12 +31,15 @@ class RegisterProyekController extends BaseController
             'industri'  => 'required'
         ];
         if($this->validate($rules)){
+            $tz = 'Asia/Jakarta';
+            $dt = new DateTime("now", new DateTimeZone($tz));
+            $timestamp = $dt->format('Y-m-d G:i:s');
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
                 'document_title'     => $this->request->getVar('document_title'),
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
-                'created'    => date("Y-m-d H:i:s"),
+                'created'    => $timestamp,
                 'industri'    => $this->request->getVar('industri'),
             ];
             $document1 = $this->request->getFile('document1');
