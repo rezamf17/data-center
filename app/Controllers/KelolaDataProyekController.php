@@ -6,27 +6,34 @@ use App\Models\FileModel;
 
 class KelolaDataProyekController extends BaseController
 {
+    //function untuk tampilan halaman kelola data proyek
     public function index()
     {
         $proyekModel = new ProyekModel();
+        //variabel data merupakan semua data yang ada pada tabel proyek
         $data['proyek'] = $proyekModel->getAll();
         return view('KelolaDataProyek/HomeKelolaDataProyek', $data);
     }
 
+    //function untuk menampikan halaman edit
     public function editView($id)
     {
         $proyekModel = new ProyekModel();
+        //variabel data merupakan pemilihan data proyek berdasarkan id yg dipilih
         $data['proyek'] = $proyekModel->find($id);
         return view('KelolaDataProyek/EditKelolaDataProyek', $data);
     }
 
+    // function untuk menampilkan halaman tambah data proyek
     public function tambahProyek()
     {
         return view('KelolaDataProyek/TambahKelolaDataProyek');
     }
 
+    //function untuk menambahkan sebuah proyek
     public function tambahDataProyek()
     {
+        //validasi
         helper(['form']);
         $rules = [
             'nama_proyek'          => 'required',
@@ -36,7 +43,9 @@ class KelolaDataProyekController extends BaseController
             'tipe'  => 'required',
             'industri'  => 'required'
         ];
+        //validasi jika semua lolos validasi
         if($this->validate($rules)){
+            //variabel array berisi data yg di inputkan dari halaman tambah data proyek
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
                 'document_title'     => $this->request->getVar('document_title'),
@@ -57,6 +66,8 @@ class KelolaDataProyekController extends BaseController
             $db = db_connect('default');
             $proyekModel = new ProyekModel();
             $proyekModel->insertData($data);
+            
+            //variabel array document merupakan data yg akan di insert ke dalam table file
             $document = [
                 [
                     'proyek_id' => $proyekModel->insertID(), 
@@ -77,6 +88,7 @@ class KelolaDataProyekController extends BaseController
 
             $fileModel = new FileModel();
             $fileModel->insertBatch($document);
+            //move merupakan pemindahan file yg di upload kedalam aplikasi web data center
             $document1->move('Uploads/', $file1);
             if ($document2->isValid()) {
                 $document2->move('Uploads/', $file2);
@@ -87,6 +99,7 @@ class KelolaDataProyekController extends BaseController
             session()->setFlashdata('success', 'Proyek berhasil ditambahkan.');
             return redirect()->to('kelola-data-proyek');
         }else{
+            //validasi kondisi ketika tidak masuk validasi
             $data['validation'] = $this->validator;
             $proyekModel = new ProyekModel();
             $data['proyek'] = $proyekModel->getAll();
@@ -94,8 +107,11 @@ class KelolaDataProyekController extends BaseController
         }
     }
 
+    //function untuk update data proyek
     public function editProyek($id)
     {
+
+        // validasi
         helper(['form']);
         $rules = [
             'nama_proyek'          => 'required',
@@ -107,6 +123,7 @@ class KelolaDataProyekController extends BaseController
         ];
         $password = $this->request->getVar('confirmpassword');
         if($this->validate($rules)){
+            // array data untuk inputan data yg akan di update
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
                 'document_title'     => $this->request->getVar('document_title'),
@@ -126,14 +143,14 @@ class KelolaDataProyekController extends BaseController
             echo view('KelolaDataProyek/EditKelolaDataProyek', $data);
         }
     }
-
+    // function untuk menampilkan halaman edit dokumen
     public function editViewDocument($id)
     {
         $fileModel = new FileModel();
         $data['fileProyek'] = $fileModel->viewDoc($id);
         return view('KelolaDataProyek/EditDokumen', $data);
     }
-
+    // functio untuk menghapus proyek
     public function deleteProyek($id)
     {
         $proyekModel = new ProyekModel();
@@ -143,6 +160,7 @@ class KelolaDataProyekController extends BaseController
         return redirect()->to(base_url('kelola-data-proyek'));
     }
 
+    //function untuk ganti dokumen 1
     public function gantiDokumen1($id)
     {
         $fileModel = new FileModel();
@@ -191,6 +209,7 @@ class KelolaDataProyekController extends BaseController
         return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
     }
 
+    //function untuk ganti keterangan 1
     public function gantiKeterangan1($id)
     {
         $fileModel = new FileModel();
