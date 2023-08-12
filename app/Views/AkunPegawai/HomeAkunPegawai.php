@@ -48,7 +48,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="<?php echo base_url(); ?>tambah-akun-pegawai" class="btn btn-primary mb-3">Tambah</a>
-                    <table id="example2" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
