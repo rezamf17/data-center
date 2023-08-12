@@ -31,9 +31,8 @@ class Proyek extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
 			],
-			'tipe' => [
-				'type'           => 'VARCHAR',
-				'constraint'     => 100,
+			'created' => [
+				'type'           => 'DATETIME'
 			],
 			'industri' => [
 				'type'           => 'VARCHAR',

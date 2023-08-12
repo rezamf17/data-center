@@ -56,7 +56,7 @@
                                 <th>Document Title</th>
                                 <th>Kategori Document</th>
                                 <th>Departmen</th>
-                                <th>Tipe</th>
+                                <th>Tanggal Masuk Proyek</th>
                                 <th>Industri</th>
                                 <th>Aksi</th>
                             </tr>
@@ -69,7 +69,7 @@
                                 <td><?= $item['document_title'] ?></td>
                                 <td><?= $item['kategori_document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
-                                <td><?= $item['tipe'] ?></td>
+                                <td><?= $item['created'] ?></td>
                                 <td><?= $item['industri'] ?></td>
                                 <td>
                                     <a href="<?= base_url('edit-kelola-data-proyek/'.$item['id']) ?>" class="btn btn-success">Edit</a>

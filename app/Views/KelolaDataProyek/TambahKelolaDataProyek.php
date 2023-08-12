@@ -68,15 +68,23 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Deparment</label>
-      <input type="text" class="form-control" placeholder="Masukan Deparment" name="deparment" required>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Tipe</label>
-      <input type="text" class="form-control" placeholder="Masukan Tipe" name="tipe" required>
+      <select name="deparment" class="form-control" required>
+        <option value="">Pilih Deparment</option>
+        <option value="Building">Building</option>
+        <option value="Bim dan Riset">Bim dan Riset</option>
+        <option value="Infrastruktur">Infrastruktur</option>
+        <option value="EPCC">EPCC</option>
+        <option value="Knowledge Management">Knowledge Management</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Industri</label>
-      <input type="text" class="form-control" placeholder="Masukan Industri" name="industri" required>
+      <select name="industri" class="form-control" required>
+        <option value="">Pilih Industri</option>
+        <option value="On-Going">On-Going</option>
+        <option value="Hold">Hold</option>
+        <option value="Finish">Finish</option>
+      </select>
     </div>
   </div>
   <div class="card-footer">

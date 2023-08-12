@@ -26,7 +26,6 @@ class RegisterProyekController extends BaseController
             'document_title'          => 'required',
             'kategori_document'         => 'required',
             'deparment'      => 'required',
-            'tipe'  => 'required',
             'industri'  => 'required'
         ];
         if($this->validate($rules)){
@@ -35,7 +34,7 @@ class RegisterProyekController extends BaseController
                 'document_title'     => $this->request->getVar('document_title'),
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
-                'tipe'    => $this->request->getVar('tipe'),
+                'created'    => date("Y-m-d H:i:s"),
                 'industri'    => $this->request->getVar('industri'),
             ];
             $document1 = $this->request->getFile('document1');
