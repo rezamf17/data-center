@@ -19,7 +19,12 @@
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Kategori Document</label>
-      <input type="text" class="form-control" placeholder="Masukan Kategori Document" name="kategori_document" required>
+      <select name="kategori_document" class="form-control" required>
+        <option value="">Pilih Kategori Document</option>
+        <option value="On-Going">On-Going</option>
+        <option value="Hold">Hold</option>
+        <option value="Finish">Finish</option>
+      </select>
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Dokumen 1 (format : .xls, .xlsx, .pdf, .docx, .doc, .jpg, .png, .mp4, .mkv)</label>
@@ -78,13 +83,8 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Industri</label>
-      <select name="industri" class="form-control" required>
-        <option value="">Pilih Industri</option>
-        <option value="On-Going">On-Going</option>
-        <option value="Hold">Hold</option>
-        <option value="Finish">Finish</option>
-      </select>
+      <label for="exampleInputPassword1">Tempat Proyek</label>
+      <input type="text" class="form-control" name="industri" required placeholder="Tempat Proyek">
     </div>
   </div>
   <div class="card-footer">

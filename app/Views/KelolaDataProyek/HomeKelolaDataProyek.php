@@ -57,7 +57,7 @@
                                 <th>Kategori Document</th>
                                 <th>Departmen</th>
                                 <th>Tanggal Masuk Proyek</th>
-                                <th>Industri</th>
+                                <th>Tempat Proyek</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

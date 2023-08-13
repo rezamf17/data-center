@@ -19,7 +19,12 @@
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Kategori Document</label>
-      <input type="text" class="form-control" placeholder="Masukan Kategori Document" name="kategori_document" value="<?php echo $proyek['kategori_document']; ?>" required>
+      <select name="kategori_document" class="form-control" required>
+        <option value="">Pilih Kategori Document</option>
+        <option value="On-Going" <?php if($proyek['kategori_document'] == "On-Going") echo "selected"; ?>>On-Going</option>
+        <option value="Hold" <?php if($proyek['kategori_document'] == "Hold") echo "selected"; ?>>Hold</option>
+        <option value="Finish" <?php if($proyek['kategori_document'] == "Finish") echo "selected"; ?>>Finish</option>
+      </select>
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Dokumen (format : .xls, .pdf, .docx, dan .doc)</label>
@@ -41,13 +46,8 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Industri</label>
-      <select name="industri" class="form-control" required>
-        <option value="">Pilih Industri</option>
-        <option value="On-Going" <?php if($proyek['industri'] == "On-Going") echo "selected"; ?>>On-Going</option>
-        <option value="Hold" <?php if($proyek['industri'] == "Hold") echo "selected"; ?>>Hold</option>
-        <option value="Finish" <?php if($proyek['industri'] == "Finish") echo "selected"; ?>>Finish</option>
-      </select>
+      <label for="exampleInputPassword1">Tempat Proyek</label>
+      <input type="text" class="form-control" placeholder="Masukan Tempat Proyek" name="industri" value="<?php echo $proyek['industri']; ?>" required>
     </div>
   </div>
   <div class="card-footer">
