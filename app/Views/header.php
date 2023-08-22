@@ -115,6 +115,12 @@
                 <p>Kelola Data Proyek</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?= base_url('register-proyek') ?>" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Register Proyek</p>
+              </a>
+            </li>
           <?php elseif (session()->get('role') === 'Admin'): ?>
             <li class="nav-item">
               <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
