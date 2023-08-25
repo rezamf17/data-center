@@ -40,6 +40,7 @@
           <option value="Admin">Admin</option>
           <option value="Pegawai">Pegawai</option>
           <option value="PJ">PJ Proyek</option>
+          <option value="Member">Member Proyek</option>
       </select>
     </div>
     <div class="form-group">

@@ -108,7 +108,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <?php if (session()->get('role') === 'PJ') : ?>
+          <?php if (session()->get('role') === 'PJ' && session()->get('role') === 'Member')  : ?>
             <li class="nav-item">
               <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>
