@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wika Data Center</title>
-
+  <link rel="icon" href="<?php echo base_url('dist/img/wika-seeklogo.com.png'); ?>" type="image/gif">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -90,7 +90,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo base_url('dist/img/user-icon.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo base_url('dist/img/icons8-customer-48.png'); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo session()->get('name'); ?></a>
@@ -104,53 +104,53 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="<?= base_url('dashboard') ?>" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'Member')  : ?>
             <li class="nav-item">
               <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-building"></i>
                 <p>Kelola Data Proyek</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-folder-plus"></i>
                 <p>Register Proyek</p>
               </a>
             </li>
           <?php elseif (session()->get('role') === 'Admin'): ?>
             <li class="nav-item">
               <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+                <i class="nav-icon fas fa-users"></i>
                 <p>Kelola Akun Pegawai</p>
               </a>
             </li>
           <?php elseif (session()->get('role') === 'Pegawai'): ?>
             <li class="nav-item">
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-folder-plus"></i>
                 <p>Register Proyek</p>
               </a>
             </li>
           <?php else : ?>
             <li class="nav-item">
               <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-building"></i>
                 <p>Kelola Data Proyek</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url('akun-pegawai') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+                <i class="nav-icon fas fa-users"></i>
                 <p>Kelola Akun Pegawai</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-folder-plus"></i>
                 <p>Register Proyek</p>
               </a>
             </li>
