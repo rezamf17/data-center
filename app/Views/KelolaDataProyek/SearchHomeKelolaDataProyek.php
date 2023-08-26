@@ -21,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="card card-default">
+            <div class="card">
                 <div class="card-header">Filter Data Proyek</div>
                 <div class="card-body">
                 <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" enctype="multipart/form-data">
@@ -99,7 +99,7 @@
                 <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <a href="<?php echo base_url(); ?>tambah-data-proyek" class="btn btn-primary mb-3">Tambah</a>
+                <!-- <a href="<?php echo base_url(); ?>tambah-data-proyek" class="btn btn-primary mb-3">Tambah</a> -->
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                             <tr>

@@ -89,7 +89,7 @@
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-outline-primary">Simpan</button>
-    <a href="<?php echo base_url(); ?>register-proyek" class="btn btn-outline-secondary float-right">Kembali</a>
+    <a href="<?php echo base_url(); ?>kelola-data-proyek" class="btn btn-outline-secondary float-right">Kembali</a>
   </div>
 </form>
 </div>

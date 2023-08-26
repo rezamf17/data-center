@@ -25,6 +25,41 @@ class ProyekModel extends Model{
         return $this->findAll();
     }
 
+    public function getSearch($nama_proyek = null, $document_title = null, $kategori_document = null, $start_date = null, $end_date = null, $industri = null)
+    {
+        // Membuat array dengan kolom yang akan digunakan dalam pencarian
+        $searchData = [];
+            
+        if ($nama_proyek !== null) {
+            $searchData['nama_proyek'] = $nama_proyek;
+        }
+
+        if ($document_title !== null) {
+            $searchData['document_title'] = $document_title;
+        }
+
+        if ($kategori_document !== null) {
+            $searchData['kategori_document'] = $kategori_document;
+        }
+
+        if ($industri !== null) {
+            $searchData['industri'] = $industri;
+        }
+
+        // Melakukan pencarian berdasarkan data yang sesuai
+        $query = $this->db->table('proyek'); // Ganti 'nama_tabel_anda' dengan nama tabel Anda
+        $query->like($searchData);
+        if ($start_date !== null && $end_date !== null) {
+            $query->where("created >=", $start_date);
+            $query->where("created <=", $end_date);
+        }
+
+        // print_r($query);exit();
+
+        // Eksekusi query dan mengembalikan hasilnya
+        return $query->get()->getResultArray();
+    }
+
     public function updateProyek($id, $data)
     {
         $this->where('id', $id)->set($data)->update();

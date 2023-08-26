@@ -17,6 +17,26 @@ class KelolaDataProyekController extends BaseController
         return view('KelolaDataProyek/HomeKelolaDataProyek', $data);
     }
 
+    public function searchProyek()
+    {
+        // Menerima kriteria pencarian dari form
+        $nama_proyek = $this->request->getPost('nama_proyek');
+        $document_title = $this->request->getPost('document_title');
+        $kategori_document = $this->request->getPost('kategori_document');
+        $startdate = $this->request->getPost('startdate');
+        $enddate = $this->request->getPost('enddate');
+        $industri = $this->request->getPost('industri');
+
+        // Membuat instance model
+        $model = new ProyekModel();
+
+        // Mengambil data berdasarkan kriteria pencarian
+        $data['proyek'] = $model->getSearch($nama_proyek, $document_title, $kategori_document, $startdate, $enddate, $industri);
+        // print_r($startdate);exit();
+        // Menampilkan hasil pencarian ke tampilan
+        return view('KelolaDataProyek/SearchHomeKelolaDataProyek', $data);
+    }
+
     //function untuk menampikan halaman edit
     public function editView($id)
     {
