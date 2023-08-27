@@ -28,35 +28,35 @@
                 <?=csrf_field()?>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Nama Proyek</label>
-                    <input type="text" class="form-control" placeholder="Masukan Nama Proyek" name="nama_proyek">
+                    <input type="text" class="form-control" placeholder="Masukan Nama Proyek" name="nama_proyek" value="<?php echo $proyekView['nama_proyek']; ?>">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Document Title</label>
-                    <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title">
+                    <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title" value="<?php echo $proyekView['document_title']; ?>">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Kategori Document</label>
                     <select name="kategori_document" class="form-control">
                         <option value="">Pilih Kategori Document</option>
-                        <option value="On-Going">On-Going</option>
-                        <option value="Hold">Hold</option>
-                        <option value="Finish">Finish</option>
+                        <option value="On-Going" <?php if($proyekView['kategori_document'] == "On-Going") echo "selected"; ?>>On-Going</option>
+                        <option value="Hold" <?php if($proyekView['kategori_document'] == "Hold") echo "selected"; ?>>Hold</option>
+                        <option value="Finish" <?php if($proyekView['kategori_document'] == "Finish") echo "selected"; ?>>Finish</option>
                     </select>
                     </div>
                     <div class="form-group">
                     <label for="exampleInputPassword1">Deparment</label>
                     <select name="deparment" class="form-control" >
                         <option value="">Pilih Deparment</option>
-                        <option value="Building">Building</option>
-                        <option value="Bim dan Riset">Bim dan Riset</option>
-                        <option value="Infrastruktur">Infrastruktur</option>
-                        <option value="EPCC">EPCC</option>
-                        <option value="Knowledge Management">Knowledge Management</option>
+                        <option value="Building" <?php if($proyekView['deparment'] == "Building") echo "selected"; ?>>Building</option>
+                        <option value="Bim dan Riset" <?php if($proyekView['deparment'] == "Bim dan Riset") echo "selected"; ?>>Bim dan Riset</option>
+                        <option value="Infrastruktur" <?php if($proyekView['deparment'] == "Infrastruktur") echo "selected"; ?>>Infrastruktur</option>
+                        <option value="EPCC" <?php if($proyekView['deparment'] == "EPCC") echo "selected"; ?>>EPCC</option>
+                        <option value="Knowledge Management" <?php if($proyekView['deparment'] == "Knowledge Management") echo "selected"; ?>>Knowledge Management</option>
                     </select>
                     </div>
                     <div class="form-group">
                     <label for="exampleInputPassword1">Tempat Proyek</label>
-                    <input type="text" class="form-control" name="industri" placeholder="Tempat Proyek">
+                    <input type="text" class="form-control" name="industri" placeholder="Tempat Proyek" value="<?php echo $proyekView['industri']; ?>">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputPassword1">Tanggal Mulai</label>
@@ -134,6 +134,16 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export/search" method="POST">
+                        <input type="hidden" name="nama_proyek" value="<?php echo $proyekView['nama_proyek']; ?>">
+                        <input type="hidden" name="document_title" value="<?php echo $proyekView['document_title']; ?>">
+                        <input type="hidden" name="kategori_document" value="<?php echo $proyekView['kategori_document']; ?>">
+                        <input type="hidden" name="deparment" value="<?php echo $proyekView['deparment']; ?>">
+                        <input type="hidden" name="startdate" value="<?php echo $proyekView['startdate']; ?>">
+                        <input type="hidden" name="enddate" value="<?php echo $proyekView['enddate']; ?>">
+                        <input type="hidden" name="industri" value="<?php echo $proyekView['industri']; ?>">
+                        <button type="submit" >Export Excel</button>
+                    </form>
                     <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->

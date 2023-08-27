@@ -25,36 +25,40 @@ class ProyekModel extends Model{
         return $this->findAll();
     }
 
-    public function getSearch($nama_proyek = null, $document_title = null, $kategori_document = null, $start_date = null, $end_date = null, $industri = null)
+    public function getSearch($nama_proyek = null, $document_title = null, $kategori_document = null, $departmen = null, $start_date = null, $end_date = null, $industri = null)
     {
         // Membuat array dengan kolom yang akan digunakan dalam pencarian
         $searchData = [];
             
-        if ($nama_proyek !== null) {
+        if ($nama_proyek !== "") {
             $searchData['nama_proyek'] = $nama_proyek;
         }
 
-        if ($document_title !== null) {
+        if ($document_title !== "") {
             $searchData['document_title'] = $document_title;
         }
 
-        if ($kategori_document !== null) {
+        if ($kategori_document !== "") {
             $searchData['kategori_document'] = $kategori_document;
         }
 
-        if ($industri !== null) {
+        if ($industri !== "") {
             $searchData['industri'] = $industri;
+        }
+
+        if ($departmen !== "") {
+            $searchData['deparment'] = $departmen;
         }
 
         // Melakukan pencarian berdasarkan data yang sesuai
         $query = $this->db->table('proyek'); // Ganti 'nama_tabel_anda' dengan nama tabel Anda
         $query->like($searchData);
-        if ($start_date !== null && $end_date !== null) {
+        if ($start_date !== "" && $end_date !== "") {
             $query->where("created >=", $start_date);
             $query->where("created <=", $end_date);
         }
 
-        // print_r($query);exit();
+        // print_r($query->getCompiledSelect());exit();
 
         // Eksekusi query dan mengembalikan hasilnya
         return $query->get()->getResultArray();

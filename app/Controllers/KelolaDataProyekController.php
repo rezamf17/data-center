@@ -25,6 +25,7 @@ class KelolaDataProyekController extends BaseController
         $nama_proyek = $this->request->getPost('nama_proyek');
         $document_title = $this->request->getPost('document_title');
         $kategori_document = $this->request->getPost('kategori_document');
+        $departmen = $this->request->getPost('deparment');
         $startdate = $this->request->getPost('startdate');
         $enddate = $this->request->getPost('enddate');
         $industri = $this->request->getPost('industri');
@@ -33,7 +34,15 @@ class KelolaDataProyekController extends BaseController
         $model = new ProyekModel();
 
         // Mengambil data berdasarkan kriteria pencarian
-        $data['proyek'] = $model->getSearch($nama_proyek, $document_title, $kategori_document, $startdate, $enddate, $industri);
+        $data['proyek'] = $model->getSearch($nama_proyek, $document_title, $kategori_document, $departmen, $startdate, $enddate, $industri);
+        $data['proyekView'] = [
+            'nama_proyek'=>$nama_proyek, 
+            'document_title'=>$document_title, 
+            'kategori_document'=>$kategori_document,
+            'deparment'=>$departmen,
+            'startdate'=>$startdate, 
+            'enddate' => $enddate, 
+            'industri'=>$industri];
         // print_r($startdate);exit();
         // Menampilkan hasil pencarian ke tampilan
         return view('KelolaDataProyek/SearchHomeKelolaDataProyek', $data);
@@ -276,6 +285,60 @@ class KelolaDataProyekController extends BaseController
     {
         $model = new ProyekModel();
         $dataModel = $model->getAll();
+
+        $spreadsheet = new Spreadsheet();
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+                    ->setCellValue('A1', 'Nama Proyek')
+                    ->setCellValue('B1', 'Document Title')
+                    ->setCellValue('C1', 'Kategori Document')
+                    ->setCellValue('D1', 'Department')
+                    ->setCellValue('E1', 'Tanggal Masuk Proyek')
+                    ->setCellValue('F1', 'Tempat Proyek');
+        
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach($dataModel as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . $column, $data['nama_proyek'])
+                        ->setCellValue('B' . $column, $data['document_title'])
+                        ->setCellValue('C' . $column, $data['kategori_document'])
+                        ->setCellValue('D' . $column, $data['deparment'])
+                        ->setCellValue('E' . $column, $data['created'])
+                        ->setCellValue('F' . $column, $data['industri']);
+            $column++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Laporan Proyek';
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+    }
+
+    public function exportExcelSearch()
+    {
+                // Menerima kriteria pencarian dari form
+        $nama_proyek = $this->request->getPost('nama_proyek');
+        $document_title = $this->request->getPost('document_title');
+        $kategori_document = $this->request->getPost('kategori_document');
+        $deparment = $this->request->getPost('deparment');
+        $startdate = $this->request->getPost('startdate');
+        $enddate = $this->request->getPost('enddate');
+        $industri = $this->request->getPost('industri');
+
+        // Membuat instance model
+        $model = new ProyekModel();
+        if ($startdate == null || $enddate == "null") {
+            $startdate = "";
+            $enddate = "";
+        }
+        // Mengambil data berdasarkan kriteria pencarian
+        $dataModel = $model->getSearch($nama_proyek, $document_title, $kategori_document, $deparment, $startdate, $enddate, $industri);
 
         $spreadsheet = new Spreadsheet();
         // tulis header/nama kolom 
