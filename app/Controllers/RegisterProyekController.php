@@ -20,6 +20,35 @@ class RegisterProyekController extends BaseController
         return view('RegisterProyek/TambahRegisterProyek');
     }
 
+    public function searchProyek()
+    {
+        // Menerima kriteria pencarian dari form
+        $nama_proyek = $this->request->getPost('nama_proyek');
+        $document_title = $this->request->getPost('document_title');
+        $kategori_document = $this->request->getPost('kategori_document');
+        $departmen = $this->request->getPost('deparment');
+        $startdate = $this->request->getPost('startdate');
+        $enddate = $this->request->getPost('enddate');
+        $industri = $this->request->getPost('industri');
+
+        // Membuat instance model
+        $model = new ProyekModel();
+
+        // Mengambil data berdasarkan kriteria pencarian
+        $data['proyek'] = $model->getSearch($nama_proyek, $document_title, $kategori_document, $departmen, $startdate, $enddate, $industri);
+        $data['proyekView'] = [
+            'nama_proyek'=>$nama_proyek, 
+            'document_title'=>$document_title, 
+            'kategori_document'=>$kategori_document,
+            'deparment'=>$departmen,
+            'startdate'=>$startdate, 
+            'enddate' => $enddate, 
+            'industri'=>$industri];
+        // print_r($startdate);exit();
+        // Menampilkan hasil pencarian ke tampilan
+        return view('RegisterProyek/SearchRegisterProyek', $data);
+    }
+
     public function postRegisterProyek()
     {
         helper(['form']);
