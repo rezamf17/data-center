@@ -5,6 +5,8 @@ use App\Models\ProyekModel;
 use App\Models\FileModel;
 use DateTime;
 use DateTimeZone;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class KelolaDataProyekController extends BaseController
 {
@@ -268,5 +270,46 @@ class KelolaDataProyekController extends BaseController
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
         return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+    }
+
+    public function exportExcel()
+    {
+        $model = new ProyekModel();
+        $dataModel = $model->getAll();
+
+        $spreadsheet = new Spreadsheet();
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+                    ->setCellValue('A1', 'Nama Proyek')
+                    ->setCellValue('B1', 'Document Title')
+                    ->setCellValue('C1', 'Kategori Document')
+                    ->setCellValue('D1', 'Department')
+                    ->setCellValue('E1', 'Tanggal Masuk Proyek')
+                    ->setCellValue('F1', 'Tempat Proyek');
+        
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach($dataModel as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . $column, $data['nama_proyek'])
+                        ->setCellValue('B' . $column, $data['document_title'])
+                        ->setCellValue('C' . $column, $data['kategori_document'])
+                        ->setCellValue('D' . $column, $data['deparment'])
+                        ->setCellValue('E' . $column, $data['created'])
+                        ->setCellValue('F' . $column, $data['industri']);
+            $column++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Laporan Proyek';
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        // session()->setFlashdata('success', 'Export Excel Berhahasil.');
+        // return redirect()->to(base_url('kelola-data-proyek'));
     }
 }

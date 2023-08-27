@@ -135,6 +135,9 @@
                         </tbody>
                     </table>
                     <!-- /.row -->
+                    <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export" method="POST">
+                        <button type="submit" >Export Excel</button>
+                    </form>
                 </div>
                 <!-- /.container-fluid -->
     </section>
