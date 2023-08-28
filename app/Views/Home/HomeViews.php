@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<?php echo base_url('dist/img/wika-seeklogo.com.png'); ?>" type="image/gif">
     <link href="<?php echo base_url('tailwind/output.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('tailwind/vanilla.css'); ?>" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -25,7 +26,7 @@
                       <strong class="font-bold"><?= session()->getFlashdata('msg') ?></strong>
                     </div>
                 <?php endif;?>
-              <div class="font-bold text-md mb-2">Login to Your Account</div>
+              <div class="font-bold text-md mb-2">Login Wika Data Center</div>
               <input type="number" placeholder="NIP" name="nip" class="mt-1 mb-5 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
               focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
               disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
