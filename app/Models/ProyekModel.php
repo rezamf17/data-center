@@ -75,4 +75,28 @@ class ProyekModel extends Model{
         $builder->where('id', $id);
         $builder->delete();
     }
+
+    public function totalProyek()
+    {
+        $builder = $this->db->table('proyek');
+        return $builder->countAllResults();
+    }
+    public function totalProyekOnGoing()
+    {
+        $builder = $this->db->table('proyek');
+        $builder->where('kategori_document', 'On-Going');
+        return $builder->countAllResults();
+    }
+    public function totalProyekHold()
+    {
+        $builder = $this->db->table('proyek');
+        $builder->where('kategori_document', 'Hold');
+        return $builder->countAllResults();
+    }
+    public function totalProyekFinish()
+    {
+        $builder = $this->db->table('proyek');
+        $builder->where('kategori_document', 'Finish');
+        return $builder->countAllResults();
+    }
 }

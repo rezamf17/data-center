@@ -26,8 +26,67 @@
         <!-- Small boxes (Stat box) -->
         <p style="font-size: x-large;">Welcome, <?php echo session()->get('name'); ?> di Sistem Informasi Data Center</p>
 
-        <!-- /.row -->
-        <!-- Main row -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><?php echo $total; ?></h3>
+                <p>Total Proyek</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-home"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3><?php echo $totalOnGoing; ?></h3>
+
+                <p>Total Proyek On-Going</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-play"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><?php echo $totalHold; ?></h3>
+
+                <p>Total Proyek Hold</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pause"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3><?php echo $totalFinish; ?></h3>
+
+                <p>Total Proyek Finish</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-checkmark"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
         </div>
               <!-- /.card-body -->
   </div>
