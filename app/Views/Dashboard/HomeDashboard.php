@@ -87,6 +87,81 @@
           </div>
           <!-- ./col -->
         </div>
+        <div class="row">
+          <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><?php echo $totalAkun; ?></h3>
+                <p>Total Akun</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3><?php echo $totalAkunAdmin; ?></h3>
+
+                <p>Total Jabatan Admin</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><?php echo $totalAkunPegawai; ?></h3>
+
+                <p>Total Jabatan Pegawai</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3><?php echo $totalAkunPJProyek; ?></h3>
+
+                <p>Total Jabatan PJ Proyek</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3><?php echo $totalAkunMemberProyek; ?></h3>
+
+                <p>Total Jabatan Member Proyek</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
         </div>
               <!-- /.card-body -->
   </div>
