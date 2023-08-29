@@ -22,7 +22,17 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default">
-                <div class="card-header">Filter Data Proyek</div>
+                <div class="card-header">Filter Data Proyek
+                    <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                    </div>
+                </div>
+
                 <div class="card-body">
                 <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" enctype="multipart/form-data">
                 <?=csrf_field()?>
