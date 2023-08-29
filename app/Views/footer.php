@@ -27,7 +27,7 @@
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url('plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <!-- ChartJS -->
-<script src="<?php echo base_url('plugins/chart.js/Chart.min.js'); ?>"></script>
+
 <!-- Sparkline -->
 <script src="<?php echo base_url('plugins/sparklines/sparkline.js'); ?>"></script>
 <!-- JQVMap -->

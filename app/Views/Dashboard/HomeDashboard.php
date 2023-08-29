@@ -37,7 +37,6 @@
               <div class="icon">
                 <i class="ion ion-home"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -52,7 +51,6 @@
               <div class="icon">
                 <i class="ion ion-play"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -67,7 +65,6 @@
               <div class="icon">
                 <i class="ion ion-pause"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -82,7 +79,6 @@
               <div class="icon">
                 <i class="ion ion-checkmark"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -98,7 +94,6 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -113,7 +108,6 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -128,7 +122,6 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -143,7 +136,6 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
@@ -157,12 +149,144 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
         </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <!-- AREA CHART -->
+
+            <!-- DONUT CHART -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Proyek Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
               <!-- /.card-body -->
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="card card-danger">
+                <div class="card-header">
+                  <h3 class="card-title">Akun Chart</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+          </div>
+          <!-- /.col (LEFT) -->
+    <!-- /.content -->
   </div>
+  </div>
+  <script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url('plugins/chart.js/Chart.min.js'); ?>"></script>
+  <script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+
+
+    //-------------
+    //- DONUT CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var akunData        = {
+      labels: [
+          'On-Going',
+          'Hold',
+          'Finish',
+      ],
+      datasets: [
+        {
+          data: [
+            <?php echo $totalOnGoing; ?>,
+            <?php echo $totalHold; ?>,
+            <?php echo $totalFinish; ?>
+          ],
+          backgroundColor : ['#f56954', '#f39c12', '#00a65a'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: akunData,
+      options: donutOptions
+    })
+
+    var proyekData        = {
+      labels: [
+          'Admin',
+          'Pegawai',
+          'PJ Proyek',
+          'Member Proyek',
+      ],
+      datasets: [
+        {
+          data: [
+            <?php echo $totalAkunAdmin; ?>,
+            <?php echo $totalAkunPegawai; ?>,
+            <?php echo $totalAkunPJProyek; ?>,
+            <?php echo $totalAkunMemberProyek; ?>
+          ],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef'],
+        }
+      ]
+    }
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieData        = proyekData;
+    var pieOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions
+    })
+
+  })
+</script>
   <?php echo view('footer') ?>
