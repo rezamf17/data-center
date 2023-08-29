@@ -148,9 +148,15 @@
                     <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export" method="POST">
                         <button type="submit" >Export Excel</button>
                     </form>
+                    <a href="#" onClick="openExportPDF()" class="btn btn-danger">Export PDF</a>
                 </div>
                 <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
+<script>
+    function openExportPDF(){
+        window.open("<?php echo base_url(); ?>kelola-data-proyek/export/pdf");
+    }
+</script>
 <?php echo view('footer') ?>

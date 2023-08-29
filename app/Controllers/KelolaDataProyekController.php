@@ -375,4 +375,52 @@ class KelolaDataProyekController extends BaseController
         // session()->setFlashdata('success', 'Export Excel Berhahasil.');
         // return redirect()->to(base_url('kelola-data-proyek'));
     }
+
+    public function exportPDF()
+    {
+        $mpdf = new \Mpdf\Mpdf();
+        $proyekModel = new ProyekModel();
+        //variabel data merupakan semua data yang ada pada tabel proyek
+        $data['proyek'] = $proyekModel->getAll();
+		$html = view('KelolaDataProyek/ExportPDF', $data);
+		$mpdf->WriteHTML($html);
+		$this->response->setHeader('Content-Type', 'application/pdf');
+		$mpdf->Output('Laporan Data Proyek.pdf','I');
+    }
+
+    public function searchExportPDF()
+    {
+        // Mengambil data dari POST
+        $nama_proyek = $this->request->getPost('nama_proyek');
+        $document_title = $this->request->getPost('document_title');
+        $kategori_document = $this->request->getPost('kategori_document');
+        $departmen = $this->request->getPost('deparment');
+        $startdate = $this->request->getPost('startdate');
+        $enddate = $this->request->getPost('enddate');
+        $industri = $this->request->getPost('industri');
+
+        // Membuat instance model
+        $model = new ProyekModel();
+        $mpdf = new \Mpdf\Mpdf();
+        // Mengambil data berdasarkan kriteria pencarian
+        $data['proyek'] = $model->getSearch($nama_proyek, $document_title, $kategori_document, $departmen, $startdate, $enddate, $industri);
+
+        // Generate PDF menggunakan mPDF
+        $pdfFilePath = FCPATH . 'pdf_output.pdf'; // Lokasi penyimpanan file PDF
+
+        // Konfigurasi mPDF
+        $pdfConfig = [
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'P',
+        ];
+
+        // Load view yang akan di-render ke PDF
+        // $html = $this->load->view('KelolaDataProyek/SearchExportPDF', $data, true);
+        $html = view('KelolaDataProyek/ExportPDF', $data);
+
+		$mpdf->WriteHTML($html);
+		$this->response->setHeader('Content-Type', 'application/pdf');
+		$mpdf->Output('Laporan Data Proyek.pdf','I');
+    }
 }
