@@ -25,8 +25,10 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <p style="font-size: x-large;">Welcome, <?php echo session()->get('name'); ?> di Sistem Informasi Data Center</p>
-
-        <div class="row">
+        <?php if (session()->get('role') === 'Admin')  : ?>
+          <?php echo view('Dashboard/DashboardAdmin') ?>
+        <?php else : ?>
+           <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
@@ -199,6 +201,8 @@
                 <!-- /.card-body -->
             </div>
           </div>
+        <?php endif; ?>
+       
           <!-- /.col (LEFT) -->
     <!-- /.content -->
   </div>
