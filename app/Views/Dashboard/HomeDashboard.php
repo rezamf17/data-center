@@ -27,8 +27,10 @@
         <p style="font-size: x-large;">Welcome, <?php echo session()->get('name'); ?> di Sistem Informasi Data Center</p>
         <?php if (session()->get('role') === 'Admin')  : ?>
           <?php echo view('Dashboard/DashboardAdmin') ?>
+          <?php elseif (session()->get('role') === 'PJ' || session()->get('role') === 'Member' || session()->get('role') === 'Pegawai')  : ?>
+            <?php echo view('Dashboard/DashboardProyek') ?>
         <?php else : ?>
-           <div class="row">
+        <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
