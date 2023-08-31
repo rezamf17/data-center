@@ -134,6 +134,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'SU')  : ?>
                     <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export/search" method="POST">
                         <input type="hidden" name="nama_proyek" value="<?php echo $proyekView['nama_proyek']; ?>">
                         <input type="hidden" name="document_title" value="<?php echo $proyekView['document_title']; ?>">
@@ -154,6 +155,7 @@
                         <input type="hidden" name="industri" value="<?php echo $proyekView['industri']; ?>">
                         <button type="submit" >Export PDF</button>
                     </form>
+                    <?php endif; ?>
                     <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->

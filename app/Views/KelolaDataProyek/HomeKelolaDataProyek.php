@@ -145,10 +145,12 @@
                         </tbody>
                     </table>
                     <!-- /.row -->
-                    <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export" method="POST">
-                        <button type="submit" >Export Excel</button>
-                    </form>
-                    <a href="#" onClick="openExportPDF()" class="btn btn-danger">Export PDF</a>
+                    <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'SU')  : ?>
+                        <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export" method="POST">
+                            <button type="submit" >Export Excel</button>
+                        </form>
+                        <a href="#" onClick="openExportPDF()" class="btn btn-danger">Export PDF</a>
+                    <?php endif; ?>
                 </div>
                 <!-- /.container-fluid -->
     </section>
