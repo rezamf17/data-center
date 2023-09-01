@@ -145,7 +145,7 @@
                         <input type="hidden" name="industri" value="<?php echo $proyekView['industri']; ?>">
                         <button type="submit" >Export Excel</button>
                     </form>
-                    <form class="btn btn-danger" action="<?php echo base_url(); ?>kelola-data-proyek/export/pdf/search" method="POST">
+                    <form class="btn btn-danger" target="_blank" action="<?php echo base_url(); ?>kelola-data-proyek/export/pdf/search" method="POST">
                         <input type="hidden" name="nama_proyek" value="<?php echo $proyekView['nama_proyek']; ?>">
                         <input type="hidden" name="document_title" value="<?php echo $proyekView['document_title']; ?>">
                         <input type="hidden" name="kategori_document" value="<?php echo $proyekView['kategori_document']; ?>">

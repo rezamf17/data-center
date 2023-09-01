@@ -21,14 +21,11 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="card card-default">
+            <div class="card card-default" id="filter-card">
                 <div class="card-header">Filter Data Proyek
                     <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
                             </button>
                     </div>
                 </div>
@@ -92,9 +89,6 @@
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                            <i class="fas fa-times"></i>
-                        </button>
                     </div>
                 </div>
                 <?php if (session()->getFlashdata('success')) : ?>
@@ -149,7 +143,7 @@
                         <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export" method="POST">
                             <button type="submit" >Export Excel</button>
                         </form>
-                        <a href="#" onClick="openExportPDF()" class="btn btn-danger">Export PDF</a>
+                        <a href="<?php echo base_url(); ?>kelola-data-proyek/export/pdf" target="_blank"  class="btn btn-danger">Export PDF</a>
                     <?php endif; ?>
                 </div>
                 <!-- /.container-fluid -->
