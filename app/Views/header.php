@@ -64,6 +64,7 @@
           </a>
 
           <form id="logout-form" action="<?php echo base_url(); ?>doLogout" method="POST" class="d-none">
+          <?=csrf_field()?>
             <!-- <button type="submit">Logout</button> -->
           </form>
         </div>

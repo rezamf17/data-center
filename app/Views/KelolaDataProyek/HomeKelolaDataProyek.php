@@ -131,7 +131,7 @@
                                     <a href="<?= base_url('edit-kelola-data-proyek/'.$item['id']) ?>" class="btn btn-success">Edit</a>
                                     <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" >Hapus</button>
+                                        <button type="submit" >Hapus</button><?=csrf_field()?>
                                     </form>
                                 </td>
                             </tr>
@@ -141,7 +141,7 @@
                     <!-- /.row -->
                     <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'SU')  : ?>
                         <form class="btn btn-success" action="<?php echo base_url(); ?>kelola-data-proyek/export" method="POST">
-                            <button type="submit" >Export Excel</button>
+                            <button type="submit" >Export Excel</button><?=csrf_field()?>
                         </form>
                         <a href="<?php echo base_url(); ?>kelola-data-proyek/export/pdf" target="_blank"  class="btn btn-danger">Export PDF</a>
                     <?php endif; ?>

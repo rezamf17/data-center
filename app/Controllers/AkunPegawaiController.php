@@ -21,7 +21,8 @@ class AkunPegawaiController extends BaseController
     public function postTambahPegawai()
     {
         helper(['form']);
-        $rules = [
+        //validasi input data pada form tambah akun pegawai
+        $rules = [ 
             'nip'          => 'required|min_length[10]|max_length[13]',
             'name'          => 'required|min_length[2]|max_length[50]',
             'email'         => 'required|min_length[4]|max_length[100]|valid_email',
@@ -30,19 +31,30 @@ class AkunPegawaiController extends BaseController
             'confirmpassword'  => 'matches[password]'
         ];
         $password = $this->request->getVar('confirmpassword');
+
+        // Jika validasi sesuai dengan $rules.
         if($this->validate($rules)){
+            // Tampung semua input tambah user di variabel array of object $data
             $data = [
                 'nip'     => $this->request->getVar('nip'),
                 'name'     => $this->request->getVar('name'),
                 'email'    => $this->request->getVar('email'),
-                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'password' => password_hash($password, PASSWORD_DEFAULT), //mengenkripsi password
                 'nomor_hp'    => $this->request->getVar('nomor_hp'),
                 'role'    => $this->request->getVar('role'),
                 'status'    => $this->request->getVar('status'),
             ];
+
+            // Memanggil class UseModel
             $userModel = new UserModel();
+
+            // Insert data yang berada di variabel $data ke tabel user di database melalui model UserModel
             $userModel->insertData($data);
+
+            // membuat session success untuk memberitahu kepada user bahwa insert data berhasil dilakukan
             session()->setFlashdata('success', 'User berhasil ditambahkan.');
+
+            // Mengarahkan ulang ke route akun-pegawai dengan membawa session success
             return redirect()->to('akun-pegawai');
         }else{
             $data['validation'] = $this->validator;
