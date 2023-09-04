@@ -16,7 +16,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-warning">
               <div class="inner">
                 <h3><?php echo $totalOnGoing; ?></h3>
 
@@ -30,7 +30,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-danger">
               <div class="inner">
                 <h3><?php echo $totalHold; ?></h3>
 
@@ -44,7 +44,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
               <div class="inner">
                 <h3><?php echo $totalFinish; ?></h3>
 
@@ -109,7 +109,7 @@
             <?php echo $totalHold; ?>,
             <?php echo $totalFinish; ?>
           ],
-          backgroundColor : ['#f56954', '#f39c12', '#00a65a'],
+          backgroundColor : ['#f39c12', '#f56954', '#00a65a'],
         }
       ]
     }
