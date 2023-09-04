@@ -109,34 +109,42 @@
     //- DONUT CHART -
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
-    var donutChartCanvas = $('#donutChartAdmin').get(0).getContext('2d')
-    var akunData        = {
+    var proyekData        = {
       labels: [
-          'On-Going',
-          'Hold',
-          'Finish',
+          'Admin',
+          'Pegawai',
+          'PJ Proyek',
+          'Member Proyek',
       ],
       datasets: [
         {
           data: [
-            <?php echo $totalOnGoing; ?>,
-            <?php echo $totalHold; ?>,
-            <?php echo $totalFinish; ?>
+            <?php echo $totalAkunAdmin; ?>,
+            <?php echo $totalAkunPegawai; ?>,
+            <?php echo $totalAkunPJProyek; ?>,
+            <?php echo $totalAkunMemberProyek; ?>
           ],
-          backgroundColor : ['#f56954', '#f39c12', '#00a65a'],
+          backgroundColor : ['#00a65a', '#f39c12', '#f56954', '#00c0ef'],
         }
       ]
     }
-    var donutOptions     = {
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $('#donutChartAdmin').get(0).getContext('2d')
+    var pieData        = proyekData;
+    var pieOptions     = {
       maintainAspectRatio : false,
       responsive : true,
     }
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    new Chart(donutChartCanvas, {
-      type: 'doughnut',
-      data: akunData,
-      options: donutOptions
+    new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions
     })
 
   })
