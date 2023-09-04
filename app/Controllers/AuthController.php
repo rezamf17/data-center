@@ -19,13 +19,19 @@ class AuthController extends BaseController
       $data = $userModel->where('nip', $nip)->first();
   
       // Jika data pengguna dengan NIP tersebut ditemukan
+    //   print_r($data['status'] !== 'Active');exit();
       if($data){
           // Mengambil hashed password dari data pengguna
           $pass = $data['password'];
   
           // Memeriksa apakah password yang dimasukkan cocok dengan hashed password dalam database
-          $authenticatePassword = password_verify($password, $pass);
-  
+         $authenticatePassword = password_verify($password, $pass);
+         if($data['status'] !== 'Active'){
+           // Menyimpan pesan flash (pesan yang akan ditampilkan sekali) ke session
+           $session->setFlashdata('msg', 'User Tidak Aktif!'); 
+           // Mengarahkan pengguna kembali ke halaman login
+           return redirect()->to('/');
+         }
           // Jika password cocok
           if($authenticatePassword){
               // Menyiapkan data sesi (session data) yang akan disimpan
@@ -39,10 +45,8 @@ class AuthController extends BaseController
   
               // Menyimpan data sesi ke session
               $session->set($ses_data);
-  
               // Mengarahkan pengguna ke halaman dashboard setelah login berhasil
               return redirect()->to('/dashboard');
-          
           // Jika password tidak cocok
           }else{
               // Menyimpan pesan flash (pesan yang akan ditampilkan sekali) ke session
