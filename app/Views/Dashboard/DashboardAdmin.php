@@ -124,7 +124,7 @@
             <?php echo $totalAkunPJProyek; ?>,
             <?php echo $totalAkunMemberProyek; ?>
           ],
-          backgroundColor : ['#00a65a', '#f39c12', '#f56954', '#00c0ef'],
+          backgroundColor : ['#00a65a', '#f39c12', '#f56954', '#007bff'],
         }
       ]
     }
