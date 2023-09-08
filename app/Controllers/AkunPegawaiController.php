@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\UserModel;
 
 class AkunPegawaiController extends BaseController
@@ -22,10 +23,10 @@ class AkunPegawaiController extends BaseController
     {
         helper(['form']);
         //validasi input data pada form tambah akun pegawai
-        $rules = [ 
-            'nip'          => 'required|min_length[10]|max_length[13]',
+        $rules = [
+            'nip'          => 'required|min_length[10]|max_length[13]|is_unique[user.nip,id,{nip}]',
             'name'          => 'required|min_length[2]|max_length[50]',
-            'email'         => 'required|min_length[4]|max_length[100]|valid_email',
+            'email'         => 'required|min_length[4]|max_length[100]|valid_email|is_unique[user.email,id,{nip}]',
             'nomor_hp'         => 'required|min_length[4]|max_length[100]',
             'password'      => 'required|min_length[4]|max_length[50]',
             'confirmpassword'  => 'matches[password]'
@@ -33,13 +34,13 @@ class AkunPegawaiController extends BaseController
         $password = $this->request->getVar('confirmpassword');
 
         // Jika validasi sesuai dengan $rules.
-        if($this->validate($rules)){
+        if ($this->validate($rules)) {
             // Tampung semua input tambah user di variabel array of object $data
             $data = [
                 'nip'     => $this->request->getVar('nip'),
                 'name'     => $this->request->getVar('name'),
                 'email'    => $this->request->getVar('email'),
-                'password' => password_hash($password, PASSWORD_DEFAULT), //mengenkripsi password
+                'password' => password_hash($password, PASSWORD_DEFAULT), //hasshing password
                 'nomor_hp'    => $this->request->getVar('nomor_hp'),
                 'role'    => $this->request->getVar('role'),
                 'status'    => $this->request->getVar('status'),
@@ -56,7 +57,7 @@ class AkunPegawaiController extends BaseController
 
             // Mengarahkan ulang ke route akun-pegawai dengan membawa session success
             return redirect()->to('akun-pegawai');
-        }else{
+        } else {
             $data['validation'] = $this->validator;
             $userModel = new UserModel();
             $data['users'] = $userModel->getAll();
@@ -84,7 +85,7 @@ class AkunPegawaiController extends BaseController
         ];
 
         $password = $this->request->getVar('confirmpassword');
-        if($this->validate($rules)){
+        if ($this->validate($rules)) {
             if (!empty($password)) {
                 $data = [
                     'nip'     => $this->request->getVar('nip'),
@@ -95,7 +96,7 @@ class AkunPegawaiController extends BaseController
                     'role'    => $this->request->getVar('role'),
                     'status'    => $this->request->getVar('status'),
                 ];
-            }else{
+            } else {
                 $data = [
                     'nip'     => $this->request->getVar('nip'),
                     'name'     => $this->request->getVar('name'),
@@ -109,7 +110,7 @@ class AkunPegawaiController extends BaseController
             $userModel->updateUser($id, $data);
             session()->setFlashdata('success', 'User berhasil diupdate.');
             return redirect()->to('akun-pegawai');
-        }else{
+        } else {
             $data['validation'] = $this->validator;
             $userModel = new UserModel();
             $data['users'] = $userModel->getAll();
