@@ -19,6 +19,22 @@ class AkunPegawaiController extends BaseController
         return view('AkunPegawai/TambahAkunPegawai');
     }
 
+    public function searchAkun()
+    {
+        // Menerima kriteria pencarian dari form
+        $role = $this->request->getPost('role');
+
+        // Membuat instance model
+        $model = new UserModel();
+
+        // Mengambil data berdasarkan kriteria pencarian
+        $data['users'] = $model->getSearch($role);
+        $data['usersView'] = ['role'=>$role];
+        // print_r($startdate);exit();
+        // Menampilkan hasil pencarian ke tampilan
+        return view('AkunPegawai/SearchHomeAkunPegawai', $data);
+    }
+
     public function postTambahPegawai()
     {
         helper(['form']);

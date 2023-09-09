@@ -24,6 +24,29 @@ class UserModel extends Model
         return $this->db->insertID();
     }
 
+    public function getSearch($role = null)
+    {
+        // Membuat array dengan kolom yang akan digunakan dalam pencarian
+        $searchData = [];
+            
+        if ($role !== "") {
+            $searchData['role'] = $role;
+        }
+
+        // Melakukan pencarian berdasarkan data yang sesuai
+        $query = $this->db->table('user'); // Ganti 'nama_tabel_anda' dengan nama tabel Anda
+        $query->like($searchData);
+        // if ($start_date !== "" && $end_date !== "") {
+        //     $query->where("created >=", $start_date);
+        //     $query->where("created <=", $end_date);
+        // }
+
+        // print_r($query->getCompiledSelect());exit();
+
+        // Eksekusi query dan mengembalikan hasilnya
+        return $query->get()->getResultArray();
+    }
+
     public function getAll()
     {
         return $this->findAll();

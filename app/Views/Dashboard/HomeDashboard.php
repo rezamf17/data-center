@@ -41,6 +41,7 @@
               <div class="icon">
                 <i class="ion ion-home"></i>
               </div>
+              <a href="<?php echo base_url(); ?>kelola-data-proyek" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -55,6 +56,17 @@
               <div class="icon">
                 <i class="ion ion-play"></i>
               </div>
+              <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="nama_proyek" value="">
+                <input type="hidden" name="document_title" value="">
+                <input type="hidden" name="kategori_document" value="On-Going">
+                <input type="hidden" name="deparment" value="">
+                <input type="hidden" name="startdate" value="">
+                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="industri" value="">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
@@ -69,6 +81,17 @@
               <div class="icon">
                 <i class="ion ion-pause"></i>
               </div>
+              <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="nama_proyek" value="">
+                <input type="hidden" name="document_title" value="">
+                <input type="hidden" name="kategori_document" value="Hold">
+                <input type="hidden" name="deparment" value="">
+                <input type="hidden" name="startdate" value="">
+                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="industri" value="">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
@@ -83,6 +106,17 @@
               <div class="icon">
                 <i class="ion ion-checkmark"></i>
               </div>
+              <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="nama_proyek" value="">
+                <input type="hidden" name="document_title" value="">
+                <input type="hidden" name="kategori_document" value="Finish">
+                <input type="hidden" name="deparment" value="">
+                <input type="hidden" name="startdate" value="">
+                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="industri" value="">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
@@ -98,6 +132,7 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+              <a href="<?php echo base_url(); ?>akun-pegawai" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -112,6 +147,11 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+              <form action="<?php echo base_url(); ?>akun-pegawai/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="role" value="Admin">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
@@ -126,6 +166,11 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+              <form action="<?php echo base_url(); ?>akun-pegawai/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="role" value="Pegawai">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
@@ -140,6 +185,11 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+              <form action="<?php echo base_url(); ?>akun-pegawai/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="role" value="PJ">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <div class="col-lg-3 col-6">
@@ -153,6 +203,11 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+              <form action="<?php echo base_url(); ?>akun-pegawai/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="role" value="Member">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
