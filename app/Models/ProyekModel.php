@@ -11,6 +11,8 @@ class ProyekModel extends Model{
         'kategori_document', 
         'deparment',
         'tipe',
+        'created',
+        'ended',
         'industri',
     ];
 

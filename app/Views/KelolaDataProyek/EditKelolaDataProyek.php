@@ -49,6 +49,10 @@
       <label for="exampleInputPassword1">Tempat Proyek</label>
       <input type="text" class="form-control" placeholder="Masukan Tempat Proyek" name="industri" value="<?php echo $proyek['industri']; ?>" required>
     </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Tanggal Berakhir Proyek</label>
+      <input type="date" class="form-control" name="ended" value="<?php echo $proyek['ended']; ?>">
+    </div>
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-outline-success">Edit</button>

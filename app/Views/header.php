@@ -119,7 +119,7 @@
             <li class="nav-item">
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
               <i class="nav-icon fas fa-folder-plus"></i>
-                <p>Register Proyek</p>
+                <p>Registered Proyek</p>
               </a>
             </li>
           <?php elseif (session()->get('role') === 'Admin'): ?>
@@ -133,7 +133,7 @@
             <li class="nav-item">
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
               <i class="nav-icon fas fa-folder-plus"></i>
-                <p>Register Proyek</p>
+                <p>Registered Proyek</p>
               </a>
             </li>
           <?php else : ?>
@@ -152,7 +152,7 @@
             <li class="nav-item">
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
               <i class="nav-icon fas fa-folder-plus"></i>
-                <p>Register Proyek</p>
+                <p>Registered Proyek</p>
               </a>
             </li>
           <?php endif; ?>

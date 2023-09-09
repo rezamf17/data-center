@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Register Proyek</h1>
+                    <h1>Registered Proyek</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -102,7 +102,7 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <?php if (session()->get('role') !== 'Pegawai') : ?>
-                    <a href="<?php echo base_url(); ?>tambah-register-proyek" class="btn btn-primary mb-3">Tambah</a>
+                    <!-- <a href="<?php echo base_url(); ?>tambah-register-proyek" class="btn btn-primary mb-3">Tambah</a> -->
                 <?php endif; ?>
                 <table id="example1" class="table table-bordered table-hover">
                     <thead>
@@ -113,6 +113,7 @@
                             <th>Kategori Document</th>
                             <th>Departmen</th>
                             <th>Tanggal Masuk Proyek</th>
+                            <th>Tanggal Berakhir Proyek</th>
                             <th>Industri</th>
                             <th>Aksi</th>
                         </tr>
@@ -127,6 +128,7 @@
                                 <td><?= $item['kategori_document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
                                 <td><?= $item['created'] ?></td>
+                                <td><?= $item['ended'] ?></td>
                                 <td><?= $item['industri'] ?></td>
                                 <td>
                                     <a href="<?= base_url('lihat-dokumen/' . $item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>

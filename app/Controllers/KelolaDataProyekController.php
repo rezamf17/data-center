@@ -87,8 +87,10 @@ class KelolaDataProyekController extends BaseController
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
                 'created'    => $timestamp,
+                'ended'    => $this->request->getVar('ended'),
                 'industri'    => $this->request->getVar('industri'),
             ];
+            // print_r($data);exit();
             $document1 = $this->request->getFile('document1');
             $document2 = $this->request->getFile('document2');
             $document3 = $this->request->getFile('document3');
@@ -158,13 +160,18 @@ class KelolaDataProyekController extends BaseController
         $password = $this->request->getVar('confirmpassword');
         if($this->validate($rules)){
             // array data untuk inputan data yg akan di update
+            $tz = 'Asia/Jakarta';
+            $dt = new DateTime("now", new DateTimeZone($tz));
+            $timestamp = $dt->format('Y-m-d');
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
                 'document_title'     => $this->request->getVar('document_title'),
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
                 'industri'    => $this->request->getVar('industri'),
+                'ended' => $this->request->getVar('kategori_document') == 'Finish' && $this->request->getVar('ended') == '0000-00-00' ? $timestamp : $this->request->getVar('ended')
             ];
+            // print_r($data);exit();
             $proyekModel = new ProyekModel();
             $proyekModel->updateProyek($id, $data);
             session()->setFlashdata('success', 'Proyek berhasil diupdate.');
