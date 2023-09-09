@@ -13,6 +13,7 @@ class ProyekModel extends Model{
         'tipe',
         'created',
         'ended',
+        'pj_proyek',
         'industri',
     ];
 
@@ -25,6 +26,25 @@ class ProyekModel extends Model{
     public function getAll()
     {
         return $this->findAll();
+    }
+
+    public function dataMemberProyek($username)
+    {
+        $query = $this->db->table('proyek_member')
+            ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri, user.name')
+            ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+            ->join('user', 'user.id = proyek_member.id_user')
+            ->where('user.name', $username)
+            ->get();
+
+        return $query->getResultArray();
+    }
+
+    public function dataPJProyek($username)
+    {
+        $query = $this->db->table('proyek');
+        $query->where('pj_proyek', $username);
+        return $query->get()->getResultArray();
     }
 
     public function getSearch($nama_proyek = null, $document_title = null, $kategori_document = null, $departmen = null, $start_date = null, $end_date = null, $industri = null)

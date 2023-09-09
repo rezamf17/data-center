@@ -115,6 +115,7 @@
                             <th>Tanggal Masuk Proyek</th>
                             <th>Tanggal Berakhir Proyek</th>
                             <th>Tempat Proyek</th>
+                            <th>PJ Proyek</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -130,6 +131,7 @@
                                 <td><?= $item['created'] ?></td>
                                 <td><?= $item['ended'] ?></td>
                                 <td><?= $item['industri'] ?></td>
+                                <td><?= $item['pj_proyek'] ?></td>
                                 <td>
                                     <a href="<?= base_url('edit-kelola-data-proyek/' . $item['id']) ?>" class="btn btn-success">Edit</a>
                                     <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/' . $item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">

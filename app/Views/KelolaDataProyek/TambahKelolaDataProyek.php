@@ -89,7 +89,16 @@
     <div class="form-group">
       <label for="exampleInputPassword1">Tanggal Berakhir Proyek</label>
       <input type="date" class="form-control" name="ended" placeholder="Tempat Proyek">
-      *Opsional
+      <b>*Opsional</b>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">PJ Proyek</label>
+      <select name="pj_proyek" class="form-control" required>
+        <option value="">Pilih PJ Proyek</option>
+        <?php foreach ($userPJ as $user): ?>
+          <option value="<?= $user['name']; ?>"><?= $user['name']; ?></option>
+        <?php endforeach; ?> 
+      </select>
     </div>
   </div>
   <div class="card-footer">

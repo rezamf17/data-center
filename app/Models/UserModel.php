@@ -94,4 +94,11 @@ class UserModel extends Model
         $builder->where('role', 'Member');
         return $builder->countAllResults();
     }
+
+    public function getPJProyek()
+    {
+        $builder = $this->db->table('user');
+        $builder->where('role', 'PJ');
+        return $builder->get()->getResultArray();
+    }
 }

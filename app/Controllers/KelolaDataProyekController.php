@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\ProyekModel;
 use App\Models\FileModel;
+use App\Models\UserModel;
 use DateTime;
 use DateTimeZone;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -15,7 +16,16 @@ class KelolaDataProyekController extends BaseController
     {
         $proyekModel = new ProyekModel();
         //variabel data merupakan semua data yang ada pada tabel proyek
-        $data['proyek'] = $proyekModel->getAll();
+        $session = session();
+        if ($session->get('role') == 'SU') {
+            $data['proyek'] = $proyekModel->getAll();
+        }elseif($session->get('role') == 'Member'){
+            $data['proyek'] = $proyekModel->dataMemberProyek($session->get('name'));
+        }elseif($session->get('role') == 'PJ'){
+            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
+        }else{
+            $data['proyek'] = $proyekModel->getAll();
+        }
         return view('KelolaDataProyek/HomeKelolaDataProyek', $data);
     }
 
@@ -60,7 +70,9 @@ class KelolaDataProyekController extends BaseController
     // function untuk menampilkan halaman tambah data proyek
     public function tambahProyek()
     {
-        return view('KelolaDataProyek/TambahKelolaDataProyek');
+        $userModel = new UserModel();
+        $data['userPJ'] = $userModel->getPJProyek();
+        return view('KelolaDataProyek/TambahKelolaDataProyek', $data);
     }
 
     //function untuk menambahkan sebuah proyek
@@ -88,6 +100,7 @@ class KelolaDataProyekController extends BaseController
                 'deparment'    => $this->request->getVar('deparment'),
                 'created'    => $timestamp,
                 'ended'    => $this->request->getVar('ended'),
+                'pj_proyek'    => $this->request->getVar('pj_proyek'),
                 'industri'    => $this->request->getVar('industri'),
             ];
             // print_r($data);exit();
