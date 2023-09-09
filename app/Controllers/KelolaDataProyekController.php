@@ -383,6 +383,7 @@ class KelolaDataProyekController extends BaseController
         //variabel data merupakan semua data yang ada pada tabel proyek
         $data['proyek'] = $proyekModel->getAll();
 		$html = view('KelolaDataProyek/ExportPDF', $data);
+        // return view('KelolaDataProyek/ExportPDF', $data);
 		$mpdf->WriteHTML($html);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 		$mpdf->Output('Laporan Data Proyek.pdf','I');

@@ -1,3 +1,4 @@
+<html>
 <head>
     <style>
         .title{
@@ -7,32 +8,62 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
+        .container{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Membuat 3 kolom dengan lebar yang sama */
+            gap: 10px; /* Ruang antara kolom */
+        }
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Membuat 3 kolom dengan lebar yang sama */
+            gap: 10px; /* Ruang antara kolom */
+        }
+        .col {
+            flex-basis: calc(33.33% - 10px); /* Membuat 3 kolom dengan lebar yang sama */
+            margin-right: 10px; /* Mengatur jarak antara kolom */
+            width : 14em;
+        }
+        img{
+            width : 8em;
+        }
     </style>
 </head>
-<h3 class="title">Laporan Data Proyek</h3>
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama Proyek</th>
-            <th>Document Title</th>
-            <th>Kategori Document</th>
-            <th>Departmen</th>
-            <th>Tanggal Masuk Proyek</th>
-            <th>Tempat Proyek</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $i = 1; foreach ($proyek as $item): ?>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="<?php echo base_url('dist/img/wika-seeklogo.comC.png'); ?>" alt="">
+            </div>
+            <div class="col">
+                <h3 class="title">Laporan Data Proyek</h3>
+        </div>
+    </div>
+    </div>
+    <table>
+        <thead>
             <tr>
-                <td><?= $i++ ?></td>
-                <td><?= $item['nama_proyek'] ?></td>
-                <td><?= $item['document_title'] ?></td>
-                <td><?= $item['kategori_document'] ?></td>
-                <td><?= $item['deparment'] ?></td>
-                <td><?= $item['created'] ?></td>
-                <td><?= $item['industri'] ?></td>
+                <th>No</th>
+                <th>Nama Proyek</th>
+                <th>Document Title</th>
+                <th>Kategori Document</th>
+                <th>Departmen</th>
+                <th>Tanggal Masuk Proyek</th>
+                <th>Tempat Proyek</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php $i = 1; foreach ($proyek as $item): ?>
+                <tr>
+                    <td><?= $i++ ?></td>
+                    <td><?= $item['nama_proyek'] ?></td>
+                    <td><?= $item['document_title'] ?></td>
+                    <td><?= $item['kategori_document'] ?></td>
+                    <td><?= $item['deparment'] ?></td>
+                    <td><?= $item['created'] ?></td>
+                    <td><?= $item['industri'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</body>
+</html>
