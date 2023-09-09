@@ -127,7 +127,7 @@
                                     <a href="<?= base_url('edit-kelola-data-proyek/'.$item['id']) ?>" class="btn btn-success">Edit</a>
                                     <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/'.$item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit" >Hapus</button>
+                                        <button type="submit" >Hapus</button><?=csrf_field()?>
                                     </form>
                                 </td>
                             </tr>
@@ -143,9 +143,9 @@
                         <input type="hidden" name="startdate" value="<?php echo $proyekView['startdate']; ?>">
                         <input type="hidden" name="enddate" value="<?php echo $proyekView['enddate']; ?>">
                         <input type="hidden" name="industri" value="<?php echo $proyekView['industri']; ?>">
-                        <button type="submit" >Export Excel</button>
+                        <button type="submit" >Export Excel</button><?=csrf_field()?>
                     </form>
-                    <form class="btn btn-danger" action="<?php echo base_url(); ?>kelola-data-proyek/export/pdf/search" method="POST">
+                    <form class="btn btn-danger" target="_blank" action="<?php echo base_url(); ?>kelola-data-proyek/export/pdf/search" method="POST">
                         <input type="hidden" name="nama_proyek" value="<?php echo $proyekView['nama_proyek']; ?>">
                         <input type="hidden" name="document_title" value="<?php echo $proyekView['document_title']; ?>">
                         <input type="hidden" name="kategori_document" value="<?php echo $proyekView['kategori_document']; ?>">
@@ -153,7 +153,7 @@
                         <input type="hidden" name="startdate" value="<?php echo $proyekView['startdate']; ?>">
                         <input type="hidden" name="enddate" value="<?php echo $proyekView['enddate']; ?>">
                         <input type="hidden" name="industri" value="<?php echo $proyekView['industri']; ?>">
-                        <button type="submit" >Export PDF</button>
+                        <button type="submit" >Export PDF</button><?=csrf_field()?>
                     </form>
                     <?php endif; ?>
                     <!-- /.row -->
