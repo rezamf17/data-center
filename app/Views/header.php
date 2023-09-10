@@ -109,7 +109,26 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'Member')  : ?>
+          <?php if (session()->get('role') === 'PJ'): ?>
+            <li class="nav-item">
+              <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+                <p>Kelola Data Proyek</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('register-proyek') ?>" class="nav-link">
+              <i class="nav-icon fas fa-folder-plus"></i>
+                <p>Registered Proyek</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('daftar-member') ?>" class="nav-link">
+              <i class="nav-icon fas fa-folder-plus"></i>
+                <p>Daftar Member</p>
+              </a>
+            </li>
+          <?php elseif (session()->get('role') === 'Member'): ?>
             <li class="nav-item">
               <a href="<?= base_url('kelola-data-proyek') ?>" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
@@ -153,6 +172,12 @@
               <a href="<?= base_url('register-proyek') ?>" class="nav-link">
               <i class="nav-icon fas fa-folder-plus"></i>
                 <p>Registered Proyek</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('daftar-member') ?>" class="nav-link">
+              <i class="nav-icon fas fa-folder-plus"></i>
+                <p>Daftar Member</p>
               </a>
             </li>
           <?php endif; ?>

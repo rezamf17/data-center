@@ -17,6 +17,11 @@ class KelolaDataProyekController extends BaseController
         $proyekModel = new ProyekModel();
         //variabel data merupakan semua data yang ada pada tabel proyek
         $session = session();
+//         SELECT proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title,
+// proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri,user.name
+// FROM proyek_member
+// JOIN proyek ON proyek.id = proyek_member.id_proyek
+// JOIN user ON user.id = proyek_member.id_user;
         if ($session->get('role') == 'SU') {
             $data['proyek'] = $proyekModel->getAll();
         }elseif($session->get('role') == 'Member'){

@@ -91,6 +91,7 @@
       <input type="date" class="form-control" name="ended" placeholder="Tempat Proyek">
       <b>*Opsional</b>
     </div>
+    <?php if (session()->get('role') === 'SU' || session()->get('role') === 'Member')  : ?>
     <div class="form-group">
       <label for="exampleInputPassword1">PJ Proyek</label>
       <select name="pj_proyek" class="form-control" required>
@@ -100,6 +101,12 @@
         <?php endforeach; ?> 
       </select>
     </div>
+    <?php elseif(session()->get('role') === 'PJ'): ?>
+      <div class="form-group">
+      <label for="exampleInputPassword1">PJ Proyek</label>
+      <input type="text" class="form-control" name="pj_proyek" value="<?php echo session()->get('name'); ?>" readonly>
+    </div>
+    <?php endif; ?>
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-outline-primary">Simpan</button>
