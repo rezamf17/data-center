@@ -204,10 +204,49 @@ class KelolaDataProyekController extends BaseController
     // function untuk menampilkan halaman edit dokumen
     public function editViewDocument($id)
     {
+        $proyekModel = new ProyekModel();
+        $session = session();
+        $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
         $fileModel = new FileModel();
-        $data['fileProyek'] = $fileModel->viewDoc($id);
+        $data['fileProyek'] = $fileModel->find($id);
+        // $data['proyekExist'] = $proyekModel->find($id);
         return view('KelolaDataProyek/EditDokumen', $data);
     }
+
+    public function editPostDocument($id)
+    {
+        $docInput = $this->request->getFile('document');
+        $fileModel = new FileModel();
+        if ($docInput->isValid() && !$docInput->hasMoved()) {
+            $file = $docInput->getRandomName();
+            $fileModel = new FileModel();
+            $document = [
+                    'proyek_id' => $this->request->getVar('proyek'), 
+                    'nama_file' => $file,
+                    'keterangan' => $this->request->getVar('keterangan')
+                ];
+                // print_r($document);exit();
+                $docInput->move('Uploads/', $file);
+                $fileModel->updateDokumen($id, $document);
+                session()->setFlashdata('success', 'Dokumen berhasil diganti.');
+                return redirect()->to(base_url('kelola-data-proyek'));
+            }else{
+                $file = $docInput->getRandomName();
+                $fileModel = new FileModel();
+                $fileDoc = $fileModel->find($id);
+                $document = [
+                    'proyek_id' => $this->request->getVar('proyek'), 
+                    'nama_file' => $fileDoc['nama_file'],
+                    'keterangan' => $this->request->getVar('keterangan')
+                ];
+                // print_r($document);exit();
+                $fileModel->updateDokumen($id, $document);
+                session()->setFlashdata('success', 'Dokumen berhasil diganti.');
+                return redirect()->to(base_url('kelola-data-proyek'));
+        }
+        
+    }
+
     // functio untuk menghapus proyek
     public function deleteProyek($id)
     {
@@ -462,7 +501,11 @@ class KelolaDataProyekController extends BaseController
         // $fileModel = new FileModel();
         $proyekModel = new ProyekModel();
         $session = session();
-        $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
+        if($session->get('role') == 'Member'){
+            $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
+        }else{
+            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
+        }
         return view('KelolaDataProyek/TambahDokumen', $data);
     }
 

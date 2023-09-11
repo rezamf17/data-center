@@ -38,10 +38,10 @@ class FileModel extends Model{
         $this->where('id', $id)->set($data)->update();
     }
 
-    // public function updateUser($id, $data)
-    // {
-    //     $this->where('id', $id)->set($data)->update();
-    // }
+    public function updateDokumen($id, $data)
+    {
+        $this->where('id', $id)->set($data)->update();
+    }
 
     // public function deleteUser($id)
     // {

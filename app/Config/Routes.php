@@ -39,6 +39,7 @@ $routes->post('/edit-keterangan1/(:num)', 'KelolaDataProyekController::gantiKete
 $routes->post('/edit-keterangan2/(:num)', 'KelolaDataProyekController::gantiKeterangan2/$1', ['filter' => 'authGuard']);
 $routes->post('/edit-keterangan3/(:num)', 'KelolaDataProyekController::gantiKeterangan3/$1', ['filter' => 'authGuard']);
 $routes->get('/edit-dokumen/(:num)', 'KelolaDataProyekController::editViewDocument/$1', ['filter' => 'authGuard']);
+$routes->post('/edit-dokumen/(:num)', 'KelolaDataProyekController::editPostDocument/$1', ['filter' => 'authGuard']);
 $routes->get('/tambah-data-proyek', 'KelolaDataProyekController::tambahProyek', ['filter' => 'authGuard']);
 $routes->post('/tambah-data-proyek', 'KelolaDataProyekController::tambahDataProyek', ['filter' => 'authGuard']);
 $routes->post('/kelola-data-proyek/search', 'KelolaDataProyekController::searchProyek', ['filter' => 'authGuard']);

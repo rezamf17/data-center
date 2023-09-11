@@ -54,6 +54,9 @@
                                 <th>No</th>
                                 <th>Dokumen</th>
                                 <th>Keterangan</th>
+                                <?php if(session()->get('role') === 'PJ' || session()->get('role') === 'SU'): ?>
+                                <th>Aksi</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,6 +89,11 @@
                                 <?php endif; ?>
                                 </td>
                                 <td><?= $item['keterangan'] ?></td>
+                                <?php if(session()->get('role') === 'PJ' || session()->get('role') === 'SU'): ?>
+                                <td>
+                                    <a href="<?= base_url('edit-dokumen/' . $item['id']) ?>" class="btn btn-success">Edit Dokumen</a>
+                                </td>
+                                <?php endif; ?>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

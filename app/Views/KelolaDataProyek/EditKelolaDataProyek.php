@@ -26,14 +26,14 @@
         <option value="Finish" <?php if($proyek['kategori_document'] == "Finish") echo "selected"; ?>>Finish</option>
       </select>
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="exampleInputFile">Dokumen (format : .xls, .pdf, .docx, dan .doc)</label>
         <div class="input-group">
           <div class="custom-file">
             <a href="<?php echo base_url('edit-dokumen/'.$proyek['id']); ?>" class="btn btn-success">Lihat Dokumen</a>
           </div>
         </div>
-    </div>
+    </div> -->
     <div class="form-group">
       <label for="exampleInputPassword1">Department</label>
       <select name="deparment" class="form-control" required>
