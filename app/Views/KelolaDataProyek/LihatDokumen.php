@@ -62,7 +62,7 @@
                                 <td><?= $i++ ?></td>
                                 <td>
                                 <?php if (substr($item['nama_file'], -3) == 'pdf') : ?>
-                                    <a class="btn btn-success" onclick="openTab2()">Lihat</a>
+                                    <a class="btn btn-success" onclick="openTab2('<?php echo base_url("Uploads/" . $item["nama_file"]); ?>')">Lihat</a>
                                 <?php elseif (substr($item['nama_file'], -3) == 'xls' || substr($item['nama_file'], -4) == 'xlsx'): ?>
                                     <a class="btn btn-secondary" href="<?php echo base_url('Uploads/'.$item['nama_file']); ?>">Download</a>
                                 <?php elseif (substr($item['nama_file'], -3) == 'doc' || substr($item['nama_file'], -4) == 'docx'): ?>
@@ -96,4 +96,9 @@
     </section>
     <!-- /.content -->
 </div>
+<script>
+    function openTab2(url) {
+    window.open(url, '_blank');
+}
+</script>
 <?php echo view('footer') ?>

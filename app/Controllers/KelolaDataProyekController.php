@@ -468,10 +468,17 @@ class KelolaDataProyekController extends BaseController
 
     public function postDokumen()
     {
+        $docInput = $this->request->getFile('document');
+        $file = $docInput->getRandomName();
         $document = [
                 'proyek_id' => $this->request->getVar('proyek'), 
-                'nama_file' => $file1,
-                'keterangan' => $keterangan1
-            ];
+                'nama_file' => $file,
+                'keterangan' => $this->request->getVar('keterangan')
+        ];
+        $fileModel = new FileModel();
+        $fileModel->insertData($document);
+        $docInput->move('Uploads/', $file);
+        session()->setFlashdata('success', 'File berhasil ditambahkan.');
+        return redirect()->to('kelola-data-proyek');
     }
 }

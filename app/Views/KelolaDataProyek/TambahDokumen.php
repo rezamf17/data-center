@@ -22,7 +22,7 @@
         <label for="exampleInputFile">Dokumen (format : .xls, .xlsx, .pdf, .docx, .doc, .jpg, .png, .mp4, .mkv)</label>
         <div class="input-group">
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="document1" required>
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="document" required />
             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
           </div>
         </div>
@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputFile">Keterangan Dokumen</label>
-        <input type="text" class="form-control" name="keterangan1">
+        <input type="text" class="form-control" name="keterangan">
         <b>*Diwajibkan</b>
     </div>
   </div>
@@ -43,6 +43,5 @@
 </div>
 
 </section>
-
 </div>
 <?php echo view('footer') ?>
