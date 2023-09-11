@@ -103,7 +103,9 @@
             <?php endif; ?>
             <!-- /.card-header -->
             <div class="card-body">
+            <?php if (session()->get('role') == 'SU' || session()->get('role') == 'PJ') : ?>
                 <a href="<?php echo base_url(); ?>tambah-data-proyek" class="btn btn-primary mb-3">Tambah</a>
+            <?php endif; ?>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -133,11 +135,15 @@
                                 <td><?= $item['industri'] ?></td>
                                 <td><?= $item['pj_proyek'] ?></td>
                                 <td>
+                                <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'SU'): ?>
                                     <a href="<?= base_url('edit-kelola-data-proyek/' . $item['id']) ?>" class="btn btn-success">Edit</a>
                                     <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/' . $item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit">Hapus</button><?= csrf_field() ?>
                                     </form>
+                                <?php elseif (session()->get('role') === 'Member'): ?>
+                                    <a href="<?= base_url('view-document/' . $item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>
+                                <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

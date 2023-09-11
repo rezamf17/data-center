@@ -449,4 +449,29 @@ class KelolaDataProyekController extends BaseController
 		$this->response->setHeader('Content-Type', 'application/pdf');
 		$mpdf->Output('Laporan Data Proyek.pdf','I');
     }
+
+    public function viewDocument($idProyek)
+    {
+        $fileModel = new FileModel();
+        $data['file'] = $fileModel->viewDocMember($idProyek);
+        return view('KelolaDataProyek/LihatDokumen', $data);
+    }
+
+    public function tambahDokumen()
+    {
+        // $fileModel = new FileModel();
+        $proyekModel = new ProyekModel();
+        $session = session();
+        $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
+        return view('KelolaDataProyek/TambahDokumen', $data);
+    }
+
+    public function postDokumen()
+    {
+        $document = [
+                'proyek_id' => $this->request->getVar('proyek'), 
+                'nama_file' => $file1,
+                'keterangan' => $keterangan1
+            ];
+    }
 }

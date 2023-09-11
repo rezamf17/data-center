@@ -40,6 +40,18 @@ class ProyekModel extends Model{
         return $query->getResultArray();
     }
 
+    public function dataProyekMember($username)
+    {
+        $query = $this->db->table('proyek_member')
+        ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.pj_proyek, proyek.industri, user.name')
+        ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+        ->join('user', 'user.id = proyek_member.id_user')
+        ->where('user.name', $username)
+        ->get();
+
+    return $query->getResultArray();
+    }
+
     public function dataPJProyek($username)
     {
         $query = $this->db->table('proyek');
