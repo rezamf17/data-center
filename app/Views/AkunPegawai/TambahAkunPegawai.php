@@ -10,7 +10,7 @@
 					<?= csrf_field() ?>
 					<div class="card-body">
 						<div class="form-group">
-							<label for="exampleInputEmail1">NIP</label>
+							<label for="exampleInputEmail1">NIP/ID PJ</label>
 							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nip" required>
 						</div>
 						<div class="form-group">

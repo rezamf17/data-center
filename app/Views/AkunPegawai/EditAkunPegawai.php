@@ -10,7 +10,7 @@
           <form action="<?php echo base_url('edit-akun-pegawai/' . $user['id']); ?>" method="POST">
             <?= csrf_field() ?>
             <div class="form-group">
-              <label for="exampleInputEmail1">NIP</label>
+              <label for="exampleInputEmail1">NIP/ID PJ</label>
               <input type="text" class="form-control" value="<?= $user['nip'] ?>" placeholder="Masukan NIP" name="nip" required>
             </div>
             <div class="form-group">

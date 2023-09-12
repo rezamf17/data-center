@@ -52,7 +52,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NIP</th>
+                                <th>NIP/ID PJ</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
