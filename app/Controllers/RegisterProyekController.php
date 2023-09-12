@@ -124,6 +124,7 @@ class RegisterProyekController extends BaseController
     {
         $fileModel = new FileModel();
         $data['fileProyek'] = $fileModel->viewDoc($id);
+        $data['file'] = $fileModel->viewDocMember($id);
         // print_r($view);exit();
         return view('RegisterProyek/LihatDokumen', $data);
     }
