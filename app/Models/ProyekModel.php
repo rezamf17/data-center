@@ -97,18 +97,52 @@ class ProyekModel extends Model{
         }
 
         // Melakukan pencarian berdasarkan data yang sesuai
-        $query = $this->db->table('proyek'); // Ganti 'nama_tabel_anda' dengan nama tabel Anda
-        $query->like($searchData);
-        if ($start_date !== "" && $end_date !== "") {
-            $query->where("created >=", $start_date);
-            $query->where("created <=", $end_date);
+        $session = session();
+        $username = $session->get('name');
+            if ($session->get('role') == 'PJ') {
+                $query = $this->db->table('proyek'); 
+                $query->where('pj_proyek', $username);
+                $query->like($searchData);
+                if ($start_date !== "" && $end_date !== "") {
+                    $query->where("created >=", $start_date);
+                    $query->where("created <=", $end_date);
+                }
+        
+                // print_r($query->getCompiledSelect());exit();
+        
+                // Eksekusi query dan mengembalikan hasilnya
+                return $query->get()->getResultArray();
+            }elseif($session->get('role') == 'Member'){
+                $query = $this->db->table('proyek_member')
+                ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri, user.name')
+                ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+                ->join('user', 'user.id = proyek_member.id_user')
+                ->where('user.name', $username)
+                ;
+                $query->like($searchData);
+                if ($start_date !== "" && $end_date !== "") {
+                    $query->where("created >=", $start_date);
+                    $query->where("created <=", $end_date);
+                }
+        
+                // print_r($query->getCompiledSelect());exit();
+        
+                // Eksekusi query dan mengembalikan hasilnya
+                return $query->get()->getResultArray();
+            }else{
+                $query = $this->db->table('proyek');
+                $query->like($searchData);
+                if ($start_date !== "" && $end_date !== "") {
+                    $query->where("created >=", $start_date);
+                    $query->where("created <=", $end_date);
+                }
+        
+                // print_r($query->getCompiledSelect());exit();
+        
+                // Eksekusi query dan mengembalikan hasilnya
+                return $query->get()->getResultArray();
+            }
         }
-
-        // print_r($query->getCompiledSelect());exit();
-
-        // Eksekusi query dan mengembalikan hasilnya
-        return $query->get()->getResultArray();
-    }
 
     public function updateProyek($id, $data)
     {
