@@ -131,7 +131,7 @@
                                 <td><?= $item['kategori_document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
                                 <td><?= $item['created'] ?></td>
-                                <td><?= $item['ended'] ?></td>
+                                <td><?= $item['ended'] == '0000-00-00' ? "-" : $item['ended'] ?></td>
                                 <td><?= $item['industri'] ?></td>
                                 <td><?= $item['pj_proyek'] ?></td>
                                 <td>

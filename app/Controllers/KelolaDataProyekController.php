@@ -348,7 +348,12 @@ class KelolaDataProyekController extends BaseController
     public function exportExcel()
     {
         $model = new ProyekModel();
-        $dataModel = $model->getAll();
+        $session = session();
+        if ($session->get('role') == 'PJ') {
+            $dataModel = $model->dataPJProyek($session->get('name'));
+        }else{
+            $dataModel = $model->getAll();
+        }
 
         $spreadsheet = new Spreadsheet();
         // tulis header/nama kolom 
@@ -358,7 +363,9 @@ class KelolaDataProyekController extends BaseController
                     ->setCellValue('C1', 'Kategori Document')
                     ->setCellValue('D1', 'Department')
                     ->setCellValue('E1', 'Tanggal Masuk Proyek')
-                    ->setCellValue('F1', 'Tempat Proyek');
+                    ->setCellValue('F1', 'Tanggal Berakhir Proyek')
+                    ->setCellValue('G1', 'PJ Proyek')
+                    ->setCellValue('H1', 'Tempat Proyek');
         
         $column = 2;
         // tulis data mobil ke cell
@@ -369,7 +376,9 @@ class KelolaDataProyekController extends BaseController
                         ->setCellValue('C' . $column, $data['kategori_document'])
                         ->setCellValue('D' . $column, $data['deparment'])
                         ->setCellValue('E' . $column, $data['created'])
-                        ->setCellValue('F' . $column, $data['industri']);
+                        ->setCellValue('F' . $column, $data['ended'])
+                        ->setCellValue('G' . $column, $data['pj_proyek'])
+                        ->setCellValue('H' . $column, $data['industri']);
             $column++;
         }
         // tulis dalam format .xlsx
@@ -445,7 +454,12 @@ class KelolaDataProyekController extends BaseController
         $mpdf = new \Mpdf\Mpdf();
         $proyekModel = new ProyekModel();
         //variabel data merupakan semua data yang ada pada tabel proyek
-        $data['proyek'] = $proyekModel->getAll();
+        $session = session();
+        if ($session->get('role') == 'PJ') {
+            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
+        }else{
+            $data['proyek'] = $proyekModel->getAll();
+        }
 		$html = view('KelolaDataProyek/ExportPDF', $data);
         // return view('KelolaDataProyek/ExportPDF', $data);
 		$mpdf->WriteHTML($html);

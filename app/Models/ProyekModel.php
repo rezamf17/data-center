@@ -55,7 +55,7 @@ class ProyekModel extends Model{
     public function dataProyekPJ($username)
     {
         $query = $this->db->table('proyek_member')
-        ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.pj_proyek, proyek.industri, user.name')
+        ->distinct('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.nama_proyek, proyek.pj_proyek, proyek.industri, user.name')
         ->join('proyek', 'proyek.id = proyek_member.id_proyek')
         ->join('user', 'user.id = proyek_member.id_user')
         ->where('proyek.pj_proyek', $username)
@@ -158,25 +158,87 @@ class ProyekModel extends Model{
 
     public function totalProyek()
     {
-        $builder = $this->db->table('proyek');
-        return $builder->countAllResults();
+        $session = session();
+        if ($session->get('role') == "PJ") {
+            $builder = $this->db->table('proyek');
+            $builder->where('pj_proyek', $session->get('name'));
+            return $builder->countAllResults();
+        }elseif($session->get('role') == "Member"){
+            $builder = $this->db->table('proyek_member')
+            ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri, user.name')
+            ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+            ->join('user', 'user.id = proyek_member.id_user')
+            ->where('user.name', $session->get('name'));
+            return $builder->countAllResults();
+        }else{
+            $builder = $this->db->table('proyek');
+            return $builder->countAllResults();
+        }
     }
     public function totalProyekOnGoing()
     {
-        $builder = $this->db->table('proyek');
-        $builder->where('kategori_document', 'On-Going');
-        return $builder->countAllResults();
+        $session = session();
+        if ($session->get('role') == "PJ") {
+            $builder = $this->db->table('proyek');
+            $builder->where('pj_proyek', $session->get('name'))
+            ->where('kategori_document', 'On-Going');
+            return $builder->countAllResults();
+        }elseif($session->get('role') == "Member"){
+            $builder = $this->db->table('proyek_member')
+            ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri, user.name')
+            ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+            ->join('user', 'user.id = proyek_member.id_user')
+            ->where('user.name', $session->get('name'))
+            ->where('proyek.kategori_document', 'On-Going');
+            return $builder->countAllResults();
+        }else{
+            $builder = $this->db->table('proyek');
+            $builder->where('kategori_document', 'On-Going');
+            return $builder->countAllResults();
+        }
     }
     public function totalProyekHold()
     {
-        $builder = $this->db->table('proyek');
-        $builder->where('kategori_document', 'Hold');
-        return $builder->countAllResults();
+        $session = session();
+        if ($session->get('role') == "PJ") {
+            $builder = $this->db->table('proyek');
+            $builder->where('pj_proyek', $session->get('name'))
+            ->where('kategori_document', 'Hold');
+            return $builder->countAllResults();
+        }elseif($session->get('role') == "Member"){
+            $builder = $this->db->table('proyek_member')
+            ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri, user.name')
+            ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+            ->join('user', 'user.id = proyek_member.id_user')
+            ->where('user.name', $session->get('name'))
+            ->where('proyek.kategori_document', 'Hold');
+            return $builder->countAllResults();
+        }else{
+            $builder = $this->db->table('proyek');
+            $builder->where('kategori_document', 'Hold');
+            return $builder->countAllResults();
+        }
     }
     public function totalProyekFinish()
     {
-        $builder = $this->db->table('proyek');
-        $builder->where('kategori_document', 'Finish');
-        return $builder->countAllResults();
+        $session = session();
+        if ($session->get('role') == "PJ") {
+            $builder = $this->db->table('proyek');
+            $builder->where('pj_proyek', $session->get('name'))
+            ->where('kategori_document', 'Finish');
+            return $builder->countAllResults();
+        }elseif($session->get('role') == "Member"){
+            $builder = $this->db->table('proyek_member')
+            ->select('proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title, proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri, user.name')
+            ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+            ->join('user', 'user.id = proyek_member.id_user')
+            ->where('user.name', $session->get('name'))
+            ->where('proyek.kategori_document', 'Finish');
+            return $builder->countAllResults();
+        }else{
+            $builder = $this->db->table('proyek');
+            $builder->where('kategori_document', 'Finish');
+            return $builder->countAllResults();
+        }
     }
 }

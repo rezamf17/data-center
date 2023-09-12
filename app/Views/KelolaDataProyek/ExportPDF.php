@@ -30,13 +30,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <img src="<?php echo base_url('dist/img/wika-seeklogo.comC.png'); ?>" alt="">
-            </div>
-            <div class="col">
                 <h3 class="title">Laporan Data Proyek</h3>
-        </div>
+    </div>
     </div>
     </div>
     <table>
@@ -48,6 +43,8 @@
                 <th>Kategori Document</th>
                 <th>Departmen</th>
                 <th>Tanggal Masuk Proyek</th>
+                <th>Tanggal Berakhir Proyek</th>
+                <th>PJ Proyek</th>
                 <th>Tempat Proyek</th>
             </tr>
         </thead>
@@ -60,6 +57,8 @@
                     <td><?= $item['kategori_document'] ?></td>
                     <td><?= $item['deparment'] ?></td>
                     <td><?= $item['created'] ?></td>
+                    <td><?= $item['ended'] == '0000-00-00' ? "-" : $item['ended'] ?></td>
+                    <td><?= $item['pj_proyek'] ?></td>
                     <td><?= $item['industri'] ?></td>
                 </tr>
             <?php endforeach; ?>
