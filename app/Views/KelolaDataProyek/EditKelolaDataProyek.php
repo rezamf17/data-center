@@ -18,9 +18,9 @@
       <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title" value="<?php echo $proyek['document_title']; ?>" required>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Kategori Document</label>
+      <label for="exampleInputEmail1">Status Proyek</label>
       <select name="kategori_document" class="form-control" required>
-        <option value="">Pilih Kategori Document</option>
+        <option value="">Pilih Status Proyek</option>
         <option value="On-Going" <?php if($proyek['kategori_document'] == "On-Going") echo "selected"; ?>>On-Going</option>
         <option value="Hold" <?php if($proyek['kategori_document'] == "Hold") echo "selected"; ?>>Hold</option>
         <option value="Finish" <?php if($proyek['kategori_document'] == "Finish") echo "selected"; ?>>Finish</option>

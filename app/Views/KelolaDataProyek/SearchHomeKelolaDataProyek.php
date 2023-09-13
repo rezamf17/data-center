@@ -35,9 +35,9 @@
                     <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title" value="<?php echo $proyekView['document_title']; ?>">
                     </div>
                     <div class="form-group">
-                    <label for="exampleInputEmail1">Kategori Document</label>
+                    <label for="exampleInputEmail1">Status Proyek</label>
                     <select name="kategori_document" class="form-control">
-                        <option value="">Pilih Kategori Document</option>
+                        <option value="">Pilih Status Proyekt</option>
                         <option value="On-Going" <?php if($proyekView['kategori_document'] == "On-Going") echo "selected"; ?>>On-Going</option>
                         <option value="Hold" <?php if($proyekView['kategori_document'] == "Hold") echo "selected"; ?>>Hold</option>
                         <option value="Finish" <?php if($proyekView['kategori_document'] == "Finish") echo "selected"; ?>>Finish</option>
@@ -105,8 +105,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Proyek</th>
-                                <th>Document Title</th>
-                                <th>Kategori Document</th>
+                                <th>Status Proyek</th>
                                 <th>Departmen</th>
                                 <th>Tanggal Masuk Proyek</th>
                                 <th>Tanggal Berakhir Proyek</th>
@@ -120,7 +119,6 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $item['nama_proyek'] ?></td>
-                                <td><?= $item['document_title'] ?></td>
                                 <td><?= $item['kategori_document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
                                 <td><?= $item['created'] ?></td>

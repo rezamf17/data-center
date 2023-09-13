@@ -42,9 +42,9 @@
                             <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Kategori Document</label>
+                            <label for="exampleInputEmail1">Status Proyek</label>
                             <select name="kategori_document" class="form-control">
-                                <option value="">Pilih Kategori Document</option>
+                                <option value="">Pilih Status Proyek</option>
                                 <option value="On-Going">On-Going</option>
                                 <option value="Hold">Hold</option>
                                 <option value="Finish">Finish</option>
@@ -111,8 +111,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Proyek</th>
-                            <th>Document Title</th>
-                            <th>Kategori Document</th>
+                            <th>Status Proyek</th>
                             <th>Departmen</th>
                             <th>Tanggal Masuk Proyek</th>
                             <th>Tanggal Berakhir Proyek</th>
@@ -127,7 +126,6 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $item['nama_proyek'] ?></td>
-                                <td><?= $item['document_title'] ?></td>
                                 <td><?= $item['kategori_document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
                                 <td><?= $item['created'] ?></td>

@@ -14,62 +14,13 @@
       <input type="text" class="form-control" placeholder="Masukan Nama Proyek" name="nama_proyek" required>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Document Title</label>
-      <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title" required>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Kategori Document</label>
+      <label for="exampleInputEmail1">Status Proyek</label>
       <select name="kategori_document" class="form-control" required>
-        <option value="">Pilih Kategori Document</option>
+        <option value="">Pilih Status Proyek</option>
         <option value="On-Going">On-Going</option>
         <option value="Hold">Hold</option>
         <option value="Finish">Finish</option>
       </select>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Dokumen 1 (format : .xls, .xlsx, .pdf, .docx, .doc, .jpg, .png, .mp4, .mkv)</label>
-        <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="document1" required>
-            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-          </div>
-        </div>
-        <b>*Diwajibkan</b>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Keterangan Dokumen 1</label>
-        <input type="text" class="form-control" name="keterangan1">
-        <b>*Diwajibkan</b>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Dokumen 2 (format : .xls, .xlsx, .pdf, .docx, .doc, .jpg, .png, .mp4, .mkv)</label>
-        <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="document2">
-            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-          </div>
-        </div>
-        <b>*Opsional</b>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Keterangan Dokumen 2</label>
-        <input type="text" class="form-control" name="keterangan2">
-        <b>*Opsional</b>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Dokumen 3 (format : .xls, .xlsx, .pdf, .docx, .doc, .jpg, .png, .mp4, .mkv)</label>
-        <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="document3">
-            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-          </div>
-        </div>
-        <b>*Opsional</b>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Keterangan Dokumen 3</label>
-        <input type="text" class="form-control" name="keterangan3">
-        <b>*Opsional</b>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Deparment</label>

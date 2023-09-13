@@ -87,7 +87,6 @@ class KelolaDataProyekController extends BaseController
         helper(['form']);
         $rules = [
             'nama_proyek'          => 'required',
-            'document_title'          => 'required',
             'kategori_document'         => 'required',
             'deparment'      => 'required',
             'industri'  => 'required'
@@ -100,7 +99,7 @@ class KelolaDataProyekController extends BaseController
             $timestamp = $dt->format('Y-m-d G:i:s');
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
-                'document_title'     => $this->request->getVar('document_title'),
+                'document_title'     => "--",
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
                 'created'    => $timestamp,
@@ -108,49 +107,49 @@ class KelolaDataProyekController extends BaseController
                 'pj_proyek'    => $this->request->getVar('pj_proyek'),
                 'industri'    => $this->request->getVar('industri'),
             ];
-            // print_r($data);exit();
-            $document1 = $this->request->getFile('document1');
-            $document2 = $this->request->getFile('document2');
-            $document3 = $this->request->getFile('document3');
-            $keterangan1 = $this->request->getVar('keterangan1');
-            $keterangan2 = $this->request->getVar('keterangan2');
-            $keterangan3 = $this->request->getVar('keterangan3');
-            $file1 = $document1->getRandomName();
-            $file2 = $document2->getRandomName();
-            $file3 = $document3->getRandomName();
+            // // print_r($data);exit();
+            // $document1 = $this->request->getFile('document1');
+            // $document2 = $this->request->getFile('document2');
+            // $document3 = $this->request->getFile('document3');
+            // $keterangan1 = $this->request->getVar('keterangan1');
+            // $keterangan2 = $this->request->getVar('keterangan2');
+            // $keterangan3 = $this->request->getVar('keterangan3');
+            // $file1 = $document1->getRandomName();
+            // $file2 = $document2->getRandomName();
+            // $file3 = $document3->getRandomName();
             $db = db_connect('default');
             $proyekModel = new ProyekModel();
             $proyekModel->insertData($data);
             
             //variabel array document merupakan data yg akan di insert ke dalam table file
-            $document = [
-                [
-                    'proyek_id' => $proyekModel->insertID(), 
-                    'nama_file' => $file1,
-                    'keterangan' => $keterangan1
-                ],
-                [
-                    'proyek_id' => $proyekModel->insertID(), 
-                    'nama_file' => $file2,
-                    'keterangan' => $keterangan2
-                ],
-                [
-                    'proyek_id' => $proyekModel->insertID(),
-                    'nama_file' => $file3,
-                    'keterangan' => $keterangan3
-                ]
-            ];
+            // $document = [
+            //     [
+            //         'proyek_id' => $proyekModel->insertID(), 
+            //         'nama_file' => $file1,
+            //         'keterangan' => $keterangan1
+            //     ],
+            //     [
+            //         'proyek_id' => $proyekModel->insertID(), 
+            //         'nama_file' => $file2,
+            //         'keterangan' => $keterangan2
+            //     ],
+            //     [
+            //         'proyek_id' => $proyekModel->insertID(),
+            //         'nama_file' => $file3,
+            //         'keterangan' => $keterangan3
+            //     ]
+            // ];
 
-            $fileModel = new FileModel();
-            $fileModel->insertBatch($document);
+            // $fileModel = new FileModel();
+            // $fileModel->insertBatch($document);
             //move merupakan pemindahan file yg di upload kedalam aplikasi web data center
-            $document1->move('Uploads/', $file1);
-            if ($document2->isValid()) {
-                $document2->move('Uploads/', $file2);
-            }
-            if ($document3->isValid()) {
-                $document3->move('Uploads/', $file3);
-            }
+            // $document1->move('Uploads/', $file1);
+            // if ($document2->isValid()) {
+            //     $document2->move('Uploads/', $file2);
+            // }
+            // if ($document3->isValid()) {
+            //     $document3->move('Uploads/', $file3);
+            // }
             session()->setFlashdata('success', 'Proyek berhasil ditambahkan.');
             return redirect()->to('kelola-data-proyek');
         }else{
@@ -170,7 +169,6 @@ class KelolaDataProyekController extends BaseController
         helper(['form']);
         $rules = [
             'nama_proyek'          => 'required',
-            'document_title'          => 'required',
             'kategori_document'         => 'required',
             'deparment'      => 'required',
             'industri'  => 'required'
@@ -183,7 +181,7 @@ class KelolaDataProyekController extends BaseController
             $timestamp = $dt->format('Y-m-d');
             $data = [
                 'nama_proyek'     => $this->request->getVar('nama_proyek'),
-                'document_title'     => $this->request->getVar('document_title'),
+                'document_title'     => "--",
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
                 'industri'    => $this->request->getVar('industri'),
