@@ -52,7 +52,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NIP</th>
+                                <th>NIP/ID PJ</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
@@ -76,8 +76,8 @@
                                     <a href="<?= base_url('edit-akun-pegawai/'.$user['id']) ?>" class="btn btn-success">Edit</a>
                                     <form class="btn btn-danger" action="<?php echo base_url('hapus-akun-pegawai/'.$user['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                         <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-                                        <button type="submit" >Hapus</button>
-                                    </form>
+                                        <button type="submit" >Hapus</button><?=csrf_field()?>
+                                    </form><?=csrf_field()?>
                                 </td>
                             </tr>
                             <?php endif; ?>

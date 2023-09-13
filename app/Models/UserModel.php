@@ -1,10 +1,13 @@
-<?php 
-namespace App\Models;  
+<?php
+
+namespace App\Models;
+
 use CodeIgniter\Model;
-  
-class UserModel extends Model{
+
+class UserModel extends Model
+{
     protected $table = 'user';
-    
+
     protected $allowedFields = [
         'nip',
         'name',
@@ -17,8 +20,31 @@ class UserModel extends Model{
 
     public function insertData($data)
     {
-    $this->db->table('user')->insert($data);
-    return $this->db->insertID();
+        $this->db->table('user')->insert($data);
+        return $this->db->insertID();
+    }
+
+    public function getSearch($role = null)
+    {
+        // Membuat array dengan kolom yang akan digunakan dalam pencarian
+        $searchData = [];
+            
+        if ($role !== "") {
+            $searchData['role'] = $role;
+        }
+
+        // Melakukan pencarian berdasarkan data yang sesuai
+        $query = $this->db->table('user'); // Ganti 'nama_tabel_anda' dengan nama tabel Anda
+        $query->like($searchData);
+        // if ($start_date !== "" && $end_date !== "") {
+        //     $query->where("created >=", $start_date);
+        //     $query->where("created <=", $end_date);
+        // }
+
+        // print_r($query->getCompiledSelect());exit();
+
+        // Eksekusi query dan mengembalikan hasilnya
+        return $query->get()->getResultArray();
     }
 
     public function getAll()
@@ -67,5 +93,19 @@ class UserModel extends Model{
         $builder = $this->db->table('user');
         $builder->where('role', 'Member');
         return $builder->countAllResults();
+    }
+
+    public function getPJProyek()
+    {
+        $builder = $this->db->table('user');
+        $builder->where('role', 'PJ');
+        return $builder->get()->getResultArray();
+    }
+
+    public function getMemberProyek()
+    {
+        $builder = $this->db->table('user');
+        $builder->where('role', 'Member');
+        return $builder->get()->getResultArray();
     }
 }

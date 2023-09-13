@@ -1,36 +1,48 @@
 <section class="content">
-      <div class="container-fluid">
-      <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $total; ?></h3>
-                <p>Total Proyek</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-home"></i>
-              </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3><?php echo $total; ?></h3>
+            <p>Total Proyek</p>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3><?php echo $totalOnGoing; ?></h3>
+          <div class="icon">
+            <i class="ion ion-home"></i>
+          </div>
+          <a href="<?php echo base_url(); ?>kelola-data-proyek" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3><?php echo $totalOnGoing; ?></h3>
 
                 <p>Total Proyek On-Going</p>
               </div>
               <div class="icon">
                 <i class="ion ion-play"></i>
               </div>
+              <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="nama_proyek" value="">
+                <input type="hidden" name="document_title" value="">
+                <input type="hidden" name="kategori_document" value="On-Going">
+                <input type="hidden" name="deparment" value="">
+                <input type="hidden" name="startdate" value="">
+                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="industri" value="">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-warning">
               <div class="inner">
                 <h3><?php echo $totalHold; ?></h3>
 
@@ -39,51 +51,75 @@
               <div class="icon">
                 <i class="ion ion-pause"></i>
               </div>
+              <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="nama_proyek" value="">
+                <input type="hidden" name="document_title" value="">
+                <input type="hidden" name="kategori_document" value="Hold">
+                <input type="hidden" name="deparment" value="">
+                <input type="hidden" name="startdate" value="">
+                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="industri" value="">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-danger">
               <div class="inner">
                 <h3><?php echo $totalFinish; ?></h3>
 
-                <p>Total Proyek Finish</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-checkmark"></i>
-              </div>
-            </div>
+            <p>Total Proyek Finish</p>
           </div>
-          <!-- ./col -->
+          <div class="icon">
+            <i class="ion ion-checkmark"></i>
+          </div>
+          <form action="<?php echo base_url(); ?>kelola-data-proyek/search" method="POST" class="small-box-footer">
+                <?= csrf_field() ?>
+                <input type="hidden" name="nama_proyek" value="">
+                <input type="hidden" name="document_title" value="">
+                <input type="hidden" name="kategori_document" value="Finish">
+                <input type="hidden" name="deparment" value="">
+                <input type="hidden" name="startdate" value="">
+                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="industri" value="">
+                <button type="submit">Details <i class="fas fa-arrow-circle-right"></i></button>
+              </form>
         </div>
-        <div class="col-md-6">
-            <div class="card card-danger">
-              <div class="card-header">
-                <h3 class="card-title">Proyek Chart</h3>
+      </div>
+      <!-- ./col -->
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <div class="card card-danger">
+          <div class="card-header">
+            <h3 class="card-title">Proyek Chart</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <canvas id="donutChartProyek" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-              <!-- /.card-body -->
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
             </div>
-
           </div>
-    </section>
-    <script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
-  <script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
-  <script src="<?php echo base_url('plugins/chart.js/Chart.min.js'); ?>"></script>
-  <script>
-  $(function () {
+          <div class="card-body">
+            <canvas id="donutChartProyek" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+          </div>
+          <!-- /.card-body -->
+        </div>
+
+      </div>
+    </div>
+</section>
+<script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('plugins/chart.js/Chart.min.js'); ?>"></script>
+<script>
+  $(function() {
     /* ChartJS
      * -------
      * Here we will create a few charts using ChartJS
@@ -96,11 +132,11 @@
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
     var donutChartCanvas = $('#donutChartProyek').get(0).getContext('2d')
-    var akunData        = {
+    var akunData = {
       labels: [
-          'On-Going',
-          'Hold',
-          'Finish',
+        'On-Going',
+        'Hold',
+        'Finish',
       ],
       datasets: [
         {
@@ -109,13 +145,13 @@
             <?php echo $totalHold; ?>,
             <?php echo $totalFinish; ?>
           ],
-          backgroundColor : ['#f39c12', '#f56954', '#00a65a'],
+          backgroundColor : ['#f56954', '#f39c12', '#00a65a'],
         }
       ]
     }
-    var donutOptions     = {
-      maintainAspectRatio : false,
-      responsive : true,
+    var donutOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
     }
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.

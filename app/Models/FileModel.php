@@ -26,15 +26,22 @@ class FileModel extends Model{
         $results = $query->get()->getResult();
         return $results;
     }
+
+    public function viewDocMember($idProyek)
+    {
+        $query = $this->db->table('file');
+        $query->where('proyek_id', $idProyek);
+        return $query->get()->getResultArray();
+    }
     public function changeDocument1($id, $data)
     {
         $this->where('id', $id)->set($data)->update();
     }
 
-    // public function updateUser($id, $data)
-    // {
-    //     $this->where('id', $id)->set($data)->update();
-    // }
+    public function updateDokumen($id, $data)
+    {
+        $this->where('id', $id)->set($data)->update();
+    }
 
     // public function deleteUser($id)
     // {

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\UserModel;
 
 class AkunPegawaiController extends BaseController
@@ -18,33 +19,61 @@ class AkunPegawaiController extends BaseController
         return view('AkunPegawai/TambahAkunPegawai');
     }
 
+    public function searchAkun()
+    {
+        // Menerima kriteria pencarian dari form
+        $role = $this->request->getPost('role');
+
+        // Membuat instance model
+        $model = new UserModel();
+
+        // Mengambil data berdasarkan kriteria pencarian
+        $data['users'] = $model->getSearch($role);
+        $data['usersView'] = ['role'=>$role];
+        // print_r($startdate);exit();
+        // Menampilkan hasil pencarian ke tampilan
+        return view('AkunPegawai/SearchHomeAkunPegawai', $data);
+    }
+
     public function postTambahPegawai()
     {
         helper(['form']);
+        //validasi input data pada form tambah akun pegawai
         $rules = [
-            'nip'          => 'required|min_length[10]|max_length[13]|is_unique[user.nip]',
+            'nip'          => 'required|min_length[10]|max_length[13]|is_unique[user.nip,id,{nip}]',
             'name'          => 'required|min_length[2]|max_length[50]',
-            'email'         => 'required|min_length[4]|max_length[100]|valid_email',
+            'email'         => 'required|min_length[4]|max_length[100]|valid_email|is_unique[user.email,id,{nip}]',
             'nomor_hp'         => 'required|min_length[4]|max_length[100]',
             'password'      => 'required|min_length[4]|max_length[50]',
             'confirmpassword'  => 'matches[password]'
         ];
         $password = $this->request->getVar('confirmpassword');
-        if($this->validate($rules)){
+
+        // Jika validasi sesuai dengan $rules.
+        if ($this->validate($rules)) {
+            // Tampung semua input tambah user di variabel array of object $data
             $data = [
                 'nip'     => $this->request->getVar('nip'),
                 'name'     => $this->request->getVar('name'),
                 'email'    => $this->request->getVar('email'),
-                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'password' => password_hash($password, PASSWORD_DEFAULT), //hasshing password
                 'nomor_hp'    => $this->request->getVar('nomor_hp'),
                 'role'    => $this->request->getVar('role'),
                 'status'    => $this->request->getVar('status'),
             ];
+
+            // Memanggil class UseModel
             $userModel = new UserModel();
+
+            // Insert data yang berada di variabel $data ke tabel user di database melalui model UserModel
             $userModel->insertData($data);
+
+            // membuat session success untuk memberitahu kepada user bahwa insert data berhasil dilakukan
             session()->setFlashdata('success', 'User berhasil ditambahkan.');
+
+            // Mengarahkan ulang ke route akun-pegawai dengan membawa session success
             return redirect()->to('akun-pegawai');
-        }else{
+        } else {
             $data['validation'] = $this->validator;
             $userModel = new UserModel();
             $data['users'] = $userModel->getAll();
@@ -72,7 +101,7 @@ class AkunPegawaiController extends BaseController
         ];
 
         $password = $this->request->getVar('confirmpassword');
-        if($this->validate($rules)){
+        if ($this->validate($rules)) {
             if (!empty($password)) {
                 $data = [
                     'nip'     => $this->request->getVar('nip'),
@@ -83,7 +112,7 @@ class AkunPegawaiController extends BaseController
                     'role'    => $this->request->getVar('role'),
                     'status'    => $this->request->getVar('status'),
                 ];
-            }else{
+            } else {
                 $data = [
                     'nip'     => $this->request->getVar('nip'),
                     'name'     => $this->request->getVar('name'),
@@ -97,7 +126,7 @@ class AkunPegawaiController extends BaseController
             $userModel->updateUser($id, $data);
             session()->setFlashdata('success', 'User berhasil diupdate.');
             return redirect()->to('akun-pegawai');
-        }else{
+        } else {
             $data['validation'] = $this->validator;
             $userModel = new UserModel();
             $data['users'] = $userModel->getAll();

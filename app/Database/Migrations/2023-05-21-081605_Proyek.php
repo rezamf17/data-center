@@ -32,7 +32,14 @@ class Proyek extends Migration
 				'constraint'     => 100,
 			],
 			'created' => [
-				'type'           => 'DATETIME'
+				'type'           => 'DATE'
+			],
+			'ended' => [
+				'type'           => 'DATE'
+			],
+			'pj_proyek' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => 100,
 			],
 			'industri' => [
 				'type'           => 'VARCHAR',

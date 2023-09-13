@@ -39,6 +39,7 @@ $routes->post('/edit-keterangan1/(:num)', 'KelolaDataProyekController::gantiKete
 $routes->post('/edit-keterangan2/(:num)', 'KelolaDataProyekController::gantiKeterangan2/$1', ['filter' => 'authGuard']);
 $routes->post('/edit-keterangan3/(:num)', 'KelolaDataProyekController::gantiKeterangan3/$1', ['filter' => 'authGuard']);
 $routes->get('/edit-dokumen/(:num)', 'KelolaDataProyekController::editViewDocument/$1', ['filter' => 'authGuard']);
+$routes->post('/edit-dokumen/(:num)', 'KelolaDataProyekController::editPostDocument/$1', ['filter' => 'authGuard']);
 $routes->get('/tambah-data-proyek', 'KelolaDataProyekController::tambahProyek', ['filter' => 'authGuard']);
 $routes->post('/tambah-data-proyek', 'KelolaDataProyekController::tambahDataProyek', ['filter' => 'authGuard']);
 $routes->post('/kelola-data-proyek/search', 'KelolaDataProyekController::searchProyek', ['filter' => 'authGuard']);
@@ -47,6 +48,14 @@ $routes->post('/kelola-data-proyek/export/search', 'KelolaDataProyekController::
 $routes->post('/register-proyek/search', 'RegisterProyekController::searchProyek', ['filter' => 'authGuard']);
 $routes->get('/kelola-data-proyek/export/pdf', 'KelolaDataProyekController::exportPDF', ['filter' => 'authGuard']);
 $routes->post('/kelola-data-proyek/export/pdf/search', 'KelolaDataProyekController::searchExportPDF', ['filter' => 'authGuard']);
+$routes->post('/akun-pegawai/search', 'AkunPegawaiController::searchAkun', ['filter' => 'authGuard']);
+$routes->get('/daftar-member', 'MemberController::index', ['filter' => 'authGuard']);
+$routes->get('/tambah-daftar-member', 'MemberController::addMember', ['filter' => 'authGuard']);
+$routes->post('/tambah-daftar-member', 'MemberController::postMember', ['filter' => 'authGuard']);
+$routes->post('/delete-daftar-member/(:num)', 'MemberController::deleteMember/$1', ['filter' => 'authGuard']);
+$routes->get('/view-document/(:num)', 'KelolaDataProyekController::viewDocument/$1', ['filter' => 'authGuard']);
+$routes->get('/tambah-dokumen', 'KelolaDataProyekController::tambahDokumen', ['filter' => 'authGuard']);
+$routes->post('/tambah-dokumen', 'KelolaDataProyekController::postDokumen', ['filter' => 'authGuard']);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
