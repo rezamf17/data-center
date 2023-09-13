@@ -25,15 +25,6 @@ class ProyekMember extends Migration
 				'constraint'     => '5',
                 'unsigned' => true,
 			],
-			'role'      => [
-				'type'           => 'ENUM',
-				'constraint'     => ['Admin', 'Pegawai', 'PJ', 'SU', 'Member'],
-				'default'        => 'Admin',
-			],
-			'nama_member'      => [
-				'type'           => 'VARCHAR',
-				'constraint'     => 255,
-			],
 		]);
         $this->forge->addKey('id', TRUE);
         $this->forge->addForeignKey('id_proyek', 'proyek', 'id', 'CASCADE', 'CASCADE');
