@@ -38,10 +38,6 @@
                             <input type="text" class="form-control" placeholder="Masukan Nama Proyek" name="nama_proyek">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Document Title</label>
-                            <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title">
-                        </div>
-                        <div class="form-group">
                             <label for="exampleInputEmail1">Status Proyek</label>
                             <select name="kategori_document" class="form-control">
                                 <option value="">Pilih Status Proyek</option>
