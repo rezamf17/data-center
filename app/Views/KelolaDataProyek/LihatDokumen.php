@@ -95,7 +95,7 @@
                                     <?php endif; ?>
                                     <form class="btn btn-danger" action="<?php echo base_url('delete-dokumen/' . $item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus dokumen ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit">Hapus</button><?= csrf_field() ?>
+                                        <button type="submit">Hapus Dokumen</button><?= csrf_field() ?>
                                     </form>
                                 </td>
                             </tr>
