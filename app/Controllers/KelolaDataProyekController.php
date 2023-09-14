@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ProyekModel;
 use App\Models\FileModel;
 use App\Models\UserModel;
@@ -51,13 +52,14 @@ class KelolaDataProyekController extends BaseController
         // Mengambil data berdasarkan kriteria pencarian
         $data['proyek'] = $model->getSearch($nama_proyek, $document_title, $kategori_document, $departmen, $startdate, $enddate, $industri);
         $data['proyekView'] = [
-            'nama_proyek'=>$nama_proyek, 
-            'document_title'=>$document_title, 
-            'kategori_document'=>$kategori_document,
-            'deparment'=>$departmen,
-            'startdate'=>$startdate, 
-            'enddate' => $enddate, 
-            'industri'=>$industri];
+            'nama_proyek' => $nama_proyek,
+            'document_title' => $document_title,
+            'kategori_document' => $kategori_document,
+            'deparment' => $departmen,
+            'startdate' => $startdate,
+            'enddate' => $enddate,
+            'industri' => $industri
+        ];
         // print_r($startdate);exit();
         // Menampilkan hasil pencarian ke tampilan
         return view('KelolaDataProyek/SearchHomeKelolaDataProyek', $data);
@@ -92,7 +94,7 @@ class KelolaDataProyekController extends BaseController
             'industri'  => 'required'
         ];
         //validasi jika semua lolos validasi
-        if($this->validate($rules)){
+        if ($this->validate($rules)) {
             //variabel array berisi data yg di inputkan dari halaman tambah data proyek
             $tz = 'Asia/Jakarta';
             $dt = new DateTime("now", new DateTimeZone($tz));
@@ -120,7 +122,7 @@ class KelolaDataProyekController extends BaseController
             $db = db_connect('default');
             $proyekModel = new ProyekModel();
             $proyekModel->insertData($data);
-            
+
             //variabel array document merupakan data yg akan di insert ke dalam table file
             // $document = [
             //     [
@@ -152,7 +154,7 @@ class KelolaDataProyekController extends BaseController
             // }
             session()->setFlashdata('success', 'Proyek berhasil ditambahkan.');
             return redirect()->to('kelola-data-proyek');
-        }else{
+        } else {
             //validasi kondisi ketika tidak masuk validasi
             $data['validation'] = $this->validator;
             $proyekModel = new ProyekModel();
@@ -174,7 +176,7 @@ class KelolaDataProyekController extends BaseController
             'industri'  => 'required'
         ];
         $password = $this->request->getVar('confirmpassword');
-        if($this->validate($rules)){
+        if ($this->validate($rules)) {
             // array data untuk inputan data yg akan di update
             $tz = 'Asia/Jakarta';
             $dt = new DateTime("now", new DateTimeZone($tz));
@@ -192,7 +194,7 @@ class KelolaDataProyekController extends BaseController
             $proyekModel->updateProyek($id, $data);
             session()->setFlashdata('success', 'Proyek berhasil diupdate.');
             return redirect()->to('kelola-data-proyek');
-        }else{
+        } else {
             $data['validation'] = $this->validator;
             $proyekModel = new ProyekModel();
             $data['proyek'] = $proyekModel->find($id);
@@ -269,7 +271,7 @@ class KelolaDataProyekController extends BaseController
         $document1->move('Uploads/', $file1);
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+        return redirect()->to(base_url('edit-dokumen/' . $id_proyek));
     }
 
     public function gantiDokumen2($id)
@@ -285,7 +287,7 @@ class KelolaDataProyekController extends BaseController
         $document2->move('Uploads/', $file2);
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+        return redirect()->to(base_url('edit-dokumen/' . $id_proyek));
     }
 
     public function gantiDokumen3($id)
@@ -301,7 +303,7 @@ class KelolaDataProyekController extends BaseController
         $document3->move('Uploads/', $file3);
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+        return redirect()->to(base_url('edit-dokumen/' . $id_proyek));
     }
 
     //function untuk ganti keterangan 1
@@ -315,7 +317,7 @@ class KelolaDataProyekController extends BaseController
         ];
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+        return redirect()->to(base_url('edit-dokumen/' . $id_proyek));
     }
     public function gantiKeterangan2($id)
     {
@@ -327,7 +329,7 @@ class KelolaDataProyekController extends BaseController
         ];
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+        return redirect()->to(base_url('edit-dokumen/' . $id_proyek));
     }
 
     public function gantiKeterangan3($id)
@@ -340,7 +342,7 @@ class KelolaDataProyekController extends BaseController
         ];
         $fileModel->changeDocument1($id, $data);
         session()->setFlashdata('success', 'Dokumen berhasil diedit.');
-        return redirect()->to(base_url('edit-dokumen/'.$id_proyek));
+        return redirect()->to(base_url('edit-dokumen/' . $id_proyek));
     }
 
     public function exportExcel()
@@ -367,7 +369,7 @@ class KelolaDataProyekController extends BaseController
         
         $column = 2;
         // tulis data mobil ke cell
-        foreach($dataModel as $data) {
+        foreach ($dataModel as $data) {
             $spreadsheet->setActiveSheetIndex(0)
                         ->setCellValue('A' . $column, $data['nama_proyek'])
                         ->setCellValue('B' . $column, $data['document_title'])
@@ -385,7 +387,7 @@ class KelolaDataProyekController extends BaseController
 
         // Redirect hasil generate xlsx ke web client
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
         header('Cache-Control: max-age=0');
 
         $writer->save('php://output');
@@ -393,7 +395,7 @@ class KelolaDataProyekController extends BaseController
 
     public function exportExcelSearch()
     {
-                // Menerima kriteria pencarian dari form
+        // Menerima kriteria pencarian dari form
         $nama_proyek = $this->request->getPost('nama_proyek');
         $document_title = $this->request->getPost('document_title');
         $kategori_document = $this->request->getPost('kategori_document');
@@ -414,23 +416,23 @@ class KelolaDataProyekController extends BaseController
         $spreadsheet = new Spreadsheet();
         // tulis header/nama kolom 
         $spreadsheet->setActiveSheetIndex(0)
-                    ->setCellValue('A1', 'Nama Proyek')
-                    ->setCellValue('B1', 'Document Title')
-                    ->setCellValue('C1', 'Kategori Document')
-                    ->setCellValue('D1', 'Department')
-                    ->setCellValue('E1', 'Tanggal Masuk Proyek')
-                    ->setCellValue('F1', 'Tempat Proyek');
-        
+            ->setCellValue('A1', 'Nama Proyek')
+            ->setCellValue('B1', 'Document Title')
+            ->setCellValue('C1', 'Kategori Document')
+            ->setCellValue('D1', 'Department')
+            ->setCellValue('E1', 'Tanggal Masuk Proyek')
+            ->setCellValue('F1', 'Tempat Proyek');
+
         $column = 2;
         // tulis data mobil ke cell
-        foreach($dataModel as $data) {
+        foreach ($dataModel as $data) {
             $spreadsheet->setActiveSheetIndex(0)
-                        ->setCellValue('A' . $column, $data['nama_proyek'])
-                        ->setCellValue('B' . $column, $data['document_title'])
-                        ->setCellValue('C' . $column, $data['kategori_document'])
-                        ->setCellValue('D' . $column, $data['deparment'])
-                        ->setCellValue('E' . $column, $data['created'])
-                        ->setCellValue('F' . $column, $data['industri']);
+                ->setCellValue('A' . $column, $data['nama_proyek'])
+                ->setCellValue('B' . $column, $data['document_title'])
+                ->setCellValue('C' . $column, $data['kategori_document'])
+                ->setCellValue('D' . $column, $data['deparment'])
+                ->setCellValue('E' . $column, $data['created'])
+                ->setCellValue('F' . $column, $data['industri']);
             $column++;
         }
         // tulis dalam format .xlsx
@@ -439,7 +441,7 @@ class KelolaDataProyekController extends BaseController
 
         // Redirect hasil generate xlsx ke web client
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
         header('Cache-Control: max-age=0');
 
         $writer->save('php://output');
@@ -452,17 +454,19 @@ class KelolaDataProyekController extends BaseController
         $mpdf = new \Mpdf\Mpdf();
         $proyekModel = new ProyekModel();
         //variabel data merupakan semua data yang ada pada tabel proyek
-        $session = session();
-        if ($session->get('role') == 'PJ') {
-            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
-        }else{
-            $data['proyek'] = $proyekModel->getAll();
-        }
-		$html = view('KelolaDataProyek/ExportPDF', $data);
-        // return view('KelolaDataProyek/ExportPDF', $data);
-		$mpdf->WriteHTML($html);
-		$this->response->setHeader('Content-Type', 'application/pdf');
-		$mpdf->Output('Laporan Data Proyek.pdf','I');
+        $data['proyek'] = $proyekModel->getAll();
+        $html = view('KelolaDataProyek/ExportPDF', $data);
+        $mpdf->WriteHTML($html);
+        $mpdf->SetHTMLFooter('
+            <table width="100%">
+                <tr>
+                    <td width="33%" align="center">{DATE j-m-Y}</td>
+                    <td width="33%" align="center">{PAGENO}/{nbpg}</td>
+                    <td width="33%" style="text-align: right;">BIM WIKA</td>
+                </tr>
+            </table>');
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $mpdf->Output('Laporan Data Proyek.pdf', 'I');
     }
 
     public function searchExportPDF()
@@ -496,9 +500,56 @@ class KelolaDataProyekController extends BaseController
         // $html = $this->load->view('KelolaDataProyek/SearchExportPDF', $data, true);
         $html = view('KelolaDataProyek/ExportPDF', $data);
 
-		$mpdf->WriteHTML($html);
-		$this->response->setHeader('Content-Type', 'application/pdf');
-		$mpdf->Output('Laporan Data Proyek.pdf','I');
+        $mpdf->WriteHTML($html);
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $mpdf->Output('Laporan Data Proyek.pdf', 'I');
+    }
+
+    public function viewDocument($idProyek)
+    {
+        $fileModel = new FileModel();
+        $data['file'] = $fileModel->viewDocMember($idProyek);
+        return view('KelolaDataProyek/LihatDokumen', $data);
+    }
+
+    public function tambahDokumen()
+    {
+        // $fileModel = new FileModel();
+        $proyekModel = new ProyekModel();
+        $session = session();
+        if($session->get('role') == 'Member'){
+            $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
+        }elseif($session->get('role') == 'PJ'){
+            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
+        }else{
+            $data['proyek'] = $proyekModel->getAll();
+        }
+        return view('KelolaDataProyek/TambahDokumen', $data);
+    }
+
+    public function postDokumen()
+    {
+        $docInput = $this->request->getFile('document');
+        $file = $docInput->getRandomName();
+        $document = [
+                'proyek_id' => $this->request->getVar('proyek'), 
+                'nama_file' => $file,
+                'keterangan' => $this->request->getVar('keterangan')
+        ];
+        $fileModel = new FileModel();
+        $fileModel->insertData($document);
+        $docInput->move('Uploads/', $file);
+        session()->setFlashdata('success', 'File berhasil ditambahkan.');
+        return redirect()->to('kelola-data-proyek');
+    }
+
+    public function deleteDokumen($id)
+    {
+        $fileModel = new FileModel();
+        // $file = $fileModel->find($id);
+        $fileModel->deleteDokumen($id);
+        session()->setFlashdata('success', 'File berhasil dihapus.');
+        return redirect()->to(base_url('kelola-data-proyek'));
     }
 
     public function viewDocument($idProyek)
