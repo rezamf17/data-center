@@ -54,9 +54,7 @@
                                 <th>No</th>
                                 <th>Dokumen</th>
                                 <th>Keterangan</th>
-                                <?php if(session()->get('role') === 'PJ' || session()->get('role') === 'SU'): ?>
                                 <th>Aksi</th>
-                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,9 +88,7 @@
                                 </td>
                                 <td><?= $item['keterangan'] ?></td>
                                 <td>
-                                    <?php if(session()->get('role') === 'PJ' || session()->get('role') === 'SU'): ?>
                                     <a href="<?= base_url('edit-dokumen/' . $item['id']) ?>" class="btn btn-success">Edit Dokumen</a>
-                                    <?php endif; ?>
                                     <form class="btn btn-danger" action="<?php echo base_url('delete-dokumen/' . $item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus dokumen ini?')">
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit">Hapus Dokumen</button><?= csrf_field() ?>

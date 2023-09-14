@@ -47,7 +47,9 @@
                 <?php endif;?>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a href="<?php echo base_url(); ?>tambah-daftar-member" class="btn btn-primary mb-3">Tambah</a>
+                    <?php if(session()->get('role') !== 'SU') : ?>
+                        <a href="<?php echo base_url(); ?>tambah-daftar-member" class="btn btn-primary mb-3">Tambah</a>
+                    <?php endif; ?>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>

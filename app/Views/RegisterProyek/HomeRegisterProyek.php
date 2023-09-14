@@ -37,13 +37,9 @@
                         <input type="text" class="form-control" placeholder="Masukan Nama Proyek" name="nama_proyek">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Document Title</label>
-                        <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Kategori Document</label>
+                        <label for="exampleInputEmail1">Status Proyek</label>
                         <select name="kategori_document" class="form-control">
-                            <option value="">Pilih Kategori Document</option>
+                            <option value="">Pilih Status Proyek</option>
                             <option value="On-Going">On-Going</option>
                             <option value="Hold">Hold</option>
                             <option value="Finish">Finish</option>
@@ -109,12 +105,12 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Proyek</th>
-                            <th>Document Title</th>
-                            <th>Kategori Document</th>
+                            <th>Status Proyek</th>
                             <th>Departmen</th>
                             <th>Tanggal Masuk Proyek</th>
                             <th>Tanggal Berakhir Proyek</th>
                             <th>Industri</th>
+                            <th>PJ Proyek</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -124,12 +120,12 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $item['nama_proyek'] ?></td>
-                                <td><?= $item['document_title'] ?></td>
                                 <td><?= $item['kategori_document'] ?></td>
                                 <td><?= $item['deparment'] ?></td>
                                 <td><?= $item['created'] ?></td>
                                 <td><?= $item['ended'] ?></td>
                                 <td><?= $item['industri'] ?></td>
+                                <td><?= $item['pj_proyek'] ?></td>
                                 <td>
                                     <a href="<?= base_url('lihat-dokumen/' . $item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>
                                     <!-- <form class="btn btn-secondary" action="<?php echo base_url('lihat-dokumen'); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
