@@ -453,8 +453,13 @@ class KelolaDataProyekController extends BaseController
     {
         $mpdf = new \Mpdf\Mpdf();
         $proyekModel = new ProyekModel();
+        $session = session();
         //variabel data merupakan semua data yang ada pada tabel proyek
-        $data['proyek'] = $proyekModel->getAll();
+        if ($session->get('role') == 'PJ') {
+            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
+        }else{
+            $data['proyek'] = $proyekModel->getAll();
+        }
         $html = view('KelolaDataProyek/ExportPDF', $data);
         $mpdf->WriteHTML($html);
         $mpdf->SetHTMLFooter('
@@ -501,55 +506,16 @@ class KelolaDataProyekController extends BaseController
         $html = view('KelolaDataProyek/ExportPDF', $data);
 
         $mpdf->WriteHTML($html);
+        $mpdf->SetHTMLFooter('
+        <table width="100%">
+            <tr>
+                <td width="33%" align="center">{DATE j-m-Y}</td>
+                <td width="33%" align="center">{PAGENO}/{nbpg}</td>
+                <td width="33%" style="text-align: right;">BIM WIKA</td>
+            </tr>
+        </table>');
         $this->response->setHeader('Content-Type', 'application/pdf');
         $mpdf->Output('Laporan Data Proyek.pdf', 'I');
-    }
-
-    public function viewDocument($idProyek)
-    {
-        $fileModel = new FileModel();
-        $data['file'] = $fileModel->viewDocMember($idProyek);
-        return view('KelolaDataProyek/LihatDokumen', $data);
-    }
-
-    public function tambahDokumen()
-    {
-        // $fileModel = new FileModel();
-        $proyekModel = new ProyekModel();
-        $session = session();
-        if($session->get('role') == 'Member'){
-            $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
-        }elseif($session->get('role') == 'PJ'){
-            $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
-        }else{
-            $data['proyek'] = $proyekModel->getAll();
-        }
-        return view('KelolaDataProyek/TambahDokumen', $data);
-    }
-
-    public function postDokumen()
-    {
-        $docInput = $this->request->getFile('document');
-        $file = $docInput->getRandomName();
-        $document = [
-                'proyek_id' => $this->request->getVar('proyek'), 
-                'nama_file' => $file,
-                'keterangan' => $this->request->getVar('keterangan')
-        ];
-        $fileModel = new FileModel();
-        $fileModel->insertData($document);
-        $docInput->move('Uploads/', $file);
-        session()->setFlashdata('success', 'File berhasil ditambahkan.');
-        return redirect()->to('kelola-data-proyek');
-    }
-
-    public function deleteDokumen($id)
-    {
-        $fileModel = new FileModel();
-        // $file = $fileModel->find($id);
-        $fileModel->deleteDokumen($id);
-        session()->setFlashdata('success', 'File berhasil dihapus.');
-        return redirect()->to(base_url('kelola-data-proyek'));
     }
 
     public function viewDocument($idProyek)
