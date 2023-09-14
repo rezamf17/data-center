@@ -515,8 +515,10 @@ class KelolaDataProyekController extends BaseController
         $session = session();
         if($session->get('role') == 'Member'){
             $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
-        }else{
+        }elseif($session->get('role') == 'PJ'){
             $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
+        }else{
+            $data['proyek'] = $proyekModel->getAll();
         }
         return view('KelolaDataProyek/TambahDokumen', $data);
     }
@@ -535,5 +537,14 @@ class KelolaDataProyekController extends BaseController
         $docInput->move('Uploads/', $file);
         session()->setFlashdata('success', 'File berhasil ditambahkan.');
         return redirect()->to('kelola-data-proyek');
+    }
+
+    public function deleteDokumen($id)
+    {
+        $fileModel = new FileModel();
+        // $file = $fileModel->find($id);
+        $fileModel->deleteDokumen($id);
+        session()->setFlashdata('success', 'File berhasil dihapus.');
+        return redirect()->to(base_url('kelola-data-proyek'));
     }
 }
