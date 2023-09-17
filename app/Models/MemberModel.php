@@ -11,10 +11,20 @@ class MemberModel extends Model{
         'keterangan' 
     ];
 
+    public function checkMember($data)
+    {
+        $query = $this->db->table('proyek_member')
+        ->where('id_proyek', $data['id_proyek'])
+        ->where('id_user', $data['id_user'])
+        ->get();
+
+        return $query->getResultArray();
+    }
+
     public function insertData($data)
     {
-    $this->db->table('proyek_member')->insert($data);
-    return $this->db->insertID();
+            $this->db->table('proyek_member')->insert($data);
+            return $this->db->insertID();
     }
 
    public function getData($username)

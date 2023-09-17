@@ -39,6 +39,10 @@
                     <div class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('success'); ?>
                     </div>
+                <?php elseif (session()->getFlashdata('warning')) : ?>
+                    <div class="alert alert-warning" role="alert">
+                        <?= session()->getFlashdata('warning'); ?>
+                    </div>
                 <?php endif; ?>
                 <?php if(isset($validation)):?>
                 <div class="alert alert-warning">
