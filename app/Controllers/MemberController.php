@@ -12,7 +12,11 @@ class MemberController extends BaseController
         $memberModel = new MemberModel();
         $session = session();
         $username = $session->get('name');
-        $data['users'] = $memberModel->getData($username);
+        if ($session->get('role') !== 'SU') {
+            $data['users'] = $memberModel->getData($username);
+        }else{
+            $data['users'] = $memberModel->getAllMembers();
+        }
         // print_r($data);exit();
         return view('KelolaMember/HomeMember', $data);
     }

@@ -58,7 +58,9 @@
                                 <th>Role</th>
                                 <th>Nama Member</th>
                                 <th>Nama Proyek</th>
+                                <?php if(session()->get('role') !== 'SU') : ?>
                                 <th>Actions</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,12 +72,14 @@
                                 <td><?= $user['role'] ?></td>
                                 <td><?= $user['name'] ?></td>
                                 <td><?= $user['nama_proyek'] ?></td>
+                                <?php if(session()->get('role') !== 'SU') : ?>
                                 <td>
                                 <form class="btn btn-danger" action="<?php echo base_url('delete-daftar-member/'.$user['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus member ini?')">
                                         <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
                                         <button type="submit" >Hapus</button><?=csrf_field()?>
                                     </form><?=csrf_field()?>
                                 </td>
+                                <?php endif; ?>
                             </tr>
                             <?php endif; ?>
                             <?php endforeach; ?>

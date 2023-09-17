@@ -124,7 +124,7 @@
             </li>
             <li class="nav-item">
               <a href="<?= base_url('daftar-member') ?>" class="nav-link">
-              <i class="nav-icon fas fa-folder-plus"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
                 <p>Daftar Member</p>
               </a>
             </li>
@@ -176,7 +176,7 @@
             </li>
             <li class="nav-item">
               <a href="<?= base_url('daftar-member') ?>" class="nav-link">
-              <i class="nav-icon fas fa-folder-plus"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
                 <p>Daftar Member</p>
               </a>
             </li>
