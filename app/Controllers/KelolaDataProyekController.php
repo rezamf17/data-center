@@ -18,18 +18,18 @@ class KelolaDataProyekController extends BaseController
         $proyekModel = new ProyekModel();
         //variabel data merupakan semua data yang ada pada tabel proyek
         $session = session();
-//         SELECT proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title,
-// proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri,user.name
-// FROM proyek_member
-// JOIN proyek ON proyek.id = proyek_member.id_proyek
-// JOIN user ON user.id = proyek_member.id_user;
+        //         SELECT proyek_member.id, proyek_member.id_proyek, proyek_member.id_user, proyek.nama_proyek, proyek.document_title,
+        // proyek.kategori_document, proyek.deparment, proyek.created, proyek.ended, proyek.pj_proyek, proyek.industri,user.name
+        // FROM proyek_member
+        // JOIN proyek ON proyek.id = proyek_member.id_proyek
+        // JOIN user ON user.id = proyek_member.id_user;
         if ($session->get('role') == 'SU') {
             $data['proyek'] = $proyekModel->getAll();
-        }elseif($session->get('role') == 'Member'){
+        } elseif ($session->get('role') == 'Member') {
             $data['proyek'] = $proyekModel->dataMemberProyek($session->get('name'));
-        }elseif($session->get('role') == 'PJ'){
+        } elseif ($session->get('role') == 'PJ') {
             $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
-        }else{
+        } else {
             $data['proyek'] = $proyekModel->getAll();
         }
         return view('KelolaDataProyek/HomeKelolaDataProyek', $data);
@@ -221,30 +221,29 @@ class KelolaDataProyekController extends BaseController
             $file = $docInput->getRandomName();
             $fileModel = new FileModel();
             $document = [
-                    'proyek_id' => $this->request->getVar('proyek'), 
-                    'nama_file' => $file,
-                    'keterangan' => $this->request->getVar('keterangan')
-                ];
-                // print_r($document);exit();
-                $docInput->move('Uploads/', $file);
-                $fileModel->updateDokumen($id, $document);
-                session()->setFlashdata('success', 'Dokumen berhasil diganti.');
-                return redirect()->to(base_url('kelola-data-proyek'));
-            }else{
-                $file = $docInput->getRandomName();
-                $fileModel = new FileModel();
-                $fileDoc = $fileModel->find($id);
-                $document = [
-                    'proyek_id' => $this->request->getVar('proyek'), 
-                    'nama_file' => $fileDoc['nama_file'],
-                    'keterangan' => $this->request->getVar('keterangan')
-                ];
-                // print_r($document);exit();
-                $fileModel->updateDokumen($id, $document);
-                session()->setFlashdata('success', 'Dokumen berhasil diganti.');
-                return redirect()->to(base_url('kelola-data-proyek'));
+                'proyek_id' => $this->request->getVar('proyek'),
+                'nama_file' => $file,
+                'keterangan' => $this->request->getVar('keterangan')
+            ];
+            // print_r($document);exit();
+            $docInput->move('Uploads/', $file);
+            $fileModel->updateDokumen($id, $document);
+            session()->setFlashdata('success', 'Dokumen berhasil diganti.');
+            return redirect()->to(base_url('kelola-data-proyek'));
+        } else {
+            $file = $docInput->getRandomName();
+            $fileModel = new FileModel();
+            $fileDoc = $fileModel->find($id);
+            $document = [
+                'proyek_id' => $this->request->getVar('proyek'),
+                'nama_file' => $fileDoc['nama_file'],
+                'keterangan' => $this->request->getVar('keterangan')
+            ];
+            // print_r($document);exit();
+            $fileModel->updateDokumen($id, $document);
+            session()->setFlashdata('success', 'Dokumen berhasil diganti.');
+            return redirect()->to(base_url('kelola-data-proyek'));
         }
-        
     }
 
     // functio untuk menghapus proyek
@@ -351,34 +350,34 @@ class KelolaDataProyekController extends BaseController
         $session = session();
         if ($session->get('role') == 'PJ') {
             $dataModel = $model->dataPJProyek($session->get('name'));
-        }else{
+        } else {
             $dataModel = $model->getAll();
         }
 
         $spreadsheet = new Spreadsheet();
         // tulis header/nama kolom 
         $spreadsheet->setActiveSheetIndex(0)
-                    ->setCellValue('A1', 'Nama Proyek')
-                    ->setCellValue('B1', 'Document Title')
-                    ->setCellValue('C1', 'Kategori Document')
-                    ->setCellValue('D1', 'Department')
-                    ->setCellValue('E1', 'Tanggal Masuk Proyek')
-                    ->setCellValue('F1', 'Tanggal Berakhir Proyek')
-                    ->setCellValue('G1', 'PJ Proyek')
-                    ->setCellValue('H1', 'Tempat Proyek');
-        
+            ->setCellValue('A1', 'Nama Proyek')
+            ->setCellValue('B1', 'Document Title')
+            ->setCellValue('C1', 'Kategori Document')
+            ->setCellValue('D1', 'Department')
+            ->setCellValue('E1', 'Tanggal Masuk Proyek')
+            ->setCellValue('F1', 'Tanggal Berakhir Proyek')
+            ->setCellValue('G1', 'PJ Proyek')
+            ->setCellValue('H1', 'Tempat Proyek');
+
         $column = 2;
         // tulis data mobil ke cell
         foreach ($dataModel as $data) {
             $spreadsheet->setActiveSheetIndex(0)
-                        ->setCellValue('A' . $column, $data['nama_proyek'])
-                        ->setCellValue('B' . $column, $data['document_title'])
-                        ->setCellValue('C' . $column, $data['kategori_document'])
-                        ->setCellValue('D' . $column, $data['deparment'])
-                        ->setCellValue('E' . $column, $data['created'])
-                        ->setCellValue('F' . $column, $data['ended'])
-                        ->setCellValue('G' . $column, $data['pj_proyek'])
-                        ->setCellValue('H' . $column, $data['industri']);
+                ->setCellValue('A' . $column, $data['nama_proyek'])
+                ->setCellValue('B' . $column, $data['document_title'])
+                ->setCellValue('C' . $column, $data['kategori_document'])
+                ->setCellValue('D' . $column, $data['deparment'])
+                ->setCellValue('E' . $column, $data['created'])
+                ->setCellValue('F' . $column, $data['ended'])
+                ->setCellValue('G' . $column, $data['pj_proyek'])
+                ->setCellValue('H' . $column, $data['industri']);
             $column++;
         }
         // tulis dalam format .xlsx
@@ -457,7 +456,7 @@ class KelolaDataProyekController extends BaseController
         //variabel data merupakan semua data yang ada pada tabel proyek
         if ($session->get('role') == 'PJ') {
             $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
-        }else{
+        } else {
             $data['proyek'] = $proyekModel->getAll();
         }
         $html = view('KelolaDataProyek/ExportPDF', $data);
@@ -465,7 +464,7 @@ class KelolaDataProyekController extends BaseController
         $mpdf->SetHTMLFooter('
             <table width="100%">
                 <tr>
-                    <td width="33%" align="center">{DATE j-m-Y}</td>
+                    <td width="33%" align="left">{DATE j-m-Y}</td>
                     <td width="33%" align="center">{PAGENO}/{nbpg}</td>
                     <td width="33%" style="text-align: right;">BIM WIKA</td>
                 </tr>
@@ -530,11 +529,11 @@ class KelolaDataProyekController extends BaseController
         // $fileModel = new FileModel();
         $proyekModel = new ProyekModel();
         $session = session();
-        if($session->get('role') == 'Member'){
+        if ($session->get('role') == 'Member') {
             $data['proyek'] = $proyekModel->dataProyekMember($session->get('name'));
-        }elseif($session->get('role') == 'PJ'){
+        } elseif ($session->get('role') == 'PJ') {
             $data['proyek'] = $proyekModel->dataPJProyek($session->get('name'));
-        }else{
+        } else {
             $data['proyek'] = $proyekModel->getAll();
         }
         return view('KelolaDataProyek/TambahDokumen', $data);
@@ -545,9 +544,9 @@ class KelolaDataProyekController extends BaseController
         $docInput = $this->request->getFile('document');
         $file = $docInput->getRandomName();
         $document = [
-                'proyek_id' => $this->request->getVar('proyek'), 
-                'nama_file' => $file,
-                'keterangan' => $this->request->getVar('keterangan')
+            'proyek_id' => $this->request->getVar('proyek'),
+            'nama_file' => $file,
+            'keterangan' => $this->request->getVar('keterangan')
         ];
         $fileModel = new FileModel();
         $fileModel->insertData($document);
