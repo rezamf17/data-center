@@ -39,9 +39,14 @@ class MemberController extends BaseController
             'id_user' => $this->request->getVar('id_user')
         ];
         $memberModel = new MemberModel();
-        $memberModel->insertData($data);
-        session()->setFlashdata('success', 'Member berhasil ditambahkan.');
-        return redirect()->to('daftar-member');
+        if ($memberModel->checkMember($data) == null) {
+            $memberModel->insertData($data);
+            session()->setFlashdata('success', 'Member berhasil ditambahkan.');
+            return redirect()->to('daftar-member');
+        }else{
+            session()->setFlashdata('warning', 'Member Sudah Terdaftar.');
+            return redirect()->to('daftar-member');
+        }
     }
 
     public function deleteMember($id)
