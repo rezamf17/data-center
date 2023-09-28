@@ -58,6 +58,27 @@
       <input type="text" class="form-control" name="pj_proyek" value="<?php echo session()->get('name'); ?>" readonly>
     </div>
     <?php endif; ?>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Gambar Proyek 1</label>
+      <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar1" accept="image/png, image/gif, image/jpeg" required />
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Gambar Proyek 2</label>
+      <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar2" accept="image/png, image/gif, image/jpeg" required />
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+        </div>
+    </div>
+    <label for="exampleInputPassword1">Deskripsi Proyek</label>
+    <textarea id="summernote" row="5" name="deskripsi">
+    </textarea>
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-outline-primary">Simpan</button>
@@ -68,6 +89,21 @@
 </div>
 
 </section>
-
 </div>
+<script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+<!-- Summernote -->
+<script src="<?php echo base_url('plugins/summernote/summernote-bs4.min.js'); ?>"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
 <?php echo view('footer') ?>
