@@ -53,25 +53,16 @@
       </select>
     </div>
     <?php elseif(session()->get('role') === 'PJ'): ?>
-      <div class="form-group">
+    <div class="form-group">
       <label for="exampleInputPassword1">PJ Proyek</label>
       <input type="text" class="form-control" name="pj_proyek" value="<?php echo session()->get('name'); ?>" readonly>
     </div>
     <?php endif; ?>
     <div class="form-group">
-      <label for="exampleInputPassword1">Gambar Proyek 1</label>
+      <label for="exampleInputPassword1">Gambar Proyek </label>
       <div class="input-group">
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar1" accept="image/png, image/gif, image/jpeg" required />
-            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-          </div>
-        </div>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Gambar Proyek 2</label>
-      <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar2" accept="image/png, image/gif, image/jpeg" required />
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar" accept="image/png, image/gif, image/jpeg" required />
             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
           </div>
         </div>

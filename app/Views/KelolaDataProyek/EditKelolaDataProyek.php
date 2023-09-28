@@ -7,15 +7,11 @@
 <div class="card">
 <div class="card-header">Edit Proyek</div>
 <div class="card-body">
-  <form action="<?php echo base_url('edit-kelola-data-proyek/'.$proyek['id']); ?>" method="POST">
+  <form action="<?php echo base_url('edit-kelola-data-proyek/'.$proyek['id']); ?>" method="POST" enctype="multipart/form-data">
   <?=csrf_field()?>
     <div class="form-group">
       <label for="exampleInputEmail1">Nama Proyek</label>
       <input type="text" class="form-control" placeholder="Masukan Nama Proyek" name="nama_proyek" value="<?php echo $proyek['nama_proyek']; ?>" required>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Document Title</label>
-      <input type="text" class="form-control" placeholder="Masukan Document Title" name="document_title" value="<?php echo $proyek['document_title']; ?>" required>
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Status Proyek</label>
@@ -46,6 +42,10 @@
       </select>
     </div>
     <div class="form-group">
+      <label for="exampleInputPassword1">PJ Proyek</label>
+      <input type="text" class="form-control" name="pj_proyek" value="<?php echo $proyek['pj_proyek']; ?>" readonly>
+    </div>
+    <div class="form-group">
       <label for="exampleInputPassword1">Tempat Proyek</label>
       <input type="text" class="form-control" placeholder="Masukan Tempat Proyek" name="industri" value="<?php echo $proyek['industri']; ?>" required>
     </div>
@@ -53,6 +53,20 @@
       <label for="exampleInputPassword1">Tanggal Berakhir Proyek</label>
       <input type="date" class="form-control" name="ended" value="<?php echo $proyek['ended']; ?>">
     </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Gambar Proyek</label>
+      <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar" >
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+        </div>
+    </div>
+    <label for="exampleInputPassword1">Deskripsi Proyek</label>
+    <textarea id="summernote" row="5" name="deskripsi">
+      <?php echo $proyek['deskripsi']; ?>
+    </textarea>
+    
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-outline-success">Edit</button>
@@ -63,6 +77,21 @@
 </div>
 
 </section>
-
 </div>
+<script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+<!-- Summernote -->
+<script src="<?php echo base_url('plugins/summernote/summernote-bs4.min.js'); ?>"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
 <?php echo view('footer') ?>

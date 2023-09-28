@@ -108,50 +108,29 @@ class KelolaDataProyekController extends BaseController
                 'ended'    => $this->request->getVar('ended'),
                 'pj_proyek'    => $this->request->getVar('pj_proyek'),
                 'industri'    => $this->request->getVar('industri'),
+                'deskripsi'    => $this->request->getVar('deskripsi'),
             ];
+
             // // print_r($data);exit();
-            // $document1 = $this->request->getFile('document1');
-            // $document2 = $this->request->getFile('document2');
+            $document = $this->request->getFile('gambar');
             // $document3 = $this->request->getFile('document3');
             // $keterangan1 = $this->request->getVar('keterangan1');
             // $keterangan2 = $this->request->getVar('keterangan2');
             // $keterangan3 = $this->request->getVar('keterangan3');
-            // $file1 = $document1->getRandomName();
-            // $file2 = $document2->getRandomName();
+            $file = $document->getRandomName();
             // $file3 = $document3->getRandomName();
             $db = db_connect('default');
             $proyekModel = new ProyekModel();
             $proyekModel->insertData($data);
 
-            //variabel array document merupakan data yg akan di insert ke dalam table file
-            // $document = [
-            //     [
-            //         'proyek_id' => $proyekModel->insertID(), 
-            //         'nama_file' => $file1,
-            //         'keterangan' => $keterangan1
-            //     ],
-            //     [
-            //         'proyek_id' => $proyekModel->insertID(), 
-            //         'nama_file' => $file2,
-            //         'keterangan' => $keterangan2
-            //     ],
-            //     [
-            //         'proyek_id' => $proyekModel->insertID(),
-            //         'nama_file' => $file3,
-            //         'keterangan' => $keterangan3
-            //     ]
-            // ];
-
-            // $fileModel = new FileModel();
-            // $fileModel->insertBatch($document);
-            //move merupakan pemindahan file yg di upload kedalam aplikasi web data center
-            // $document1->move('Uploads/', $file1);
-            // if ($document2->isValid()) {
-            //     $document2->move('Uploads/', $file2);
-            // }
-            // if ($document3->isValid()) {
-            //     $document3->move('Uploads/', $file3);
-            // }
+            $fileModel = new FileModel();
+            $gambarProyek = [
+                    'proyek_id' =>  $proyekModel->insertID(), 
+                    'nama_file' => $file,
+                    'keterangan' => "Image"
+            ];
+            $fileModel->insertData($gambarProyek);
+            $document->move('Uploads/', $file);
             session()->setFlashdata('success', 'Proyek berhasil ditambahkan.');
             return redirect()->to('kelola-data-proyek');
         } else {
@@ -187,11 +166,26 @@ class KelolaDataProyekController extends BaseController
                 'kategori_document'    => $this->request->getVar('kategori_document'),
                 'deparment'    => $this->request->getVar('deparment'),
                 'industri'    => $this->request->getVar('industri'),
-                'ended' => $this->request->getVar('kategori_document') == 'Finish' && $this->request->getVar('ended') == '0000-00-00' ? $timestamp : $this->request->getVar('ended')
+                'ended' => $this->request->getVar('kategori_document') == 'Finish' && $this->request->getVar('ended') == '0000-00-00' ? $timestamp : $this->request->getVar('ended'),
+                'deskripsi' => $this->request->getVar('deskripsi')
             ];
-            // print_r($data);exit();
             $proyekModel = new ProyekModel();
             $proyekModel->updateProyek($id, $data);
+            $fileModel = new FileModel();
+            $proyekId = $fileModel->getIdProyek($proyekModel->find($id)['id']);
+            
+            $document = $this->request->getFile('gambar');
+            // print_r($proyekId->proyek_id);exit();
+            if ($document->isValid() && !$document->hasMoved()) {
+                $file = $document->getRandomName();
+                $gambarProyek = [
+                    'proyek_id' =>  $proyekId[0]['proyek_id'], 
+                    'nama_file' => $file,
+                    'keterangan' => "Image"
+                ];
+                $fileModel->updateDokumen($proyekId[0]['proyek_id'], $gambarProyek);
+                $document->move('Uploads/', $file);
+            }
             session()->setFlashdata('success', 'Proyek berhasil diupdate.');
             return redirect()->to('kelola-data-proyek');
         } else {
