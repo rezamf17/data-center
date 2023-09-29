@@ -49,4 +49,12 @@ class FileModel extends Model{
         $builder->where('id', $id);
         $builder->delete();
     }
+
+    public function getIdProyek($idProyek)
+    {
+        $builder = $this->db->table('file');
+        $builder->where('proyek_id', $idProyek);
+        $builder->where('keterangan', 'Image');
+        return $builder->get()->getResultArray();
+    }
 }

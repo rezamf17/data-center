@@ -15,6 +15,7 @@ class ProyekModel extends Model{
         'ended',
         'pj_proyek',
         'industri',
+        'deskripsi'
     ];
 
     public function insertData($data)
