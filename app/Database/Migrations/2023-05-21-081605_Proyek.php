@@ -45,6 +45,9 @@ class Proyek extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
 			],
+			'deskripsi' => [
+				'type'           => 'TEXT'
+			],
 		]);
 
 		// Membuat primary key
