@@ -558,4 +558,29 @@ class KelolaDataProyekController extends BaseController
         session()->setFlashdata('success', 'File berhasil dihapus.');
         return redirect()->to(base_url('kelola-data-proyek'));
     }
+
+    public function exportPerusahaan($id)
+    {
+        $proyekModel = new ProyekModel();
+        $data['proyek'] = $proyekModel->find($id);
+        $fileModel = new FileModel();
+        $proyekId = $fileModel->getIdProyek($proyekModel->find($id)['id']);
+        $data['gambar'] = $proyekId;
+        $data['file'] = $fileModel->viewDocMember($id);
+        $mpdf = new \Mpdf\Mpdf();
+        $proyekModel = new ProyekModel();
+        $html = view('KelolaDataProyek/ExportPerusahaan', $data);
+        $mpdf->WriteHTML($html);
+        $mpdf->SetHTMLFooter('
+            <table width="100%">
+                <tr>
+                    <td width="33%" align="center">{DATE j-m-Y}</td>
+                    <td width="33%" align="center">{PAGENO}/{nbpg}</td>
+                    <td width="33%" style="text-align: right;">BIM WIKA</td>
+                </tr>
+            </table>');
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $mpdf->Output('Laporan Data Perusahaan.pdf', 'I');
+        // return view('KelolaDataProyek/ExportPerusahaan', $data);
+    }
 }

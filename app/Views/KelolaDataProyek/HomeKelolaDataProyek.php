@@ -136,6 +136,7 @@
                                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                                         <button type="submit">Hapus</button><?= csrf_field() ?>
                                     </form>
+                                    <a href="<?= base_url('export-perusahaan/' . $item['id']) ?>" class="btn btn-secondary">Export Perusahaan</a>
                                 <?php elseif (session()->get('role') === 'Member'): ?>
                                     <a href="<?= base_url('view-document/' . $item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>
                                 <?php endif; ?>
