@@ -144,7 +144,7 @@
           <?php echo $totalHold; ?>,
           <?php echo $totalFinish; ?>
         ],
-        backgroundColor: ['#f56954', '#f39c12', '#00a65a'],
+        backgroundColor: ['#f39c12', '#f56954', '#00a65a'],
       }]
     }
     var donutOptions = {

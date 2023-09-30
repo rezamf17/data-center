@@ -125,9 +125,9 @@ class KelolaDataProyekController extends BaseController
 
             $fileModel = new FileModel();
             $gambarProyek = [
-                    'proyek_id' =>  $proyekModel->insertID(), 
-                    'nama_file' => $file,
-                    'keterangan' => "Image"
+                'proyek_id' =>  $proyekModel->insertID(),
+                'nama_file' => $file,
+                'keterangan' => "Image"
             ];
             $fileModel->insertData($gambarProyek);
             $document->move('Uploads/', $file);
@@ -173,13 +173,13 @@ class KelolaDataProyekController extends BaseController
             $proyekModel->updateProyek($id, $data);
             $fileModel = new FileModel();
             $proyekId = $fileModel->getIdProyek($proyekModel->find($id)['id']);
-            
+
             $document = $this->request->getFile('gambar');
             // print_r($proyekId->proyek_id);exit();
             if ($document->isValid() && !$document->hasMoved()) {
                 $file = $document->getRandomName();
                 $gambarProyek = [
-                    'proyek_id' =>  $proyekId[0]['proyek_id'], 
+                    'proyek_id' =>  $proyekId[0]['proyek_id'],
                     'nama_file' => $file,
                     'keterangan' => "Image"
                 ];
@@ -571,11 +571,11 @@ class KelolaDataProyekController extends BaseController
         $html = view('KelolaDataProyek/ExportPerusahaan', $data);
         $mpdf->WriteHTML($html);
         $mpdf->SetHTMLFooter('
-            <table width="100%">
+            <table style="width: 100%">
                 <tr>
-                    <td width="33%" align="center">{DATE j-m-Y}</td>
-                    <td width="33%" align="center">{PAGENO}/{nbpg}</td>
-                    <td width="33%" style="text-align: right;">BIM WIKA</td>
+                    <td>{DATE j-m-Y}</td>
+                    <td>{PAGENO}/{nbpg}</td>
+                    <td style="text-align: right">BIM WIKA</td>
                 </tr>
             </table>');
         $this->response->setHeader('Content-Type', 'application/pdf');

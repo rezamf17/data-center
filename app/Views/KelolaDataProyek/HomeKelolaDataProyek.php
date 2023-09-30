@@ -129,17 +129,17 @@
                                 <td><?= $item['industri'] ?></td>
                                 <td><?= $item['pj_proyek'] ?></td>
                                 <td>
-                                <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'SU'): ?>
-                                    <a href="<?= base_url('edit-kelola-data-proyek/' . $item['id']) ?>" class="btn btn-success">Edit</a>
-                                    <a href="<?= base_url('view-document/' . $item['id']) ?>" class="btn btn-primary">Edit Dokumen</a>
-                                    <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/' . $item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
-                                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-                                        <button type="submit">Hapus</button><?= csrf_field() ?>
-                                    </form>
-                                    <a href="<?= base_url('export-perusahaan/' . $item['id']) ?>" class="btn btn-secondary">Export Perusahaan</a>
-                                <?php elseif (session()->get('role') === 'Member'): ?>
-                                    <a href="<?= base_url('view-document/' . $item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>
-                                <?php endif; ?>
+                                    <?php if (session()->get('role') === 'PJ' || session()->get('role') === 'SU') : ?>
+                                        <a href="<?= base_url('edit-kelola-data-proyek/' . $item['id']) ?>" class="btn btn-success">Edit</a>
+                                        <a href="<?= base_url('view-document/' . $item['id']) ?>" class="btn btn-primary">Edit Dokumen</a>
+                                        <form class="btn btn-danger" action="<?php echo base_url('kelola-data-proyek/' . $item['id']); ?>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')">
+                                            <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                            <button type="submit">Hapus</button><?= csrf_field() ?>
+                                        </form>
+                                        <a href="<?= base_url('export-perusahaan/' . $item['id']) ?>" target="_blank" class="btn btn-secondary">Export Laporan</a>
+                                    <?php elseif (session()->get('role') === 'Member') : ?>
+                                        <a href="<?= base_url('view-document/' . $item['id']) ?>" class="btn btn-success">Lihat Dokumen</a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

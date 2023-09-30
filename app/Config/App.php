@@ -340,71 +340,71 @@ class App extends BaseConfig
      */
     public array $proxyIPs = [];
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Token Name
-     * --------------------------------------------------------------------------
-     *
-     * The token name.
-     *
-     * @deprecated Use `Config\Security` $tokenName property instead of using this property.
-     */
-    public string $CSRFTokenName = 'csrf_test_name';
+    // /**
+    //  * --------------------------------------------------------------------------
+    //  * CSRF Token Name
+    //  * --------------------------------------------------------------------------
+    //  *
+    //  * The token name.
+    //  *
+    //  * @deprecated Use `Config\Security` $tokenName property instead of using this property.
+    //  */
+    // public string $CSRFTokenName = 'csrf_test_name';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Header Name
-     * --------------------------------------------------------------------------
-     *
-     * The header name.
-     *
-     * @deprecated Use `Config\Security` $headerName property instead of using this property.
-     */
-    public string $CSRFHeaderName = 'X-CSRF-TOKEN';
+    // /**
+    //  * --------------------------------------------------------------------------
+    //  * CSRF Header Name
+    //  * --------------------------------------------------------------------------
+    //  *
+    //  * The header name.
+    //  *
+    //  * @deprecated Use `Config\Security` $headerName property instead of using this property.
+    //  */
+    // public string $CSRFHeaderName = 'X-CSRF-TOKEN';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Cookie Name
-     * --------------------------------------------------------------------------
-     *
-     * The cookie name.
-     *
-     * @deprecated Use `Config\Security` $cookieName property instead of using this property.
-     */
-    public string $CSRFCookieName = 'csrf_cookie_name';
+    // /**
+    //  * --------------------------------------------------------------------------
+    //  * CSRF Cookie Name
+    //  * --------------------------------------------------------------------------
+    //  *
+    //  * The cookie name.
+    //  *
+    //  * @deprecated Use `Config\Security` $cookieName property instead of using this property.
+    //  */
+    // public string $CSRFCookieName = 'csrf_cookie_name';
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Expire
-     * --------------------------------------------------------------------------
-     *
-     * The number in seconds the token should expire.
-     *
-     * @deprecated Use `Config\Security` $expire property instead of using this property.
-     */
-    public int $CSRFExpire = 2;
+    // /**
+    //  * --------------------------------------------------------------------------
+    //  * CSRF Expire
+    //  * --------------------------------------------------------------------------
+    //  *
+    //  * The number in seconds the token should expire.
+    //  *
+    //  * @deprecated Use `Config\Security` $expire property instead of using this property.
+    //  */
+    // public int $CSRFExpire = 2;
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Regenerate
-     * --------------------------------------------------------------------------
-     *
-     * Regenerate token on every submission?
-     *
-     * @deprecated Use `Config\Security` $regenerate property instead of using this property.
-     */
-    public bool $CSRFRegenerate = true;
+    // /**
+    //  * --------------------------------------------------------------------------
+    //  * CSRF Regenerate
+    //  * --------------------------------------------------------------------------
+    //  *
+    //  * Regenerate token on every submission?
+    //  *
+    //  * @deprecated Use `Config\Security` $regenerate property instead of using this property.
+    //  */
+    // public bool $CSRFRegenerate = true;
 
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Redirect
-     * --------------------------------------------------------------------------
-     *
-     * Redirect to previous page with error on failure?
-     *
-     * @deprecated Use `Config\Security` $redirect property instead of using this property.
-     */
-    public bool $CSRFRedirect = false;
+    // /**
+    //  * --------------------------------------------------------------------------
+    //  * CSRF Redirect
+    //  * --------------------------------------------------------------------------
+    //  *
+    //  * Redirect to previous page with error on failure?
+    //  *
+    //  * @deprecated Use `Config\Security` $redirect property instead of using this property.
+    //  */
+    // public bool $CSRFRedirect = false;
 
     /**
      * --------------------------------------------------------------------------
