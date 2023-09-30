@@ -65,6 +65,10 @@
             <th>Deskprisi</th>
             <td><?php echo $proyek['deskripsi']; ?></td>
         </tr>
+        <tr>
+            <th>PJ Proyek</th>
+            <td><?php echo $proyek['pj_proyek']; ?></td>
+        </tr>
     </table>
     <h4>Member Proyek</h4>
     <table class="table-dokumen">
