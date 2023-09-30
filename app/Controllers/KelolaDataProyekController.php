@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ProyekModel;
 use App\Models\FileModel;
 use App\Models\UserModel;
+use App\Models\MemberModel;
 use DateTime;
 use DateTimeZone;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -568,6 +569,9 @@ class KelolaDataProyekController extends BaseController
         $data['file'] = $fileModel->viewDocMember($id);
         $mpdf = new \Mpdf\Mpdf();
         $proyekModel = new ProyekModel();
+        $memberModel = new MemberModel();
+        // print_r($proyekId[0]['proyek_id']);exit();
+        $data['member'] = $memberModel->getMemberProyekDetail($proyekId[0]['proyek_id']);
         $html = view('KelolaDataProyek/ExportPerusahaan', $data);
         $mpdf->WriteHTML($html);
         $mpdf->SetHTMLFooter('
