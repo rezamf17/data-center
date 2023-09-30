@@ -84,6 +84,13 @@
             </td> -->
         </tr>
         <tr>
+            <th>Deskprisi</th>
+            <td><?php echo $proyek['deskripsi']; ?></td>
+        </tr>
+        <tr>
+            <th>PJ Proyek</th>
+            <td><?php echo $proyek['pj_proyek']; ?></td>
+        </tr>
     </table>
 
     <p class="desc"><?php echo $proyek['deskripsi']; ?></p>
