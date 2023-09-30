@@ -12,8 +12,8 @@
         .title {
             text-align: center;
         }
-        table{
-            text-align: left;
+        table, tr, td, td{
+            text-align: center;
             width : 30%;
         }
         .img-proyek{
@@ -21,6 +21,7 @@
         }
         .table-dokumen{
             width : 100%;
+            text-align: center;
         }
         @page {
             background: url('./img/logo-wika3.svg') no-repeat center;
@@ -64,6 +65,25 @@
             <th>Deskprisi</th>
             <td><?php echo $proyek['deskripsi']; ?></td>
         </tr>
+    </table>
+    <h4>Member Proyek</h4>
+    <table class="table-dokumen">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>NIP</th>
+                <th>Nama Member</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php $i = 1; foreach ($member as $item): ?>
+            <tr>
+                <td><?= $i++ ?></td>
+                <td><?= $item['nip'] ?></td>
+                <td><?= $item['name'] ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
     <h4>Dokumen Proyek</h4>
     <table class="table-dokumen">
