@@ -50,6 +50,18 @@ class MemberModel extends Model{
     return $query->getResultArray();
    }
 
+   public function getMemberProyekDetail($idProyek)
+   {
+    $query = $this->db->table('proyek_member')
+    ->select('proyek_member.id, user.nip, user.email, user.role, proyek.pj_proyek, proyek.nama_proyek, user.name')
+    ->join('proyek', 'proyek.id = proyek_member.id_proyek')
+    ->join('user', 'user.id = proyek_member.id_user')
+    ->where('proyek_member.id_proyek', $idProyek)
+    ->get();
+
+    return $query->getResultArray();
+   }
+
    public function deleteMember($id)
    {
        $builder = $this->db->table('proyek_member');

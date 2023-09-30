@@ -26,7 +26,7 @@
         <label for="exampleInputFile">Dokumen (format : .xls, .pdf, .docx, dan .doc)</label>
         <div class="input-group">
           <div class="custom-file">
-            <a href="<?php echo base_url('edit-dokumen/' . $proyek['id']); ?>" class="btn btn-success">Lihat Dokumen</a>
+            <a href="<?php echo base_url('edit-dokumen/'.$proyek['id']); ?>" class="btn btn-success">Lihat Dokumen</a>
           </div>
         </div>
     </div> -->
@@ -42,6 +42,10 @@
       </select>
     </div>
     <div class="form-group">
+      <label for="exampleInputPassword1">PJ Proyek</label>
+      <input type="text" class="form-control" name="pj_proyek" value="<?php echo $proyek['pj_proyek']; ?>" readonly>
+    </div>
+    <div class="form-group">
       <label for="exampleInputPassword1">Tempat Proyek</label>
       <input type="text" class="form-control" placeholder="Masukan Tempat Proyek" name="industri" value="<?php echo $proyek['industri']; ?>" required>
     </div>
@@ -49,6 +53,20 @@
       <label for="exampleInputPassword1">Tanggal Berakhir Proyek</label>
       <input type="date" class="form-control" name="ended" value="<?php echo $proyek['ended']; ?>">
     </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Gambar Proyek</label>
+      <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar" >
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+        </div>
+    </div>
+    <label for="exampleInputPassword1">Deskripsi Proyek</label>
+    <textarea id="summernote" row="5" name="deskripsi">
+      <?php echo $proyek['deskripsi']; ?>
+    </textarea>
+    
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-outline-success">Edit</button>
@@ -59,7 +77,6 @@
 </div>
 
 </section>
-
 </div>
 <script src="<?php echo base_url('plugins/jquery/jquery.min.js'); ?>"></script>
 <!-- Summernote -->
