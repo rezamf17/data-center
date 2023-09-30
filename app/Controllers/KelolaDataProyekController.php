@@ -575,10 +575,10 @@ class KelolaDataProyekController extends BaseController
         $html = view('KelolaDataProyek/ExportPerusahaan', $data);
         $mpdf->WriteHTML($html);
         $mpdf->SetHTMLFooter('
-            <table style="width: 100%">
+            <table style="width:100%;">
                 <tr>
                     <td>{DATE j-m-Y}</td>
-                    <td>{PAGENO}/{nbpg}</td>
+                    <td style="text-align:center;">{PAGENO}/{nbpg}</td>
                     <td style="text-align: right">BIM WIKA</td>
                 </tr>
             </table>');

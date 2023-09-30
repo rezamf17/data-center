@@ -19,7 +19,7 @@
         tr,
         td,
         td {
-            text-align: center;
+            text-align: left;
             width: 30%;
         }
 
@@ -31,6 +31,10 @@
             width: 100%;
         }
 
+        .table-dokumen .no {
+            width: 4rem;
+        }
+
         th {
             text-align: left;
             padding-right: 2rem;
@@ -38,7 +42,6 @@
 
         .desc {
             text-align: justify;
-            text-indent: 2rem;
         }
 
         @page {
@@ -82,48 +85,34 @@
         </tr>
         <tr>
     </table>
-    <h4>Member Proyek</h4>
-    <table class="table-dokumen">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>NIP</th>
-                <th>Nama Member</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1;
-            foreach ($member as $item) : ?>
-                <tr>
-                    <td><?= $i++ ?></td>
-                    <td><?= $item['nip'] ?></td>
-                    <td><?= $item['name'] ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 
     <p class="desc"><?php echo $proyek['deskripsi']; ?></p>
-    <h4>Member Proyek</h4>
-    <table class="table-dokumen">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>NIP</th>
-                <th>Nama Member</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1;
-            foreach ($member as $item) : ?>
+
+    <?php if (sizeof($member) > 0) : ?>
+        <h4>Member Proyek</h4>
+        <table class="table-dokumen">
+            <thead>
                 <tr>
-                    <td><?= $i++ ?></td>
-                    <td><?= $item['nip'] ?></td>
-                    <td><?= $item['name'] ?></td>
+                    <th>No</th>
+                    <th>NIP</th>
+                    <th>Nama Member</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $i = 1;
+                foreach ($member as $item) : ?>
+                    <tr>
+                        <td><?= $i++ ?></td>
+                        <td><?= $item['nip'] ?></td>
+                        <td><?= $item['name'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+
+
+
     <h4>Dokumen Proyek</h4>
     <table class="table-dokumen">
         <thead>
@@ -137,7 +126,7 @@
             <?php $i = 1;
             foreach ($file as $item) : ?>
                 <tr>
-                    <td><?= $i++ ?></td>
+                    <td class="no"><?= $i++ ?></td>
                     <td>
                         <?php if (substr($item['nama_file'], -3) == 'pdf') : ?>
                             <a class="btn btn-success" href="<?php echo base_url("Uploads/" . $item["nama_file"]); ?>"><?php echo base_url("Uploads/" . $item["nama_file"]); ?></a>
