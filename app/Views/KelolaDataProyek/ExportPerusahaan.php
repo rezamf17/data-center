@@ -78,14 +78,7 @@
             <th>Gambar Proyek</th>
             <td>
                 <a class="btn btn-success" href="<?php echo base_url("Uploads/" . $gambar[0]['nama_file']); ?>"><?php echo base_url("Uploads/" . $gambar[0]['nama_file']); ?></a>
-            </td>
-            <!-- <td>
-                <img class="img-proyek" src="http://localhost:8080/Uploads/<?php echo $gambar[0]['nama_file']; ?>" alt="" srcset="">
-            </td> -->
-        </tr>
-        <tr>
-            <th>Deskprisi</th>
-            <td><?php echo $proyek['deskripsi']; ?></td>
+            </td>`
         </tr>
         <tr>
             <th>PJ Proyek</th>
